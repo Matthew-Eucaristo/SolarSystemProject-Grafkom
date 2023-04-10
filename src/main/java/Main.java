@@ -31,8 +31,9 @@ public class Main {
         camera.setRotation((float) Math.toRadians(0.0f),(float) Math.toRadians(10.0f));
 
         // objects add di sini
-//        objects.add(new Sphere(255,255,255,255));
-        objects.add(new Rectangle(1,1,30,30,0,255,1,1,255,72));
+        objects.add(new Sphere(255,255,255,255));
+//        objects.add(new Rectangle(1,1,30,30,0,255,1,1,255,72));
+
 
 
     }
@@ -43,7 +44,43 @@ public class Main {
             objects.get(0).rotateObject((float)Math.toRadians(1),1f,1f,0f);
         }
 
+        // ini buat yang WASD
+        float cameraSpeed = 0.1f;
+        float rotateSpeedInDegrees = 2f;
+        if (window.isKeyPressed(GLFW_KEY_W)) {
+            camera.moveForward(cameraSpeed);
+        }
+        if (window.isKeyPressed(GLFW_KEY_S)) {
+            camera.moveBackwards(cameraSpeed);
+        }
+        if (window.isKeyPressed(GLFW_KEY_A)) {
+            camera.moveLeft(cameraSpeed);
+        }
+        if (window.isKeyPressed(GLFW_KEY_D)) {
+            camera.moveRight(cameraSpeed);
+        }
 
+        // ini buat Q dan E buat rotate
+        if (window.isKeyPressed(GLFW_KEY_Q)) {
+            camera.addRotation(0, (float) Math.toRadians(-1 *rotateSpeedInDegrees));
+        }
+        if (window.isKeyPressed(GLFW_KEY_E)) {
+            camera.addRotation(0, (float) Math.toRadians(rotateSpeedInDegrees));
+        }
+
+        // ini buat zoom in dan out, also arrow left and right
+        if (window.isKeyPressed(GLFW_KEY_UP)) {
+            camera.moveUp(cameraSpeed);
+        }
+        if (window.isKeyPressed(GLFW_KEY_DOWN)) {
+            camera.moveDown(cameraSpeed);
+        }
+        if (window.isKeyPressed(GLFW_KEY_LEFT)) {
+            camera.addRotation((float) Math.toRadians(-1 *rotateSpeedInDegrees), 0);
+        }
+        if (window.isKeyPressed(GLFW_KEY_RIGHT)) {
+            camera.addRotation((float) Math.toRadians(rotateSpeedInDegrees), 0);
+        }
 
 
     }

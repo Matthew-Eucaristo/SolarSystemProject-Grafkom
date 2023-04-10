@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="nambah camera + projection">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/Camera.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/Projection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/shaders/scene.vert" beforeDir="false" afterPath="$PROJECT_DIR$/resources/shaders/scene.vert" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Curve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Curve.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/RectangleOld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/RectangleOld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Star.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Star.java" afterDir="false" />
+    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Bumi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,14 +21,12 @@
       </list>
     </option>
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2NXsXxLOgpJT8pqOi5rraoVq4aO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -45,7 +38,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "ignore.virus.scanning.warn.message": "true",
+    "git-widget-placeholder": "master",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
@@ -65,19 +58,9 @@
       <option name="presentableId" value="Default" />
       <updated>1679821808521</updated>
     </task>
-    <task id="LOCAL-00001" summary="nambah camera + projection">
-      <created>1681094675036</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1681094675036</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="nambah camera + projection" />
-    <option name="LAST_COMMIT_MESSAGE" value="nambah camera + projection" />
   </component>
 </project>
