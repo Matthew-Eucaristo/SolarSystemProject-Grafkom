@@ -39,6 +39,8 @@ public class Object extends ShaderProgram {
         uniformsMap = new UniformsMap(getProgramId());
         uniformsMap.createUniform("uni_color");
         uniformsMap.createUniform("model");
+        uniformsMap.createUniform("projection");
+        uniformsMap.createUniform("view");
         this.color = color;
         this.model = new Matrix4f().identity();
 
@@ -73,12 +75,14 @@ public class Object extends ShaderProgram {
     }
 
 
-    public void drawSetup(){
+    public void drawSetup(Camera camera, Projection projection){
         bind();
 
         // set uniforms map
         uniformsMap.setUniform("uni_color", color);
         uniformsMap.setUniform("model", model);
+        uniformsMap.setUniform("view",camera.getViewMatrix());
+        uniformsMap.setUniform("projection", projection.getProjMatrix());
 
         // Bind VBO
         glEnableVertexAttribArray(0); // ini biar masuk ke shader dan masuk e ke 0 dulu urut
@@ -88,14 +92,15 @@ public class Object extends ShaderProgram {
                 false,
                 0,
                 0
-                );
+        );
 
 
     }
 
 
-    public void draw(){
-        drawSetup();
+
+    public void draw(Camera camera, Projection projection){
+        drawSetup(camera,projection);
 
         // Draw the vertices
         // opsional
@@ -114,13 +119,13 @@ public class Object extends ShaderProgram {
                 vertices.size());
 
         for(Object child: childObject){
-            child.draw();
+            child.draw(camera,projection);
         }
 
     }
 
-    public void drawLine(){
-        drawSetup();
+    public void drawLine(Camera camera, Projection projection){
+        drawSetup(camera,projection);
 
         glLineWidth(1);
         glPointSize(0);

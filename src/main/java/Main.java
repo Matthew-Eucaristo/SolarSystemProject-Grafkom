@@ -19,6 +19,10 @@ public class Main {
     // init mouseinput
     private MouseInput mouseInput;
 
+    Projection projection = new Projection(window.getWidth(),window.getHeight());
+
+    Camera camera = new Camera();
+
     public void init(){
         window.init();
         GL.createCapabilities(); // ini harus di atas
@@ -47,7 +51,7 @@ public class Main {
 
             // draw objects
             for (Object object : objects) {
-                object.draw();
+                object.draw(camera,projection);
             }
 
             // restore state
