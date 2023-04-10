@@ -51,8 +51,8 @@ public class Curve extends Object {
     }
 
     @Override
-    public void draw() {
-        drawSetup();
+    public void draw(Camera camera, Projection projection) {
+        drawSetup(camera,projection);
 
         glLineWidth(2);
         glPointSize(0);

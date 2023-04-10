@@ -227,8 +227,8 @@ public class Sphere extends Circle{
         vertices.add(tempVertices.get(6));
     }
 
-    public void drawIndices(){
-        drawSetup();
+    public void drawIndices(Camera camera, Projection projection){
+        drawSetup(camera, projection);
         glLineWidth(1); //ketebalan garis
         glPointSize(1); //besar kecil vertex
         glDrawArrays(GL_LINE_STRIP,

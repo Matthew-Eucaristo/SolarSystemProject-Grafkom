@@ -44,8 +44,8 @@ public class Star extends Circle {
     }
 
     @Override
-    public void draw() {
-        drawSetup();
+    public void draw(Camera camera, Projection projection) {
+        drawSetup(camera, projection);
 
         // Bind IBO and draw
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);

@@ -27,15 +27,21 @@ public class Main {
         window.init();
         GL.createCapabilities(); // ini harus di atas
         mouseInput = window.getMouseInput();
+        camera.setPosition(0,0,1.5f);
+        camera.setRotation((float) Math.toRadians(0.0f),(float) Math.toRadians(10.0f));
 
         // objects add di sini
-        objects.add(new Sphere(255,255,255,255));
+//        objects.add(new Sphere(255,255,255,255));
+        objects.add(new Rectangle(1,1,30,30,0,255,1,1,255,72));
 
 
     }
 
     public void input(){
         // ini yang handle input dari mouse
+        if(window.isKeyPressed(GLFW_KEY_F)){
+            objects.get(0).rotateObject((float)Math.toRadians(1),1f,1f,0f);
+        }
 
 
 
