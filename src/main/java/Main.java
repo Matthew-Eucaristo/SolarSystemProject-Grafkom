@@ -33,19 +33,20 @@ public class Main {
         camera.setRotation((float) Math.toRadians(0.0f),(float) Math.toRadians(0.0f));
 
         // implement semua object disini
-        objects.add(new Sun(ColorPalette.SUN_COLOR.getRGBA())); // pusat (parent utama)
+        objects.add(new Sun(ColorPalette.SUN_COLOR.getRGBA()).inlineScaleObjectXYZ(0.8f)); // pusat (parent utama)
 
-        objects.get(0).getChildObject().add(new Earth(ColorPalette.EARTH_SEA.getRGBA())
-                .inlineTranslateObject(0.5f,0f,0f)); // ini buat bumi
+        objects.get(0).getChildObject().add(new Earth(ColorPalette.EARTH_SEA.getRGBA()).inlineScaleObjectXYZ(0.3f)
+                .inlineTranslateObject(-2f,0f,0f)); // ini buat bumi
 
-        objects.get(0).getChildObject().get(0).getChildObject().add(new Moon(ColorPalette.MOON_COLOR.getRGBA())
-                .inlineTranslateObject(0.2f,0f,0f)); // ini buat bulan
+        objects.get(0).getChildObject().get(0).getChildObject().add(new Moon(ColorPalette.MOON_COLOR.getRGBA()).inlineScaleObjectXYZ(0.3f)
+                .inlineTranslateObject(-1f,0f,0f)); // ini buat bulan
 
-        objects.get(0).getChildObject().add(new Saturn(ColorPalette.SATURN_COLOR.getRGBA())
+        objects.get(0).getChildObject().add(new Saturn(ColorPalette.SATURN_COLOR.getRGBA()).inlineScaleObjectXYZ(0.6f)
                 .inlineTranslateObject(1.5f,0f,0f)); // ini buat saturnus
 
-        objects.add(new Star(ColorPalette.STAR_COLOR.getRGBA())
-                .inlineTranslateObject(2.5f,0f,0f)); // ini buat bintang
+        objects.add(new Star(ColorPalette.STAR_COLOR.getRGBA()).inlineScaleObjectXYZ(0.2f)
+                .inlineTranslateObject(1.5f,1f,0.5f)); // ini buat bintang
+
 
 
 
@@ -55,7 +56,10 @@ public class Main {
     public void input(){
         // ini yang handle input dari mouse
         if(window.isKeyPressed(GLFW_KEY_F)){
-            objects.get(0).rotateObject((float)Math.toRadians(1),1f,1f,0f);
+            objects.get(0).rotateObject((float)Math.toRadians(1),0f,1f,0f);
+        }
+        if(window.isKeyPressed(GLFW_KEY_M)){
+            objects.get(0).getChildObject().get(0).getChildObject().get(12).rotateObject((float)Math.toRadians(1),0f,1f,1f);
         }
 
         // ini buat yang WASD

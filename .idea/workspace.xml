@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="- !! Creates ENUM to contain all color so that the color palette is fixed&#10;- implement the enum on the earth class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/ColorPalette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/ColorPalette.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
