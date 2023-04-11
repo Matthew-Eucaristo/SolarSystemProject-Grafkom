@@ -1,16 +1,20 @@
 package Engine.planet;
 
-public enum ColorPaletteSpace {
+public enum ColorPalette {
     // color palette for space in the solar system
     SPACE(0,0,0,0),
     EARTH_DEEP_SEA(43,52,103,255),
     EARTH_LAND(0,255,0,255),
     CLOUDS(252,255,231,100),
+    SUN_COLOR(255,255,0,255),
+    STAR_COLOR(255,255,255,255),
+    MOON_COLOR(255,255,255,255),
+    SATURN_COLOR(255,255,255,255),
     EARTH_SEA(96,150,180,255);
 
     // function to get the color
     private final float r, g, b, a;
-    ColorPaletteSpace(float r, float g, float b, float a){
+    ColorPalette(float r, float g, float b, float a){
         this.r = r;
         this.g = g;
         this.b = b;
