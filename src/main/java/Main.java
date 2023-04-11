@@ -1,10 +1,10 @@
 import Engine.*;
 import Engine.Object;
+import Engine.planet.Earth;
 import org.lwjgl.opengl.GL;
 
 import java.util.ArrayList;
 
-import org.lwjgl.opengl.GL;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL30.*;
@@ -27,12 +27,11 @@ public class Main {
         window.init();
         GL.createCapabilities(); // ini harus di atas
         mouseInput = window.getMouseInput();
-        camera.setPosition(0,0,1.5f);
-        camera.setRotation((float) Math.toRadians(0.0f),(float) Math.toRadians(10.0f));
+        camera.setPosition(0,0,2.5f);
+        camera.setRotation((float) Math.toRadians(0.0f),(float) Math.toRadians(0.0f));
 
-        // objects add di sini
-        objects.add(new Sphere(255,255,255,255));
-//        objects.add(new Rectangle(1,1,30,30,0,255,1,1,255,72));
+        // implement semua object disini
+        objects.add(new Earth(96,150,180,255));
 
 
 

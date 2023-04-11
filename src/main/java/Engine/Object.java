@@ -172,6 +172,11 @@ public class Object extends ShaderProgram {
             child.translateObject(offsetX, offsetY, offsetZ);
         }
     }
+    public Object inlineTranslateObject(float offsetX, float offsetY, float offsetZ){
+        this.translateObject(offsetX, offsetY, offsetZ);
+        return this;
+    }
+
     // rotate
     public void rotateObject(float degree, float x, float y, float z){
         model = new Matrix4f().rotate(degree, x, y, z).mul(new Matrix4f(model));
@@ -179,6 +184,11 @@ public class Object extends ShaderProgram {
             child.rotateObject(degree, x, y, z);
         }
     }
+    public Object inlineRotateObject(float degree, float x, float y, float z){
+        this.rotateObject(degree, x, y, z);
+        return this;
+    }
+
     // scale
     public void scaleObject(float scaleX, float scaleY, float scaleZ){
         model = new Matrix4f().scale(scaleX, scaleY, scaleZ).mul(new Matrix4f(model));
@@ -186,9 +196,19 @@ public class Object extends ShaderProgram {
             child.scaleObject(scaleX, scaleY, scaleZ);
         }
     }
+    public Object inlineScaleObject(float scaleX, float scaleY, float scaleZ){
+        this.scaleObject(scaleX, scaleY, scaleZ);
+        return this;
+    }
     public void scaleObjectXYZ(float scale){
         this.scaleObject(scale, scale, scale);
     }
+    public Object inlineScaleObjectXYZ(float scale){
+        this.scaleObject(scale, scale, scale);
+        return this;
+    }
+
+    // setter getter and other methods
 
     public List<Object> getChildObject() {
         return childObject;
