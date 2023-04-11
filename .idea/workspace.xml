@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="- !! Creates ENUM to contain all color so that the color palette is fixed&#10;- implement the enum on the earth class">
+    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="Ganti-ganti scale sama translate">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Atom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Circle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/ColorPalette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/ColorPalette.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -93,14 +96,33 @@
       <option name="project" value="LOCAL" />
       <updated>1681199050311</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Ganti-ganti scale sama translate">
+      <created>1681229690557</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681229690557</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="WASD dan QE sudah benar&#10;ada arrow key buat yagn lain juga" />
     <MESSAGE value="1. ganti nama Bumi&#10;2. buat inline method buat translation&#10;3. buat awalan bumi dan hiasan&quot; nya" />
     <MESSAGE value="- !! Creates ENUM to contain all color so that the color palette is fixed&#10;- implement the enum on the earth class" />
-    <option name="LAST_COMMIT_MESSAGE" value="- !! Creates ENUM to contain all color so that the color palette is fixed&#10;- implement the enum on the earth class" />
+    <MESSAGE value="Ganti-ganti scale sama translate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ganti-ganti scale sama translate" />
   </component>
 </project>

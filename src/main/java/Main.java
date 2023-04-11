@@ -48,6 +48,9 @@ public class Main {
         objects.add(new Star(ColorPalette.STAR_COLOR.getRGBA()).inlineScaleObjectXYZ(0.2f)
                 .inlineTranslateObject(1.5f,1f,0.5f)); // ini buat bintang
 
+        objects.get(0).getChildObject().add(new Atom(ColorPalette.ATOM_COLOR.getRGBA()).inlineScaleObjectXYZ(0.3f)
+                .inlineTranslateObject(1f,0.5f,0.5f)); // ini buat atom
+
 
 
 
