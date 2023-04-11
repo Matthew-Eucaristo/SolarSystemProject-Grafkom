@@ -1,8 +1,11 @@
 import Engine.*;
 import Engine.Object;
+import Engine.Window;
+import Engine.planet.ColorPaletteSpace;
 import Engine.planet.Earth;
 import org.lwjgl.opengl.GL;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 import static org.lwjgl.opengl.GL11.*;
@@ -31,7 +34,7 @@ public class Main {
         camera.setRotation((float) Math.toRadians(0.0f),(float) Math.toRadians(0.0f));
 
         // implement semua object disini
-        objects.add(new Earth(96,150,180,255));
+        objects.add(new Earth(ColorPaletteSpace.EARTH_SEA.getRGBA()));
 
 
 
@@ -87,7 +90,12 @@ public class Main {
     public void loop(){
         while (window.isOpen()){
             window.update(); // ini update isi window
-            glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // background asal hitam
+            glClearColor(ColorPaletteSpace.SPACE.getR(),
+                    ColorPaletteSpace.SPACE.getB(),
+                    ColorPaletteSpace.SPACE.getA(),
+                    ColorPaletteSpace.SPACE.getA()
+                    ); // background asal hitam
+
             GL.createCapabilities(); // ini harus di atas
             input(); // terima input dari mouse
 

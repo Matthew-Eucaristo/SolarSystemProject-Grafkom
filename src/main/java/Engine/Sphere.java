@@ -35,6 +35,9 @@ public class Sphere extends Circle{
 
         setupVAOVBO();
     }
+    public Sphere(float[] rgba){
+        this(rgba[0], rgba[1], rgba[2], rgba[3]);
+    }
     public Sphere(float red, float green, float blue, float alpha) {
         super(0f, 0f, 0.5f, 0.5f, 0, red, green, blue, alpha, 0);
 
