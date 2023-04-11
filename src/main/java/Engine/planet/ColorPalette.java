@@ -10,6 +10,7 @@ public enum ColorPalette {
     STAR_COLOR(255,255,255,255),
     MOON_COLOR(255,255,255,255),
     SATURN_COLOR(255,255,255,255),
+    EARTH_MUD(62,39,31,255),
     EARTH_SEA(96,150,180,255);
 
     // function to get the color

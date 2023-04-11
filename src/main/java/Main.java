@@ -4,6 +4,7 @@ import Engine.Window;
 import Engine.planet.*;
 import Engine.planet.Star;
 import org.lwjgl.opengl.GL;
+import org.lwjgl.system.windows.DISPLAY_DEVICE;
 
 import java.util.ArrayList;
 
