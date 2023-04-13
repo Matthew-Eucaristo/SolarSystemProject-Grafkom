@@ -1,5 +1,6 @@
 import Engine.*;
 import Engine.Object;
+import Engine.Curve;
 import Engine.Window;
 import Engine.planet.*;
 import Engine.planet.Star;
@@ -54,11 +55,7 @@ public class Main {
 
         objects.get(0).getChildObject().add(new Atom(ColorPalette.ATOM_COLOR.getRGBA(),atomRingScale).inlineScaleObjectXYZ(0.3f)
                 .inlineTranslateObject(1f,0.5f,0.5f)); // ini buat atom
-
-
-
-
-
+        
     }
 
     public void input(){
@@ -92,6 +89,9 @@ public class Main {
                     .inlineTranslateObject(1f,0.5f,0.5f));
 //            System.out.println(atomRingScale);
 //            objects.get(0).getChildObject().get(2).getChildObject().get(0).scaleObjectXYZ(1.5f);
+        }
+        if (window.isKeyPressed(GLFW_KEY_C)){
+
         }
 
 
