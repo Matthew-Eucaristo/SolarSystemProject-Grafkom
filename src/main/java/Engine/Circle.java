@@ -27,6 +27,7 @@ public class Circle extends Object {
         // generate circle
         generateCircle();
 
+
         // setupvaovbo
         setupVAOVBO();
     }

@@ -10,7 +10,7 @@ import java.util.Random;
 public class Sun extends Sphere {
     public Sun(float[] rgba) {
         super(rgba);
-        surfaceDetail();
+//        surfaceDetail();
 
     }
     public void surfaceDetail(){

@@ -11,14 +11,16 @@ import java.util.Random;
 public class Atom extends Sphere {
 
 
-    public Atom(float[] rgba,float atomRingScale) {
+    public Atom(float[] rgba,float atomRingScale, float atomBallRotation) {
         super(rgba);
-        boolean sw = false;
+        boolean swATM = false;
+        boolean swBLL = false;
 
-        createCircle(countAtomScale(atomRingScale,sw));
+        createCircle(countAtomScale(atomRingScale,swATM));
         createBall(atomRingScale);
         createBall(atomRingScale);
-
+//        getChildObject().get(1).inlineTranslateObject(countBallRotationX(atomBallRotation,100),+ countBallRotationY(atomBallRotation,100),0f);
+//        getChildObject().get(2).inlineTranslateObject(countBallRotationX(atomBallRotation,100),+ countBallRotationY(atomBallRotation,100),0f);
         createWind();
         createWind();
         createWind();
@@ -43,23 +45,38 @@ public class Atom extends Sphere {
 
     }
     private void createCircle(float atomRingScale){
-        getChildObject().add(new Circle(0,0,100 - atomRingScale,100 - atomRingScale,0,72,0,130,255,360,2));
-        getChildObject().add(new Circle(0,0,100 - atomRingScale,100 - atomRingScale,0,72,0,130,255,360,1));
+        getChildObject().add(new Circle(0,0,100 - atomRingScale ,100 - atomRingScale,0,72,0,130,255,360,1));
+        getChildObject().add(new Circle(0,0,100 - atomRingScale ,100 - atomRingScale,0,72,0,130,255,360,2));
+
     }
-    private float countAtomScale(float atomRingScale, boolean sw){
+    private float countAtomScale(float atomRingScale, boolean swATM){
         if (atomRingScale > 15){
-            sw = false;
+            swATM = false;
         }
         else if(atomRingScale < -15){
-            sw = true;
+            swATM = true;
         }
-        if(sw == true){
+        if(swATM == true){
             atomRingScale++;
         }
         else {
             atomRingScale--;
         }
         return atomRingScale;
+    }
+    private float countBallRotationX(float atomBallRotation,float radiusX){
+        if (atomBallRotation > 360){
+            atomBallRotation = 0;
+        }
+        atomBallRotation = (float) (radiusX * Math.cos(Math.toRadians(atomBallRotation))/ 100);
+        return atomBallRotation;
+    }
+    private float countBallRotationY(float atomBallRotation,float radiusY){
+        if (atomBallRotation > 360){
+            atomBallRotation = 0;
+        }
+        atomBallRotation = (float) (radiusY * Math.sin(Math.toRadians(atomBallRotation))/ 100);
+        return atomBallRotation;
     }
     private void createWind(){
         // create wind

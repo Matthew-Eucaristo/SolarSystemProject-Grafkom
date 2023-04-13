@@ -26,7 +26,9 @@ public class Main {
 
     private float atomRingScale = 1f;
 
-    private boolean sw = false;
+    private float atomBallRotation = 0f;
+
+    private boolean swATM = false;
 
     List<Float> xyzAtom;
 
@@ -56,7 +58,7 @@ public class Main {
         objects.add(new Star(ColorPalette.STAR_COLOR.getRGBA()).inlineScaleObjectXYZ(0.2f)
                 .inlineTranslateObject(1.5f,1f,0.5f)); // ini buat bintang
 
-        objects.get(0).getChildObject().add(new Atom(ColorPalette.ATOM_COLOR.getRGBA(),atomRingScale).inlineScaleObjectXYZ(0.3f)
+        objects.get(0).getChildObject().add(new Atom(ColorPalette.ATOM_COLOR.getRGBA(),atomRingScale,atomBallRotation).inlineScaleObjectXYZ(0.3f)
                 .inlineTranslateObject(1f,0.5f,0.5f)); // ini buat atom
         
     }
@@ -75,17 +77,25 @@ public class Main {
         }
         if(window.isKeyPressed(GLFW_KEY_T)){
             if (atomRingScale > 15){
-                sw = false;
+                swATM = false;
             }
             else if(atomRingScale < -15){
-                sw = true;
+                swATM = true;
             }
-            if(sw == true){
+            if(swATM == true){
                 atomRingScale++;
             }
             else {
                 atomRingScale--;
             }
+            if (atomBallRotation > 360){
+                atomBallRotation = 0;
+            }
+            atomBallRotation = (float) (100 * Math.cos(Math.toRadians(atomBallRotation))/ 100);
+            if (atomBallRotation > 360){
+                atomBallRotation = 0;
+            }
+            atomBallRotation = (float) (100 * Math.sin(Math.toRadians(atomBallRotation))/ 100);
 //            xyzAtom.add(1f);
 //            xyzAtom.add(0f);
 //            xyzAtom.add(0f);
@@ -93,7 +103,7 @@ public class Main {
 //            xyzAtom = objects.get(0).getChildObject().get(2).getCenterPoint();
 //            System.out.println(xyzAtom.get(0));
             objects.get(0).getChildObject().remove(2);
-            objects.get(0).getChildObject().add(new Atom(ColorPalette.ATOM_COLOR.getRGBA(),atomRingScale).inlineScaleObjectXYZ(0.3f)
+            objects.get(0).getChildObject().add(new Atom(ColorPalette.ATOM_COLOR.getRGBA(),atomRingScale,atomBallRotation).inlineScaleObjectXYZ(0.3f)
                     .inlineTranslateObject(1f,0.5f,0.5f));
 //            System.out.println(atomRingScale);
 //            objects.get(0).getChildObject().get(2).getChildObject().get(0).scaleObjectXYZ(1.5f);
