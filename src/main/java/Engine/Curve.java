@@ -21,11 +21,16 @@ public class Curve extends Object {
         setupVAOVBO();
     }
 
+    public Curve(List<Vector3f> titik, float[] rgba) {
+        this(titik, rgba[0], rgba[1], rgba[2], rgba[3]);
+    }
+
     private void generateCurve( ){
         // generate curve using Berzier's Curve
         for (float i = 0; i < 1; i+= 0.01f) {
             float hasilX = 0;
             float hasilY = 0;
+            float hasilZ = 0;
             for (int j = 0; j < titikTersedia.size(); j++) {
                 double satuMinT =  Math.pow((1 - i),(titikTersedia.size() - j - 1));
                 double koefisien = factorial(titikTersedia.size() -1) / (factorial(titikTersedia.size()-1 - j) * factorial(j));
@@ -37,8 +42,9 @@ public class Curve extends Object {
                 Vector3f vertice = titikTersedia.get(j);
                 hasilX += hasil * vertice.x;
                 hasilY += hasil * vertice.y;
+                hasilZ += hasil * vertice.z;
             }
-            this.vertices.add(new Vector3f(hasilX, hasilY, 0));
+            this.vertices.add(new Vector3f(hasilX, hasilY, hasilZ));
         }
     }
 

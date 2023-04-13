@@ -58,13 +58,18 @@ public class Main {
     }
 
     public void input(){
-        // ini yang handle input dari mouse
+        // ini buat input handle dari mouse
+        // ini nanti rencana untuk play animation dari class" utnuk run method animation nya
+
+
+        // ini yang handle input dari keyboard
         if(window.isKeyPressed(GLFW_KEY_F)){
             objects.get(0).rotateObject((float)Math.toRadians(1),0f,1f,0f);
         }
         if(window.isKeyPressed(GLFW_KEY_M)){
             objects.get(0).getChildObject().get(0).getChildObject().get(12).rotateObject((float)Math.toRadians(1),0f,1f,1f);
         }
+
 
         // ini buat yang WASD
         float cameraSpeed = 0.1f;
