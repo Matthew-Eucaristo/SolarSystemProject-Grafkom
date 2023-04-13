@@ -135,11 +135,9 @@ public class Main {
 
         // ini pake scroll wheel for move forward and backwards
         if (mouseInput.getScroll().y > 0) {
-            camera.moveForward(cameraSpeed);
+            camera.moveForward(cameraSpeed * 2);
         } else if (mouseInput.getScroll().y < 0) {
-            camera.moveBackwards(cameraSpeed);
-        } else {
-            camera.moveForward(0);
+            camera.moveBackwards(cameraSpeed * 2);
         }
         mouseInput.resetScroll();
 
