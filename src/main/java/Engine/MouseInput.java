@@ -41,6 +41,10 @@ public class MouseInput {
     public Vector2f getCurrentPos() {
         return currentPos;
     }
+    public void resetScroll(){
+        scroll.x = 0;
+        scroll.y = 0;
+    }
 
     public Vector2f getScroll() {
         return scroll;

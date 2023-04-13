@@ -75,10 +75,10 @@ public class Main {
         float cameraSpeed = 0.1f;
         float rotateSpeedInDegrees = 2f;
         if (window.isKeyPressed(GLFW_KEY_W)) {
-            camera.moveForward(cameraSpeed);
+            camera.moveUp(cameraSpeed);
         }
         if (window.isKeyPressed(GLFW_KEY_S)) {
-            camera.moveBackwards(cameraSpeed);
+            camera.moveDown(cameraSpeed);
         }
         if (window.isKeyPressed(GLFW_KEY_A)) {
             camera.moveLeft(cameraSpeed);
@@ -97,10 +97,10 @@ public class Main {
 
         // ini buat zoom in dan out, also arrow left and right
         if (window.isKeyPressed(GLFW_KEY_UP)) {
-            camera.moveUp(cameraSpeed);
+            camera.moveForward(cameraSpeed);
         }
         if (window.isKeyPressed(GLFW_KEY_DOWN)) {
-            camera.moveDown(cameraSpeed);
+            camera.moveBackwards(cameraSpeed);
         }
         if (window.isKeyPressed(GLFW_KEY_LEFT)) {
             camera.addRotation((float) Math.toRadians(-1 *rotateSpeedInDegrees), 0);
@@ -108,6 +108,16 @@ public class Main {
         if (window.isKeyPressed(GLFW_KEY_RIGHT)) {
             camera.addRotation((float) Math.toRadians(rotateSpeedInDegrees), 0);
         }
+
+        // ini pake scroll wheel for move forward and backwards
+        if (mouseInput.getScroll().y > 0) {
+            camera.moveForward(cameraSpeed);
+        } else if (mouseInput.getScroll().y < 0) {
+            camera.moveBackwards(cameraSpeed);
+        } else {
+            camera.moveForward(0);
+        }
+        mouseInput.resetScroll();
 
 
     }
