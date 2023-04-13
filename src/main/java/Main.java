@@ -8,6 +8,7 @@ import org.lwjgl.opengl.GL;
 import org.lwjgl.system.windows.DISPLAY_DEVICE;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.glfw.GLFW.*;
@@ -26,6 +27,8 @@ public class Main {
     private float atomRingScale = 1f;
 
     private boolean sw = false;
+
+    List<Float> xyzAtom;
 
     Projection projection = new Projection(window.getWidth(),window.getHeight());
 
@@ -47,7 +50,7 @@ public class Main {
         objects.get(0).getChildObject().get(0).getChildObject().add(new Moon(ColorPalette.MOON_COLOR.getRGBA()).inlineScaleObjectXYZ(0.3f)
                 .inlineTranslateObject(-1f,0f,0f)); // ini buat bulan
 
-        objects.get(0).getChildObject().add(new Saturn(ColorPalette.SATURN_COLOR.getRGBA()).inlineScaleObjectXYZ(0.6f)
+        objects.get(0).getChildObject().add(new Saturn(ColorPalette.SATURN_COLOR_1.getRGBA()).inlineScaleObjectXYZ(0.6f)
                 .inlineTranslateObject(1.5f,0f,0f)); // ini buat saturnus
 
         objects.add(new Star(ColorPalette.STAR_COLOR.getRGBA()).inlineScaleObjectXYZ(0.2f)
@@ -83,7 +86,12 @@ public class Main {
             else {
                 atomRingScale--;
             }
-//            float X = objects.get(0).getChildObject().get(2)
+//            xyzAtom.add(1f);
+//            xyzAtom.add(0f);
+//            xyzAtom.add(0f);
+//            objects.get(0).getChildObject().get(2).setCenterPoint(xyzAtom);
+//            xyzAtom = objects.get(0).getChildObject().get(2).getCenterPoint();
+//            System.out.println(xyzAtom.get(0));
             objects.get(0).getChildObject().remove(2);
             objects.get(0).getChildObject().add(new Atom(ColorPalette.ATOM_COLOR.getRGBA(),atomRingScale).inlineScaleObjectXYZ(0.3f)
                     .inlineTranslateObject(1f,0.5f,0.5f));

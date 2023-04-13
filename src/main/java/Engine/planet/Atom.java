@@ -16,6 +16,8 @@ public class Atom extends Sphere {
         boolean sw = false;
 
         createCircle(countAtomScale(atomRingScale,sw));
+        createBall(atomRingScale);
+        createBall(atomRingScale);
 
         createWind();
         createWind();
@@ -97,6 +99,18 @@ public class Atom extends Sphere {
         getChildObject().add(new Curve(List.of(new Vector3f[]{point1, point2, point3, point4, point5}),
                 ColorPalette.EARTH_WIND.getRGBA()
         ));
+    }
+    private void createBall(float atomRingScale){
+        getChildObject().add(new Sphere(ColorPalette.EARTH_LIGHTER_LAND.getRGBA())
+                .inlineScaleObjectXYZ(0.2f)
+                .inlineTranslateObject(1f - atomRingScale * 0.01f,0f,0f)
+
+        );
+        getChildObject().add(new Sphere(ColorPalette.EARTH_LIGHTER_LAND.getRGBA())
+                .inlineScaleObjectXYZ(0.2f)
+                .inlineTranslateObject(0f,1f - atomRingScale * 0.01f,0f)
+
+        );
     }
 
 }
