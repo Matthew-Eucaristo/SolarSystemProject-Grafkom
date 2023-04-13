@@ -22,6 +22,10 @@ public class Main {
     // init mouseinput
     private MouseInput mouseInput;
 
+    private float atomRingScale = 1f;
+
+    private boolean sw = false;
+
     Projection projection = new Projection(window.getWidth(),window.getHeight());
 
     Camera camera = new Camera();
@@ -48,7 +52,7 @@ public class Main {
         objects.add(new Star(ColorPalette.STAR_COLOR.getRGBA()).inlineScaleObjectXYZ(0.2f)
                 .inlineTranslateObject(1.5f,1f,0.5f)); // ini buat bintang
 
-        objects.get(0).getChildObject().add(new Atom(ColorPalette.ATOM_COLOR.getRGBA()).inlineScaleObjectXYZ(0.3f)
+        objects.get(0).getChildObject().add(new Atom(ColorPalette.ATOM_COLOR.getRGBA(),atomRingScale).inlineScaleObjectXYZ(0.3f)
                 .inlineTranslateObject(1f,0.5f,0.5f)); // ini buat atom
 
 
@@ -68,6 +72,26 @@ public class Main {
         }
         if(window.isKeyPressed(GLFW_KEY_M)){
             objects.get(0).getChildObject().get(0).getChildObject().get(12).rotateObject((float)Math.toRadians(1),0f,1f,1f);
+        }
+        if(window.isKeyPressed(GLFW_KEY_T)){
+            if (atomRingScale > 15){
+                sw = false;
+            }
+            else if(atomRingScale < -15){
+                sw = true;
+            }
+            if(sw == true){
+                atomRingScale++;
+            }
+            else {
+                atomRingScale--;
+            }
+//            float X = objects.get(0).getChildObject().get(2)
+            objects.get(0).getChildObject().remove(2);
+            objects.get(0).getChildObject().add(new Atom(ColorPalette.ATOM_COLOR.getRGBA(),atomRingScale).inlineScaleObjectXYZ(0.3f)
+                    .inlineTranslateObject(1f,0.5f,0.5f));
+//            System.out.println(atomRingScale);
+//            objects.get(0).getChildObject().get(2).getChildObject().get(0).scaleObjectXYZ(1.5f);
         }
 
 

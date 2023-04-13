@@ -50,7 +50,7 @@ public class Circle extends Object {
             generateCircle();
         }
         else if(type == 2){
-            generateCircle();
+//            generateCircle();
             generateLayCircle();
         }
 
@@ -92,7 +92,6 @@ public class Circle extends Object {
                             0.0f,
                             (float) ((titikPusatX + (radiusX * Math.sin(Math.toRadians(deg)))) / 100),
                             (float) ((titikPusatY + (radiusY * Math.cos(Math.toRadians(deg)))) / 100)
-
                             )
             );
         }
