@@ -1,11 +1,11 @@
 import Engine.*;
 import Engine.Object;
 import Engine.Window;
-import Engine.planet.ColorPaletteSpace;
-import Engine.planet.Earth;
+import Engine.planet.*;
+import Engine.planet.Star;
 import org.lwjgl.opengl.GL;
+import org.lwjgl.system.windows.DISPLAY_DEVICE;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 import static org.lwjgl.opengl.GL11.*;
@@ -14,7 +14,7 @@ import static org.lwjgl.opengl.GL30.*;
 
 public class Main {
     // init window
-    private Window window = new Window(800,800, "Solar System");
+    private Window window = new Window(1920,1080, "Solar System");
 
     // init objects
     private ArrayList<Object> objects = new ArrayList<Object>();
@@ -34,7 +34,24 @@ public class Main {
         camera.setRotation((float) Math.toRadians(0.0f),(float) Math.toRadians(0.0f));
 
         // implement semua object disini
-        objects.add(new Earth(ColorPaletteSpace.EARTH_SEA.getRGBA()));
+        objects.add(new Sun(ColorPalette.SUN_COLOR.getRGBA()).inlineScaleObjectXYZ(0.8f)); // pusat (parent utama)
+
+        objects.get(0).getChildObject().add(new Earth(ColorPalette.EARTH_SEA.getRGBA()).inlineScaleObjectXYZ(0.3f)
+                .inlineTranslateObject(-2f,0f,0f)); // ini buat bumi
+
+        objects.get(0).getChildObject().get(0).getChildObject().add(new Moon(ColorPalette.MOON_COLOR.getRGBA()).inlineScaleObjectXYZ(0.3f)
+                .inlineTranslateObject(-1f,0f,0f)); // ini buat bulan
+
+        objects.get(0).getChildObject().add(new Saturn(ColorPalette.SATURN_COLOR.getRGBA()).inlineScaleObjectXYZ(0.6f)
+                .inlineTranslateObject(1.5f,0f,0f)); // ini buat saturnus
+
+        objects.add(new Star(ColorPalette.STAR_COLOR.getRGBA()).inlineScaleObjectXYZ(0.2f)
+                .inlineTranslateObject(1.5f,1f,0.5f)); // ini buat bintang
+
+        objects.get(0).getChildObject().add(new Atom(ColorPalette.ATOM_COLOR.getRGBA()).inlineScaleObjectXYZ(0.3f)
+                .inlineTranslateObject(1f,0.5f,0.5f)); // ini buat atom
+
+
 
 
 
@@ -43,7 +60,10 @@ public class Main {
     public void input(){
         // ini yang handle input dari mouse
         if(window.isKeyPressed(GLFW_KEY_F)){
-            objects.get(0).rotateObject((float)Math.toRadians(1),1f,1f,0f);
+            objects.get(0).rotateObject((float)Math.toRadians(1),0f,1f,0f);
+        }
+        if(window.isKeyPressed(GLFW_KEY_M)){
+            objects.get(0).getChildObject().get(0).getChildObject().get(12).rotateObject((float)Math.toRadians(1),0f,1f,1f);
         }
 
         // ini buat yang WASD
@@ -90,10 +110,10 @@ public class Main {
     public void loop(){
         while (window.isOpen()){
             window.update(); // ini update isi window
-            glClearColor(ColorPaletteSpace.SPACE.getR(),
-                    ColorPaletteSpace.SPACE.getB(),
-                    ColorPaletteSpace.SPACE.getA(),
-                    ColorPaletteSpace.SPACE.getA()
+            glClearColor(ColorPalette.SPACE.getR(),
+                    ColorPalette.SPACE.getB(),
+                    ColorPalette.SPACE.getA(),
+                    ColorPalette.SPACE.getA()
                     ); // background asal hitam
 
             GL.createCapabilities(); // ini harus di atas
