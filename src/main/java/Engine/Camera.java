@@ -7,7 +7,7 @@ public class Camera {
     private Vector3f direction;
     private Vector3f position;
     private Vector3f right;
-    private Vector2f rotation;
+    private Vector3f rotation;
     private Vector3f up;
     private Matrix4f viewMatrix;
 
@@ -17,11 +17,16 @@ public class Camera {
         up = new Vector3f();
         position = new Vector3f();
         viewMatrix = new Matrix4f();
-        rotation = new Vector2f();
+        rotation = new Vector3f();
     }
 
     public void addRotation(float x, float y) {
-        rotation.add(x, y);
+        rotation.add(x, y, 0);
+        recalculate();
+    }
+
+    public void addRotation(float x, float y, float z){
+        rotation.add(x, y, z);
         recalculate();
     }
 
@@ -73,6 +78,7 @@ public class Camera {
         viewMatrix.identity()
                 .rotateX(rotation.x)
                 .rotateY(rotation.y)
+                .rotateZ(rotation.z)
                 .translate(-position.x, -position.y, -position.z);
     }
 
@@ -82,7 +88,7 @@ public class Camera {
     }
 
     public void setRotation(float x, float y) {
-        rotation.set(x, y);
+        rotation.set(x, y, 0);
         recalculate();
     }
 }

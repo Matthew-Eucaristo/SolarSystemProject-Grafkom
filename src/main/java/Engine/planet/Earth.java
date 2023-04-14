@@ -4,6 +4,7 @@ import Engine.Curve;
 import Engine.Sphere;
 import org.joml.Vector3f;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -54,6 +55,10 @@ public class Earth extends Sphere {
         createWind();
         createWind();
         createWind();
+        createWind();
+        createWind();
+        createWind();
+        createWind();
 
 
     }
@@ -82,6 +87,9 @@ public class Earth extends Sphere {
 
         // for the third point
         Vector3f point3 = getVertices().get(choices[2]);
+        point3.x = point3.x * 2.4f;
+        point3.y = point3.y * 2.4f;
+        point3.z = point3.z * 2.4f;
 
         // for the fourth point
         Vector3f point4 = getVertices().get(choices[3]);
@@ -249,5 +257,14 @@ public class Earth extends Sphere {
 
     }
 
+    public List<Moon> getMoons(){
+        List<Moon> moons = new ArrayList<>();
+        for (Object child : getChildObject()) {
+            if (child instanceof Moon) {
+                moons.add((Moon) child);
+            }
+        }
+        return moons;
+    }
 
 }

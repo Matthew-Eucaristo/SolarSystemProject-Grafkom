@@ -74,8 +74,23 @@ public class Main {
 
         // ini yang handle input dari keyboard
 
+        // ini buat rotate moon
+        if (window.isKeyPressed(GLFW_KEY_M)){
+            // rotate moon
+            // Get the earth object
+            Earth earth = (Earth) objects.get(0).getChildObject().get(0);
+
+            // Get the moon object
+            Moon moon =  earth.getMoons().get(0);
+
+            // Make the moon to orbit the earth
+            moon.orbitEarth(earth);
+        }
+
         // ini buat rotate all objects
         if (window.isKeyPressed(GLFW_KEY_F)) {
+
+
             // rotate all objects
             for (Object object :
                     objects) {
@@ -87,11 +102,6 @@ public class Main {
             System.out.println(objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
         }
 
-        // rotate moon
-        if (window.isKeyPressed(GLFW_KEY_M)) {
-            objects.get(0).getChildObject().get(0).getChildObject().get(12).rotateObject((float) Math.toRadians(1), 0f, 1f, 1f);
-            System.out.println("woi");
-        }
 
         // function atom
         if (window.isKeyPressed(GLFW_KEY_T)) {
@@ -192,6 +202,14 @@ public class Main {
         }
         mouseInput.resetScroll();
 
+        // rotate the camera using page up and down, rotate the Z axis
+        if (window.isKeyPressed(GLFW_KEY_PAGE_UP)) {
+            camera.addRotation(0, 0, (float) Math.toRadians(-1 * rotateSpeedInDegrees));
+        }
+        if (window.isKeyPressed(GLFW_KEY_PAGE_DOWN)) {
+            camera.addRotation(0, 0, (float) Math.toRadians(rotateSpeedInDegrees));
+        }
+
 
     }
 
@@ -211,7 +229,10 @@ public class Main {
             for (Object object : objects) {
                 object.draw(camera, projection);
 
-
+                // print star center point
+                if (object instanceof Star) {
+                    System.out.println(object.getCenterPoint());
+                }
             }
 
 

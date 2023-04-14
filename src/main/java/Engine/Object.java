@@ -188,6 +188,7 @@ public class Object extends ShaderProgram {
 
     // rotate
     public void rotateObject(float degree, float x, float y, float z){
+
         model = new Matrix4f().rotate(degree, x, y, z).mul(new Matrix4f(model));
 
         // update the parent center point
@@ -195,7 +196,6 @@ public class Object extends ShaderProgram {
         Matrix4f rotationMatrix = new Matrix4f().rotate(degree, x, y, z);
         // rotate the center point
         centerPoint = new Vector3f(rotationMatrix.transformPosition(centerPoint));
-
 
         for (Object child:childObject){
             child.rotateObject(degree, x, y, z);

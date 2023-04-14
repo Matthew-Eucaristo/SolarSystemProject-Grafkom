@@ -11,7 +11,6 @@ public class Sun extends Sphere {
     public Sun(float[] rgba) {
         super(rgba);
 //        surfaceDetail();
-        System.out.println();
     }
     public void surfaceDetail(){
         generateFlare();
