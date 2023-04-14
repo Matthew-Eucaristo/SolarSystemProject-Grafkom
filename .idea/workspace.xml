@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="Planet Atom punya pentol hehe">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_10_2023_10_00_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_10_2023_10_00_AM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Circle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Atom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Atom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Sun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Sun.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
