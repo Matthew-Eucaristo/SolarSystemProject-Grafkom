@@ -10,12 +10,18 @@ import java.util.Random;
 public class Sun extends Sphere {
     public Sun(float[] rgba) {
         super(rgba);
-//        surfaceDetail();
+        surfaceDetail();
 
     }
     public void surfaceDetail(){
         generateFlare();
+        generateFlare();
+        generateFlare();
+        generateFlare();
+        generateFlare();
+        generateFlare();
         createBlackSpots();
+
     }
     private void createBlackSpots(){
         getChildObject().add(new Sphere(ColorPalette.SUN_SPOTS.getRGBA())//1
@@ -76,23 +82,23 @@ public class Sun extends Sphere {
             int choice = random.nextInt(getVertices().size());
             choices[i] = choice;
         }
-
+        
         // for the first point
         Vector3f point1 = getVertices().get(choices[0]);
 
         // for the second point
         Vector3f point2 = getVertices().get(choices[1]);
-        point2.x = point2.x * 5.4f;
-        point2.y = point2.y * 5.4f;
-        point2.z = point2.z * 5.4f;
+        point2.x = point2.x * 2.4f;
+        point2.y = point2.y * 2.4f;
+        point2.z = point2.z * 2.4f;
 
         // for the third point
         Vector3f point3 = getVertices().get(choices[2]);
 
         // for the fourth point
         Vector3f point4 = getVertices().get(choices[3]);
-        point4.x = point4.x * 2.4f;
-        point4.y = point4.y * 4.4f;
+        point4.x = point4.x * 1.4f;
+        point4.y = point4.y * 1.4f;
         point4.z = point4.z * 1.4f;
 
         // for the fifth point
