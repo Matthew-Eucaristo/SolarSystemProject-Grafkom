@@ -18,7 +18,6 @@ public class Atom extends Sphere {
 
         createCircle(countAtomScale(atomRingScale,swATM));
         createBall(atomRingScale,atomBallRotationX,atomBallRotationY);
-        createBall(atomRingScale,atomBallRotationX,atomBallRotationY);
 //        getChildObject().get(1).inlineTranslateObject(countBallRotationX(atomBallRotation,100),+ countBallRotationY(atomBallRotation,100),0f);
 //        getChildObject().get(2).inlineTranslateObject(countBallRotationX(atomBallRotation,100),+ countBallRotationY(atomBallRotation,100),0f);
         createWind();
@@ -41,7 +40,8 @@ public class Atom extends Sphere {
         createWind();
         createWind();
         createWind();
-
+        getChildObject().get(1).rotateObject((float) Math.toRadians(1),0,0,1);
+        System.out.println();
 
     }
     private void createCircle(float atomRingScale){

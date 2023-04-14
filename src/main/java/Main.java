@@ -81,11 +81,16 @@ public class Main {
                     objects) {
                 object.rotateObject((float) Math.toRadians(1), 0f, 1f, 0f);
             }
+            System.out.println(objects.get(0).getChildObject().get(2).getCenterPoint());
+            System.out.println(objects.get(0).getChildObject().get(2).getCenterPoint().get(0));
+            System.out.println(objects.get(0).getChildObject().get(2).getCenterPoint().get(1));
+            System.out.println(objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
         }
 
         // rotate moon
         if (window.isKeyPressed(GLFW_KEY_M)) {
             objects.get(0).getChildObject().get(0).getChildObject().get(12).rotateObject((float) Math.toRadians(1), 0f, 1f, 1f);
+            System.out.println("woi");
         }
 
         // function atom
@@ -109,21 +114,35 @@ public class Main {
                 atomBallRotationY = 0;
             }
             atomBallRotationY = (float) (100 * Math.sin(Math.toRadians(atomBallRotationY)) / 100);
-//            System.out.println(atomBallRotationY);
-//            xyzAtom.add(1f);
-//            xyzAtom.add(0f);
-//            xyzAtom.add(0f);
 //            objects.get(0).getChildObject().get(2).setCenterPoint(xyzAtom);
 //            xyzAtom = objects.get(0).getChildObject().get(2).getCenterPoint();
-//            System.out.println(xyzAtom.get(0));
+//            sou
+            float atomX = objects.get(0).getChildObject().get(2).getCenterPoint().get(0);
+            float atomY = objects.get(0).getChildObject().get(2).getCenterPoint().get(1);
+            float atomZ = objects.get(0).getChildObject().get(2).getCenterPoint().get(2);
+            System.out.println(objects.get(0).getChildObject().get(2).getCenterPoint());
+            System.out.println(objects.get(0).getChildObject().get(2).getCenterPoint().get(0));
+            System.out.println(objects.get(0).getChildObject().get(2).getCenterPoint().get(1));
+            System.out.println(objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
             objects.get(0).getChildObject().remove(2);
             objects.get(0).getChildObject().add(new Atom(ColorPalette.ATOM_COLOR.getRGBA(), atomRingScale, atomBallRotationX, atomBallRotationY).inlineScaleObjectXYZ(0.3f)
-                    .inlineTranslateObject(1f, 0.5f, 0.5f));
-//            System.out.println(atomRingScale);
+                    .inlineTranslateObject(atomX, atomY, atomZ));
+
 //            objects.get(0).getChildObject().get(2).getChildObject().get(0).scaleObjectXYZ(1.5f);
         }
         if (window.isKeyPressed(GLFW_KEY_C)) {
+            objects.get(0).getChildObject().get(2).getChildObject().get(2).translateObject(-objects.get(0).getChildObject().get(2).getCenterPoint().get(0),-objects.get(0).getChildObject().get(2).getCenterPoint().get(1),-objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
+            objects.get(0).getChildObject().get(2).getChildObject().get(2).rotateObject((float) Math.toRadians(1),0,0,1);
+            objects.get(0).getChildObject().get(2).getChildObject().get(2).translateObject(objects.get(0).getChildObject().get(2).getCenterPoint().get(0),objects.get(0).getChildObject().get(2).getCenterPoint().get(1),objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
+            objects.get(0).getChildObject().get(2).getChildObject().get(3).translateObject(-objects.get(0).getChildObject().get(2).getCenterPoint().get(0),-objects.get(0).getChildObject().get(2).getCenterPoint().get(1),-objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
+            objects.get(0).getChildObject().get(2).getChildObject().get(3).rotateObject((float) Math.toRadians(1),1,0,0);
+            objects.get(0).getChildObject().get(2).getChildObject().get(3).translateObject(objects.get(0).getChildObject().get(2).getCenterPoint().get(0),objects.get(0).getChildObject().get(2).getCenterPoint().get(1),objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
+        }
 
+        if (window.isKeyPressed(GLFW_KEY_O)) {
+            objects.get(0).getChildObject().get(2).translateObject(-objects.get(0).getChildObject().get(2).getCenterPoint().get(0),-objects.get(0).getChildObject().get(2).getCenterPoint().get(1),-objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
+            objects.get(0).getChildObject().get(2).rotateObject((float) Math.toRadians(1),0,0,1);
+            objects.get(0).getChildObject().get(2).translateObject(objects.get(0).getChildObject().get(2).getCenterPoint().get(0),objects.get(0).getChildObject().get(2).getCenterPoint().get(1),objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
         }
 
 
@@ -193,9 +212,6 @@ public class Main {
                 object.draw(camera, projection);
 
 
-                if (object instanceof Star) {
-                    System.out.println(object.getCenterPoint());
-                }
             }
 
 
