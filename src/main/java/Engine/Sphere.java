@@ -11,6 +11,9 @@ public class Sphere extends Circle{
     float titikPusatZ;
     int stackCount, sectorCount;
 
+    // NOTE:
+    // in here I guess the titiPusatX, titikPusatY, and titikPusatZ is just a relative titikPusat to work with, when the object is translated, rotated, etc. the titikPusat is not affected
+
 
     public Sphere(float titikPusatX, float titikPusatY, float titikPusatZ,
                   float radiusX, float radiusY, float radiusZ, int stackCount, int sectorCount,
@@ -31,6 +34,9 @@ public class Sphere extends Circle{
 //        createEllipticCone();
 //        createEllipticParaboloid();
 //        createHyperboloidParaboloid();
+
+        // set centerpoint
+        this.centerPoint = new Vector3f(titikPusatX, titikPusatY, titikPusatZ);
 
 
         setupVAOVBO();
@@ -55,6 +61,9 @@ public class Sphere extends Circle{
 //        createEllipticCone();
 //        createEllipticParaboloid();
 //        createHyperboloidParaboloid();
+
+        // set centerpoint
+        this.centerPoint = new Vector3f(titikPusatX, titikPusatY, titikPusatZ);
 
 
         setupVAOVBO();

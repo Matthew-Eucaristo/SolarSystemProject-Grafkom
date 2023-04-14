@@ -123,8 +123,8 @@ public class Atom extends Sphere {
                 .inlineTranslateObject(1f - atomRingScale * 0.01f ,countBallRotationY(atomBallRotationY,100),0f)
 
         );
-        System.out.println(countBallRotationX(atomBallRotationX,100));
-                System.out.println(countBallRotationX(atomBallRotationY,100));
+//        System.out.println(countBallRotationX(atomBallRotationX,100));
+//                System.out.println(countBallRotationX(atomBallRotationY,100));
         getChildObject().add(new Sphere(ColorPalette.SUN_COLOR.getRGBA())
                 .inlineScaleObjectXYZ(0.2f)
                 .inlineTranslateObject(0f,1f - atomRingScale * 0.01f,countBallRotationX(atomBallRotationX,100) * 0.01f)

@@ -27,10 +27,10 @@ public class Curve extends Object {
 
     private void generateCurve( ){
         // generate curve using Berzier's Curve
-        for (float i = 0; i < 1; i+= 0.01f) {
-            float hasilX = 0;
-            float hasilY = 0;
-            float hasilZ = 0;
+        for (double i = 0; i < 1; i+= 0.01) {
+            double hasilX = 0;
+            double hasilY = 0;
+            double hasilZ = 0;
             for (int j = 0; j < titikTersedia.size(); j++) {
                 double satuMinT =  Math.pow((1 - i),(titikTersedia.size() - j - 1));
                 double koefisien = factorial(titikTersedia.size() -1) / (factorial(titikTersedia.size()-1 - j) * factorial(j));
@@ -44,7 +44,7 @@ public class Curve extends Object {
                 hasilY += hasil * vertice.y;
                 hasilZ += hasil * vertice.z;
             }
-            this.vertices.add(new Vector3f(hasilX, hasilY, hasilZ));
+            this.vertices.add(new Vector3f((float) hasilX, (float) hasilY, (float) hasilZ));
         }
     }
 

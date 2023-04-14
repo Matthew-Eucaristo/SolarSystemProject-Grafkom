@@ -23,7 +23,7 @@ public class Object extends ShaderProgram {
 
 
     List<Object> childObject; // untuk hierarki?
-    List<Float> centerPoint;
+    Vector3f centerPoint = new Vector3f(0,0,0);
 
 
 
@@ -168,8 +168,17 @@ public class Object extends ShaderProgram {
     // translate
     public void translateObject(float offsetX, float offsetY, float offsetZ){
         model = new Matrix4f().translate(offsetX, offsetY, offsetZ).mul(new Matrix4f(model));
+
+        // update the parent center point
+        centerPoint = new Vector3f(centerPoint.x + offsetX, centerPoint.y + offsetY, centerPoint.z + offsetZ);
+
+
         for (Object child:childObject){
             child.translateObject(offsetX, offsetY, offsetZ);
+
+            // update the child center point
+            child.centerPoint = new Vector3f(child.centerPoint.x + offsetX, child.centerPoint.y + offsetY, child.centerPoint.z + offsetZ);
+
         }
     }
     public Object inlineTranslateObject(float offsetX, float offsetY, float offsetZ){
@@ -180,8 +189,22 @@ public class Object extends ShaderProgram {
     // rotate
     public void rotateObject(float degree, float x, float y, float z){
         model = new Matrix4f().rotate(degree, x, y, z).mul(new Matrix4f(model));
+
+        // update the parent center point
+        // create the rotation matrix for the center point
+        Matrix4f rotationMatrix = new Matrix4f().rotate(degree, x, y, z);
+        // rotate the center point
+        centerPoint = new Vector3f(rotationMatrix.transformPosition(centerPoint));
+
+
         for (Object child:childObject){
             child.rotateObject(degree, x, y, z);
+
+            // update the child center point
+            // create the rotation matrix for the center point
+            Matrix4f childRotationMatrix = new Matrix4f().rotate(degree, x, y, z);
+            // rotate the center point
+            child.centerPoint = new Vector3f(childRotationMatrix.transformPosition(child.centerPoint));
         }
     }
     public Object inlineRotateObject(float degree, float x, float y, float z){
@@ -193,8 +216,16 @@ public class Object extends ShaderProgram {
     // scale
     public void scaleObject(float scaleX, float scaleY, float scaleZ){
         model = new Matrix4f().scale(scaleX, scaleY, scaleZ).mul(new Matrix4f(model));
+
+        // update the parent center point
+        centerPoint = new Vector3f(centerPoint.x * scaleX, centerPoint.y * scaleY, centerPoint.z * scaleZ);
+
+
         for (Object child:childObject){
             child.scaleObject(scaleX, scaleY, scaleZ);
+
+            // update the child center point
+            child.centerPoint = new Vector3f(child.centerPoint.x * scaleX, child.centerPoint.y * scaleY, child.centerPoint.z * scaleZ);
         }
     }
     public Object inlineScaleObject(float scaleX, float scaleY, float scaleZ){
@@ -219,11 +250,15 @@ public class Object extends ShaderProgram {
         this.childObject = childObject;
     }
 
-    public List<Float> getCenterPoint() {
+    public Vector3f getCenterPoint() {
         return centerPoint;
     }
 
-    public void setCenterPoint(List<Float> centerPoint) {
+    public void setCenterPoint(Vector3f centerPoint) {
         this.centerPoint = centerPoint;
+    }
+
+    public Matrix4f getModel() {
+        return model;
     }
 }

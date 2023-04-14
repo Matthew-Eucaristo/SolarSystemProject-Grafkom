@@ -11,6 +11,7 @@ public class Earth extends Sphere {
     public Earth(float[] rgba){
         super(rgba);
         initDekorasi();
+
     }
     public void initDekorasi(){
         // all decoration for Earth
