@@ -70,6 +70,11 @@ public class Main {
         objects.get(0).getChildObject().add(new Atom(ColorPalette.ATOM_COLOR.getRGBA(), atomRingScale, atomBallRotationX, atomBallRotationY).inlineScaleObjectXYZ(0.3f)
                 .inlineTranslateObject(1f, 0.5f, 0.5f)); // ini buat atom
 
+        objects.add(new Duck()
+                .inlineScaleObjectXYZ(0.1f)
+                .inlineTranslateObject(-1f,1f,1f)
+        ); // ini untuk bebek
+
     }
 
     private void initMoonOrbitMusic() throws UnsupportedAudioFileException, IOException, LineUnavailableException {

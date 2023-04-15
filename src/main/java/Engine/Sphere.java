@@ -47,6 +47,13 @@ public class Sphere extends Circle{
     public Sphere(float[] rgba, String type){
         this(rgba[0], rgba[1], rgba[2], rgba[3], type);
     }
+    public Sphere(float radiusX, float radiusY, float radiusZ,
+                  float[] rgba, String type) {
+        this(0f, 0f, 0f,
+                radiusX, radiusY, radiusZ,
+                100, 100,
+                rgba[0], rgba[1], rgba[2], rgba[3], type);
+    }
 
     public Sphere(float red, float green, float blue, float alpha, String type) {
         this(0f, 0f, 0f,
