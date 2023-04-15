@@ -144,7 +144,7 @@ public class Sphere extends Circle{
         ArrayList<Vector3f> temp = new ArrayList<>();
 
         for(float v = -radiusY; v<= radiusY; v+=0.01){
-            for(float i = 0;i<360;i+=0.1){
+            for(float i = 0;i<360;i+=1){
                 double rad = Math.toRadians(i);
                 float x = radiusX * (float)(Math.cos(rad));
                 float y = radiusY * (float)(Math.sin(rad));

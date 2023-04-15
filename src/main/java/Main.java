@@ -7,6 +7,9 @@ import Engine.planet.Star;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.system.windows.DISPLAY_DEVICE;
 
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,12 +43,19 @@ public class Main {
 
     Camera camera = new Camera();
 
-    public void init() {
+    // for sound
+    public static Clip clip;
+
+
+    public void init() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         window.init();
         GL.createCapabilities(); // ini harus di atas
         mouseInput = window.getMouseInput();
         camera.setPosition(0, 0, 2.5f);
         camera.setRotation((float) Math.toRadians(0.0f), (float) Math.toRadians(0.0f));
+
+        // urusan sound
+        initSound();
 
         // implement semua object disini
         objects.add(new Sun(ColorPalette.SUN_COLOR.getRGBA()).inlineScaleObjectXYZ(0.8f)); // pusat (parent utama)
@@ -65,6 +75,22 @@ public class Main {
         objects.get(0).getChildObject().add(new Atom(ColorPalette.ATOM_COLOR.getRGBA(), atomRingScale, atomBallRotationX, atomBallRotationY).inlineScaleObjectXYZ(0.3f)
                 .inlineTranslateObject(1f, 0.5f, 0.5f)); // ini buat atom
 
+    }
+
+    private static void initSound() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        if (clip != null && clip.isOpen()) {
+            clip.close();
+        }
+
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/java/assets/sound/music.wav").getAbsoluteFile());
+        clip = AudioSystem.getClip();
+
+        clip.open(audioInputStream);
+        FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+        gainControl.setValue(1f);
+
+        System.out.println(clip.getFrameLength() + "|" + clip.getFramePosition());
+        clip.start();
     }
 
     public void input() {
@@ -248,7 +274,7 @@ public class Main {
         }
     }
 
-    public void run() {
+    public void run() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         init();
         loop();
 
@@ -257,7 +283,7 @@ public class Main {
         glfwSetErrorCallback(null).free();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         new Main().run();
     }
 

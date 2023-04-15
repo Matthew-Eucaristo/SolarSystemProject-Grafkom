@@ -145,8 +145,6 @@ public class Earth extends Sphere {
                 .inlineScaleObject(0.95f, 0.95f, 1f)
                 .inlineScaleObjectXYZ(0.2f)
         );
-
-        getChildObject().add(new Sphere(ColorPalette.EARTH_LAND.getRGBA(), "tube").inlineTranslateObject(1,1,1));
     }
 
     private void createClouds(){
