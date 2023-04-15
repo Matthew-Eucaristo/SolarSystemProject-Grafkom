@@ -35,6 +35,7 @@ public class Sphere extends Circle{
             case "ellipticcone" -> createEllipticCone();
             case "ellipticparaboloid" -> createEllipticParaboloid();
             case "hyperboloidparaboloid" -> createHyperboloidParaboloid();
+            case "tube" -> createTube();
             default -> createEllipsoid();
         }
 
@@ -139,6 +140,20 @@ public class Sphere extends Circle{
 
         vertices = temp;
     }
+    public void createTube(){
+        ArrayList<Vector3f> temp = new ArrayList<>();
+
+        for(float v = -radiusY; v<= radiusY; v+=0.01){
+            for(float i = 0;i<360;i+=0.1){
+                double rad = Math.toRadians(i);
+                float x = radiusX * (float)(Math.cos(rad));
+                float y = radiusY * (float)(Math.sin(rad));
+                temp.add(new Vector3f(x, v,y));
+            }
+        }
+
+        vertices = temp;
+    }
 
     public void createBox(){
         Vector3f temp = new Vector3f();
@@ -224,6 +239,7 @@ public class Sphere extends Circle{
         vertices.add(tempVertices.get(7));
         vertices.add(tempVertices.get(6));
     }
+
 
     public void drawIndices(Camera camera, Projection projection){
         drawSetup(camera, projection);

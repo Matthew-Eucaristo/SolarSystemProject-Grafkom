@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="- sudah bisa rotate camera&#10;- sudah ada moon tapi error">
+    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="create new contructor for the Sphere to choose from all different shapes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Atom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Atom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Earth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Earth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Moon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Moon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Saturn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Saturn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Star.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Star.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Sun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Sun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +79,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681500742609</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="create new contructor for the Sphere to choose from all different shapes">
+      <created>1681571372537</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1681571372537</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -102,7 +103,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="- sudah bisa rotate camera&#10;- sudah ada moon tapi error" />
-    <option name="LAST_COMMIT_MESSAGE" value="- sudah bisa rotate camera&#10;- sudah ada moon tapi error" />
+    <MESSAGE value="create new contructor for the Sphere to choose from all different shapes" />
+    <option name="LAST_COMMIT_MESSAGE" value="create new contructor for the Sphere to choose from all different shapes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
