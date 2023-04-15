@@ -45,8 +45,8 @@ public class Atom extends Sphere {
 
     }
     private void createCircle(float atomRingScale){
-        getChildObject().add(new Circle(0,0,100 - atomRingScale ,100 - atomRingScale,0,72,0,130,255,360,1));
-        getChildObject().add(new Circle(0,0,100 - atomRingScale ,100 - atomRingScale,0,72,0,130,255,360,2));
+        getChildObject().add(new Circle(0,0,100 - atomRingScale ,100 - atomRingScale,0,72,0,130,255,360,"circle"));
+        getChildObject().add(new Circle(0,0,100 - atomRingScale ,100 - atomRingScale,0,72,0,130,255,360,"laycircle"));
 
     }
     private float countAtomScale(float atomRingScale, boolean swATM){

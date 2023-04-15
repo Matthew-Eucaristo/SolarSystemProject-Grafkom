@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="- add sound">
+    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/SpaceShip.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Circle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Atom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Atom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/ColorPalette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/ColorPalette.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Sun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Sun.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -104,8 +109,26 @@
       <option name="project" value="LOCAL" />
       <updated>1681575717845</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="- add sound effect for rotating the moon&#10;- add isKeyReleased to the Window.java">
+      <created>1681576800501</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1681576800501</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -124,7 +147,9 @@
     <MESSAGE value="create new contructor for the Sphere to choose from all different shapes" />
     <MESSAGE value="buat class Tube liat dari kelompok temen" />
     <MESSAGE value="- add sound" />
-    <option name="LAST_COMMIT_MESSAGE" value="- add sound" />
+    <MESSAGE value="- add sound effect for rotating the moon" />
+    <MESSAGE value="- add sound effect for rotating the moon&#10;- add isKeyReleased to the Window.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="- add sound effect for rotating the moon&#10;- add isKeyReleased to the Window.java" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -1,17 +1,14 @@
 import Engine.*;
 import Engine.Object;
-import Engine.Curve;
 import Engine.Window;
 import Engine.planet.*;
 import Engine.planet.Star;
 import org.lwjgl.opengl.GL;
-import org.lwjgl.system.windows.DISPLAY_DEVICE;
 
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.glfw.GLFW.*;
@@ -37,14 +34,12 @@ public class Main {
 
     private boolean swATM = false;
 
-    List<Float> xyzAtom;
-
     Projection projection = new Projection(window.getWidth(), window.getHeight());
 
     Camera camera = new Camera();
 
     // for sound
-    public static Clip clip;
+    public static Clip mainMusicClip, moonOrbitMusic;
 
 
     public void init() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
@@ -55,7 +50,7 @@ public class Main {
         camera.setRotation((float) Math.toRadians(0.0f), (float) Math.toRadians(0.0f));
 
         // urusan sound
-        initSound();
+        initMainMusic();
 
         // implement semua object disini
         objects.add(new Sun(ColorPalette.SUN_COLOR.getRGBA()).inlineScaleObjectXYZ(0.8f)); // pusat (parent utama)
@@ -77,28 +72,50 @@ public class Main {
 
         objects.add(new Duck()
                 .inlineScaleObjectXYZ(0.1f)
-                .inlineTranslateObject(-1f,1f,1f)
-        ); // ini untuk bebek
+                .inlineTranslateObject(-1f,1f,1f)); // ini untuk bebek
+
+        objects.add(new SpaceShip(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
+                .inlineScaleObject(0.1f,0.2f,0.1f)
+                .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
+                .inlineTranslateObject(0.5f,1f,1f)); // ini buat spaceship
 
     }
 
-    private static void initSound() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-        if (clip != null && clip.isOpen()) {
-            clip.close();
+    private void initMoonOrbitMusic() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        if (moonOrbitMusic != null && moonOrbitMusic.isRunning()) return;
+
+        if (moonOrbitMusic != null && moonOrbitMusic.isOpen()) {
+            moonOrbitMusic.close();
+        }
+
+        AudioInputStream  audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/java/assets/sound/hola.wav").getAbsoluteFile());
+        moonOrbitMusic = AudioSystem.getClip();
+
+        moonOrbitMusic.open(audioInputStream);
+        FloatControl gainControl = (FloatControl) moonOrbitMusic.getControl(FloatControl.Type.MASTER_GAIN);
+        gainControl.setValue(0.5f);
+
+        System.out.println(moonOrbitMusic.getFrameLength() + "|" + moonOrbitMusic.getFramePosition());
+        moonOrbitMusic.start();
+
+    }
+    private static void initMainMusic() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        if (mainMusicClip != null && mainMusicClip.isOpen()) {
+            mainMusicClip.close();
         }
 
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/java/assets/sound/music.wav").getAbsoluteFile());
-        clip = AudioSystem.getClip();
+        mainMusicClip = AudioSystem.getClip();
 
-        clip.open(audioInputStream);
-        FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-        gainControl.setValue(1f);
+        mainMusicClip.open(audioInputStream);
+        FloatControl gainControl = (FloatControl) mainMusicClip.getControl(FloatControl.Type.MASTER_GAIN);
+        gainControl.setValue(0.5f);
 
-        System.out.println(clip.getFrameLength() + "|" + clip.getFramePosition());
-        clip.start();
+        System.out.println(mainMusicClip.getFrameLength() + "|" + mainMusicClip.getFramePosition());
+        mainMusicClip.start();
     }
 
-    public void input() {
+    public void input() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         // ini buat input handle dari mouse
         // ini nanti rencana untuk play animation dari class" utnuk run method animation nya
 
@@ -118,6 +135,15 @@ public class Main {
 
             // Make the moon to orbit the earth
             moon.orbitEarth(earth);
+
+            // Add sound to the moon orbiting
+            initMoonOrbitMusic();
+        }
+        // stop music if key is released
+        if (window.isKeyReleased(GLFW_KEY_M)){
+            if (moonOrbitMusic != null && moonOrbitMusic.isOpen()) {
+                moonOrbitMusic.stop();
+            }
         }
 
         // ini buat rotate all objects
@@ -170,9 +196,7 @@ public class Main {
             objects.get(0).getChildObject().remove(2);
             objects.get(0).getChildObject().add(new Atom(ColorPalette.ATOM_COLOR.getRGBA(), atomRingScale, atomBallRotationX, atomBallRotationY).inlineScaleObjectXYZ(0.3f)
                     .inlineTranslateObject(atomX, atomY, atomZ));
-
-//            objects.get(0).getChildObject().get(2).getChildObject().get(0).scaleObjectXYZ(1.5f);
-        }
+       }
         if (window.isKeyPressed(GLFW_KEY_C)) {
             objects.get(0).getChildObject().get(2).getChildObject().get(2).translateObject(-objects.get(0).getChildObject().get(2).getCenterPoint().get(0),-objects.get(0).getChildObject().get(2).getCenterPoint().get(1),-objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
             objects.get(0).getChildObject().get(2).getChildObject().get(2).rotateObject((float) Math.toRadians(1),0,0,1);
@@ -187,6 +211,17 @@ public class Main {
             objects.get(0).getChildObject().get(2).rotateObject((float) Math.toRadians(1),0,0,1);
             objects.get(0).getChildObject().get(2).translateObject(objects.get(0).getChildObject().get(2).getCenterPoint().get(0),objects.get(0).getChildObject().get(2).getCenterPoint().get(1),objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
         }
+
+        if (window.isKeyPressed(GLFW_KEY_P)) {
+            float spaceshipX = objects.get(3).getCenterPoint().get(0);
+            float spaceshipY = objects.get(3).getCenterPoint().get(1);
+            float spaceshipZ = objects.get(3).getCenterPoint().get(2);
+            objects.remove(3);
+            objects.add(new SpaceShip(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
+                    .inlineScaleObject(0.1f,0.2f,0.1f)
+                    .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
+                    .inlineTranslateObject(spaceshipX - 0.02f,spaceshipY,spaceshipZ));
+            }
 
 
         // ini buat yang WASD
@@ -246,7 +281,8 @@ public class Main {
 
     }
 
-    public void loop() {
+
+    public void loop() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         while (window.isOpen()) {
             window.update(); // ini update isi window
             glClearColor(ColorPalette.SPACE.getR(),
