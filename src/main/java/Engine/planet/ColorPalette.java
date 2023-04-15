@@ -36,7 +36,8 @@ public enum ColorPalette {
     EARTH_WIND(223,197,199,250),
     ATOM_COLOR(148,0,211,255),
     SUN_SPOTS(0,0,0,0.9f),
-    SOLAR_FLARE(241,90,34,255);
+    SOLAR_RAY(241,90,34,255),
+    SOLAR_FLARE(211,84,0,1);
 
 
 

@@ -9,17 +9,19 @@ import java.util.Random;
 
 public class Sun extends Sphere {
     public Sun(float[] rgba) {
-        super(rgba, "ellipsoid");
-//        surfaceDetail();
+        super(rgba,"ellipsoid");
+        surfaceDetail();
+        System.out.println();
     }
     public void surfaceDetail(){
-        generateFlare();
-        generateFlare();
-        generateFlare();
-        generateFlare();
-        generateFlare();
-        generateFlare();
+        generateRays();
+        generateRays();
+        generateRays();
+        generateRays();
+        generateRays();
+        generateRays();
         createBlackSpots();
+        solarFlare();
 
     }
     private void createBlackSpots(){
@@ -65,15 +67,10 @@ public class Sun extends Sphere {
                 .inlineScaleObjectXYZ(0.5f)
 
         );
-        getChildObject().add(new Sphere(ColorPalette.SUN_SPOTS.getRGBA(), "ellipsoid")//7
-                .inlineTranslateObject(-0.5f,-0.8f,-0.25f)
-                .inlineScaleObject(-1.0f, 0.5f, -0.9f)
-                .inlineScaleObjectXYZ(0.4f)
 
-        );
     }
 
-    public void generateFlare(){
+    public void generateRays(){
         Random random = new Random();
         int[] choices = new int[5];
 
@@ -105,7 +102,16 @@ public class Sun extends Sphere {
 
         // create curve
         getChildObject().add(new Curve(List.of(new Vector3f[]{point1, point2, point3, point4, point5}),
-                ColorPalette.SOLAR_FLARE.getRGBA()
+                ColorPalette.SOLAR_RAY.getRGBA()
         ));
+    }
+
+    public void solarFlare(){
+        getChildObject().add(new Sphere(ColorPalette.SOLAR_FLARE.getRGBA(), "ellipticparaboloid")
+                .inlineScaleObject(-0.3f, -0.5f, -0.2f)
+                .inlineRotateObject((float) Math.toRadians(90),0,1f,0)
+                .inlineTranslateObject(-0.2f,2.0f,-0.45f)
+                .inlineScaleObjectXYZ(0.2f)
+        );
     }
 }
