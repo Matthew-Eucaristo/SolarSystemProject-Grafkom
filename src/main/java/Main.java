@@ -39,7 +39,7 @@ public class Main {
     Camera camera = new Camera();
 
     // for sound
-    public static Clip mainMusicClip, moonOrbitMusic;
+    public static Clip mainMusicClip, moonOrbitMusic, duckSound;
 
 
     public void init() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
@@ -223,6 +223,23 @@ public class Main {
                     .inlineTranslateObject(spaceshipX - 0.02f,spaceshipY,spaceshipZ));
             }
 
+        // ini buat bebek ku jalan
+        if (window.isKeyPressed(GLFW_KEY_I)){
+            objects.get(2).translateObject(0,0.01f,0);
+            initDuckAniSound();
+        }
+        if (window.isKeyPressed(GLFW_KEY_K)){
+            objects.get(2).translateObject(0,-0.01f,0);
+            initDuckAniSound();
+        }
+        if (window.isKeyPressed(GLFW_KEY_J)){
+            objects.get(2).translateObject(-0.01f,0,0);
+            initDuckAniSound();
+        }
+        if (window.isKeyPressed(GLFW_KEY_L)){
+            objects.get(2).translateObject(0.01f,0,0);
+            initDuckAniSound();
+        }
 
         // ini buat yang WASD
         float cameraSpeed = 0.1f;
@@ -276,6 +293,36 @@ public class Main {
         }
         if (window.isKeyPressed(GLFW_KEY_PAGE_DOWN)) {
             camera.addRotation(0, 0, (float) Math.toRadians(rotateSpeedInDegrees));
+        }
+
+
+    }
+
+    private void initDuckAniSound() {
+
+        if (duckSound != null && duckSound.isRunning()) {
+            return;
+        }
+
+        if (duckSound != null && duckSound.isOpen()) {
+            duckSound.close();
+        }
+
+
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/java/assets/sound/Quack_Sound_Effect.wav").getAbsoluteFile());
+            duckSound = AudioSystem.getClip();
+            duckSound.open(audioInputStream);
+
+            FloatControl gainControl = (FloatControl) duckSound.getControl(FloatControl.Type.MASTER_GAIN);
+            gainControl.setValue(0.5f);
+
+            System.out.println(duckSound.getFrameLength() + "|" + duckSound.getFramePosition());
+            duckSound.loop(0);
+
+            duckSound.start();
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
         }
 
 
