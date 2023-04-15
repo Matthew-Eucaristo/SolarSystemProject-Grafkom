@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class Sun extends Sphere {
     public Sun(float[] rgba) {
-        super(rgba);
+        super(rgba, "ellipsoid");
 //        surfaceDetail();
     }
     public void surfaceDetail(){
@@ -23,49 +23,49 @@ public class Sun extends Sphere {
 
     }
     private void createBlackSpots(){
-        getChildObject().add(new Sphere(ColorPalette.SUN_SPOTS.getRGBA())//1
+        getChildObject().add(new Sphere(ColorPalette.SUN_SPOTS.getRGBA(), "ellipsoid")//1
                 .inlineTranslateObject(0.5f,0.15f,0.2f)
                 .inlineScaleObject(-1.0f, 0.5f, -0.9f)
                 //Y buat stretch vertikal, X buat stretch horizontal, Z buat letak
                 // (-) akan stretch ke kiri
                 .inlineScaleObjectXYZ(0.5f) //scaling size
         );
-        getChildObject().add(new Sphere(ColorPalette.SUN_SPOTS.getRGBA())//2
+        getChildObject().add(new Sphere(ColorPalette.SUN_SPOTS.getRGBA(), "ellipsoid")//2
                 .inlineTranslateObject(0.2f,0.15f,0.2f)
                 .inlineScaleObject(-1.0f, 0.5f, -0.9f)
                 .inlineScaleObjectXYZ(0.5f)
         );
 
-        getChildObject().add(new Sphere(ColorPalette.SUN_SPOTS.getRGBA())//3
+        getChildObject().add(new Sphere(ColorPalette.SUN_SPOTS.getRGBA(), "ellipsoid")//3
                 .inlineTranslateObject(-0.5f,0.15f,0.25f)
                 .inlineScaleObject(-1.0f, 0.5f, -0.9f)
                 .inlineScaleObjectXYZ(0.5f)
         );
-        getChildObject().add(new Sphere(ColorPalette.SUN_SPOTS.getRGBA())//4
+        getChildObject().add(new Sphere(ColorPalette.SUN_SPOTS.getRGBA(), "ellipsoid")//4
                 .inlineTranslateObject(-0.5f,0.15f,0.25f)
                 .inlineScaleObject(-1.0f, 0.5f, -0.9f)
                 .inlineScaleObjectXYZ(0.5f)
                 .inlineRotateObject((float)Math.toRadians(-35),0f,0f,1f)
         );
-        getChildObject().add(new Sphere(ColorPalette.SUN_SPOTS.getRGBA())//5
+        getChildObject().add(new Sphere(ColorPalette.SUN_SPOTS.getRGBA(), "ellipsoid")//5
                 .inlineTranslateObject(-0.5f,0.15f,0.25f)
                 .inlineScaleObject(-1.0f, 0.5f, -0.9f)
                 .inlineScaleObjectXYZ(0.5f)
                 .inlineRotateObject((float)Math.toRadians(255),0f,0f,1f)
         );
-        getChildObject().add(new Sphere(ColorPalette.SUN_SPOTS.getRGBA())//6
+        getChildObject().add(new Sphere(ColorPalette.SUN_SPOTS.getRGBA(), "ellipsoid")//6
                 .inlineTranslateObject(-0.5f,0.15f,0.25f)
                 .inlineScaleObject(-1.0f, 0.5f, -0.9f)
                 .inlineScaleObjectXYZ(0.5f)
                 .inlineRotateObject((float)Math.toRadians(-255),0f,0f,-1f)
         );
-        getChildObject().add(new Sphere(ColorPalette.SUN_SPOTS.getRGBA())//7
+        getChildObject().add(new Sphere(ColorPalette.SUN_SPOTS.getRGBA(), "ellipsoid")//7
                 .inlineTranslateObject(-0.5f,-0.3f,-0.25f)
                 .inlineScaleObject(-1.0f, 0.5f, -0.9f)
                 .inlineScaleObjectXYZ(0.5f)
 
         );
-        getChildObject().add(new Sphere(ColorPalette.SUN_SPOTS.getRGBA())//7
+        getChildObject().add(new Sphere(ColorPalette.SUN_SPOTS.getRGBA(), "ellipsoid")//7
                 .inlineTranslateObject(-0.5f,-0.8f,-0.25f)
                 .inlineScaleObject(-1.0f, 0.5f, -0.9f)
                 .inlineScaleObjectXYZ(0.4f)

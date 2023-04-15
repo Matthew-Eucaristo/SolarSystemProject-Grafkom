@@ -74,6 +74,8 @@ public class Main {
 
         // ini yang handle input dari keyboard
 
+
+
         // ini buat rotate moon
         if (window.isKeyPressed(GLFW_KEY_M)){
             // rotate moon

@@ -4,7 +4,7 @@ import Engine.Sphere;
 
 public class Moon extends Sphere {
     public Moon(float[] rgba) {
-        super(rgba);
+        super(rgba, "ellipsoid");
     }
 
     public void orbitEarth(Earth earth) {

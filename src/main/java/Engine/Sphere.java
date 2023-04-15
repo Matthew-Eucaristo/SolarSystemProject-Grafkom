@@ -18,7 +18,7 @@ public class Sphere extends Circle{
 
     public Sphere(float titikPusatX, float titikPusatY, float titikPusatZ,
                   float radiusX, float radiusY, float radiusZ, int stackCount, int sectorCount,
-                  float red, float green, float blue, float alpha) {
+                  float red, float green, float blue, float alpha, String type) {
         super(titikPusatX, titikPusatY, radiusX, radiusY, 0, red, green, blue, alpha, 0);
 
         // init dari parameter
@@ -28,46 +28,31 @@ public class Sphere extends Circle{
         this.titikPusatZ = titikPusatZ;
 
         // panggil function pilihan
-//        createBox();
-        createEllipsoid();
-//        createHyperboloid1Side();
-//        createHyperboloid2Side();
-//        createEllipticCone();
-//        createEllipticParaboloid();
-//        createHyperboloidParaboloid();
+        switch (type.toLowerCase()) {
+            case "box" -> createBox();
+            case "hyperboloid1side" -> createHyperboloid1Side();
+            case "hyperboloid2side" -> createHyperboloid2Side();
+            case "ellipticcone" -> createEllipticCone();
+            case "ellipticparaboloid" -> createEllipticParaboloid();
+            case "hyperboloidparaboloid" -> createHyperboloidParaboloid();
+            default -> createEllipsoid();
+        }
 
         // set centerpoint
         this.centerPoint = new Vector3f(titikPusatX, titikPusatY, titikPusatZ);
 
-
         setupVAOVBO();
     }
-    public Sphere(float[] rgba){
-        this(rgba[0], rgba[1], rgba[2], rgba[3]);
+    public Sphere(float[] rgba, String type){
+        this(rgba[0], rgba[1], rgba[2], rgba[3], type);
     }
-    public Sphere(float red, float green, float blue, float alpha) {
-        super(0f, 0f, 0.5f, 0.5f, 0, red, green, blue, alpha, 0);
 
-        // init dari parameter
-        this.radiusZ = 0.5f;
-        this.stackCount = 100;
-        this.sectorCount = 100;
-        this.titikPusatZ = 0f;
-
-        // panggil function pilihan
-//        createBox();
-        createEllipsoid();
-//        createHyperboloid1Side();
-//        createHyperboloid2Side();
-//        createEllipticCone();
-//        createEllipticParaboloid();
-//        createHyperboloidParaboloid();
-
-        // set centerpoint
-        this.centerPoint = new Vector3f(titikPusatX, titikPusatY, titikPusatZ);
-
-
-        setupVAOVBO();
+    public Sphere(float red, float green, float blue, float alpha, String type) {
+        this(0f, 0f, 0f,
+                0.5f, 0.5f, 0.5f,
+                100, 100,
+                red, green, blue, alpha,
+                type);
     }
 
     public void createEllipsoid(){

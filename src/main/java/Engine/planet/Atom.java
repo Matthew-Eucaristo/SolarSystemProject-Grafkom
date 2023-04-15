@@ -12,7 +12,7 @@ public class Atom extends Sphere {
 
 
     public Atom(float[] rgba,float atomRingScale, float atomBallRotationX, float atomBallRotationY) {
-        super(rgba);
+        super(rgba, "ellipsoid");
         boolean swATM = false;
         boolean swBLL = false;
 
@@ -118,14 +118,14 @@ public class Atom extends Sphere {
         ));
     }
     private void createBall(float atomRingScale,float atomBallRotationX, float atomBallRotationY){
-        getChildObject().add(new Sphere(ColorPalette.EARTH_LIGHTER_LAND.getRGBA())
+        getChildObject().add(new Sphere(ColorPalette.EARTH_LIGHTER_LAND.getRGBA(), "ellipsoid")
                 .inlineScaleObjectXYZ(0.2f)
                 .inlineTranslateObject(1f - atomRingScale * 0.01f ,countBallRotationY(atomBallRotationY,100),0f)
 
         );
 //        System.out.println(countBallRotationX(atomBallRotationX,100));
 //                System.out.println(countBallRotationX(atomBallRotationY,100));
-        getChildObject().add(new Sphere(ColorPalette.SUN_COLOR.getRGBA())
+        getChildObject().add(new Sphere(ColorPalette.SUN_COLOR.getRGBA(), "ellipsoid")
                 .inlineScaleObjectXYZ(0.2f)
                 .inlineTranslateObject(0f,1f - atomRingScale * 0.01f,countBallRotationX(atomBallRotationX,100) * 0.01f)
 

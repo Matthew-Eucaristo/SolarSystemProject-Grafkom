@@ -4,6 +4,6 @@ import Engine.Sphere;
 
 public class Star extends Sphere {
     public Star(float[] rgba) {
-        super(rgba);
+        super(rgba, "ellipsoid");
     }
 }
