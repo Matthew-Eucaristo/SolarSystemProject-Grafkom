@@ -66,7 +66,7 @@ public class Main {
                 .inlineTranslateObject(2f, 0f, 0f)
                 .inlineRotateObject((float) Math.toRadians(90), 1, 0, 0)); // ini buat saturnus
 
-        objects.add(new Star(ColorPalette.STAR_COLOR.getRGBA()).inlineScaleObjectXYZ(0.2f)
+        objects.add(new Star(ColorPalette.STAR_COLOR.getRGBA()).inlineScaleObjectXYZ(0.03f)
                 .inlineTranslateObject(1.5f, 1f, 0.5f)); // ini buat bintang
 
         objects.get(0).getChildObject().add(new Atom(ColorPalette.ATOM_COLOR.getRGBA(), atomRingScale, atomBallRotationX, atomBallRotationY).inlineScaleObjectXYZ(0.3f)
@@ -81,18 +81,22 @@ public class Main {
                 .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
                 .inlineTranslateObject(0.5f,1f,1f)); // ini buat spaceship
 
-
-
-
-
-
-
         objects.add(new Quaso(ColorPalette.QUASO_COLOR.getRGBA())
                 .inlineScaleObjectXYZ(0.1f)
                         .inlineScaleObject(1f,3f,1f)
                 .inlineRotateObject((float) Math.toRadians(90),1f,0f,0f)
                         .inlineRotateObject((float) Math.toRadians(90),0f,1f,0f)
                 .inlineTranslateObject(0.9f, -1.9f, 0.7f)); // ini buat quaso
+
+
+
+
+
+
+
+
+
+
 
 
 

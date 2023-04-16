@@ -60,9 +60,9 @@ public class Curve extends Object {
     public void draw(Camera camera, Projection projection) {
         drawSetup(camera,projection);
 
-        glLineWidth(1);
-        glPointSize(1);
+        glLineWidth(2);
+        glPointSize(0);
 
-        glDrawArrays(GL_LINE_LOOP, 0, vertices.size());
+        glDrawArrays(GL_LINE_STRIP, 0, vertices.size());
     }
 }
