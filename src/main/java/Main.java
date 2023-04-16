@@ -375,11 +375,6 @@ public class Main {
             // draw objects
             for (Object object : objects) {
                 object.draw(camera, projection);
-
-                // print star center point
-                if (object instanceof Star) {
-                    System.out.println(object.getCenterPoint());
-                }
             }
 
             // update all the center point to the correct one
