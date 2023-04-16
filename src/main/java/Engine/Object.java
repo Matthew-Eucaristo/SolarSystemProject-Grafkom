@@ -21,11 +21,8 @@ public class Object extends ShaderProgram {
     Matrix4f model;
 
 
-
     List<Object> childObject; // untuk hierarki?
-    Vector3f centerPoint = new Vector3f(0,0,0);
-
-
+    Vector3f centerPoint = new Vector3f(0, 0, 0);
 
 
     // constructor
@@ -49,17 +46,27 @@ public class Object extends ShaderProgram {
     }
 
 
-        // contructor yang lebih simpel buat di inherit
-    public Object(float red, float green, float blue, float alpha){
+    // contructor yang lebih simpel buat di inherit
+    public Object(float red, float green, float blue, float alpha) {
         this(
                 Arrays.asList(
-                // shaderfile lokasi bisa menyesualkan objectnya
-                new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
-                new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
+                        // shaderfile lokasi bisa menyesualkan objectnya
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER),
+                        new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER)
                 ),
                 new ArrayList<>(),
-                new Vector4f(red / 255f, green / 255f, blue/ 255f, alpha/ 255f)
-                );
+                new Vector4f(red / 255f, green / 255f, blue / 255f, alpha / 255f)
+        );
+    }
+
+    public Object(float[] rgba) {
+        this(rgba[0], rgba[1], rgba[2], rgba[3]);
+    }
+
+    public Object(float[] rgba, List<Vector3f> vertices) {
+        this(rgba);
+        this.vertices = vertices;
+        setupVAOVBO();
     }
 
 
@@ -75,19 +82,19 @@ public class Object extends ShaderProgram {
     }
 
 
-    public void drawSetup(Camera camera, Projection projection){
+    public void drawSetup(Camera camera, Projection projection) {
         bind();
 
         // set uniforms map
         uniformsMap.setUniform("uni_color", color);
         uniformsMap.setUniform("model", model);
-        uniformsMap.setUniform("view",camera.getViewMatrix());
+        uniformsMap.setUniform("view", camera.getViewMatrix());
         uniformsMap.setUniform("projection", projection.getProjMatrix());
 
         // Bind VBO
         glEnableVertexAttribArray(0); // ini biar masuk ke shader dan masuk e ke 0 dulu urut
         glBindBuffer(GL_ARRAY_BUFFER, vbo);
-        glVertexAttribPointer(0,3,
+        glVertexAttribPointer(0, 3,
                 GL_FLOAT,
                 false,
                 0,
@@ -98,9 +105,8 @@ public class Object extends ShaderProgram {
     }
 
 
-
-    public void draw(Camera camera, Projection projection){
-        drawSetup(camera,projection);
+    public void draw(Camera camera, Projection projection) {
+        drawSetup(camera, projection);
 
         // Draw the vertices
         // opsional
@@ -118,14 +124,14 @@ public class Object extends ShaderProgram {
                 0, // mau gambar dari index berapa (kalau semua dari 0)
                 vertices.size());
 
-        for(Object child: childObject){
-            child.draw(camera,projection);
+        for (Object child : childObject) {
+            child.draw(camera, projection);
         }
 
     }
 
-    public void drawLine(Camera camera, Projection projection){
-        drawSetup(camera,projection);
+    public void drawLine(Camera camera, Projection projection) {
+        drawSetup(camera, projection);
 
         glLineWidth(1);
         glPointSize(0);
@@ -133,24 +139,26 @@ public class Object extends ShaderProgram {
         glDrawArrays(GL_LINE_STRIP, 0, vertices.size());
     }
 
-    public void addVertices(Vector3f newVertices){
+    public void addVertices(Vector3f newVertices) {
         vertices.add(newVertices);
         setupVAOVBO();
     }
 
-    public void setVertices(List<Vector3f> newVertices){
+    public void setVertices(List<Vector3f> newVertices) {
         vertices = newVertices;
         setupVAOVBO();
     }
-    public void setVerticesByIndex(Vector3f newSingleVertices, int index){
+
+    public void setVerticesByIndex(Vector3f newSingleVertices, int index) {
         vertices.get(index).set(newSingleVertices);
         setupVAOVBO();
     }
-    public void setVerticesByReference(Vector3f targetVertices, Vector3f newSingleVertices){
+
+    public void setVerticesByReference(Vector3f targetVertices, Vector3f newSingleVertices) {
         int targetIndex = -1;
         // find the corresponding index
         for (int i = 0; i < vertices.size(); i++) {
-            if(vertices.get(0) == targetVertices) targetIndex = i;
+            if (vertices.get(0) == targetVertices) targetIndex = i;
         }
 
         vertices.set(targetIndex, newSingleVertices);
@@ -163,61 +171,66 @@ public class Object extends ShaderProgram {
     }
 
 
-
-        // transformasi
+    // transformasi
     // translate
-    public void translateObject(float offsetX, float offsetY, float offsetZ){
+    public void translateObject(float offsetX, float offsetY, float offsetZ) {
         model = new Matrix4f().translate(offsetX, offsetY, offsetZ).mul(new Matrix4f(model));
 
-        for (Object child:childObject){
+        for (Object child : childObject) {
             child.translateObject(offsetX, offsetY, offsetZ);
         }
     }
-    public Object inlineTranslateObject(float offsetX, float offsetY, float offsetZ){
+
+    public Object inlineTranslateObject(float offsetX, float offsetY, float offsetZ) {
         this.translateObject(offsetX, offsetY, offsetZ);
         return this;
     }
 
     // rotate
-    public void rotateObject(float degree, float x, float y, float z){
+    public void rotateObject(float degree, float x, float y, float z) {
 
         model = new Matrix4f().rotate(degree, x, y, z).mul(new Matrix4f(model));
 
-        for (Object child:childObject){
+        for (Object child : childObject) {
             child.rotateObject(degree, x, y, z);
         }
     }
-    public Object inlineRotateObject(float degree, float x, float y, float z){
+
+    public Object inlineRotateObject(float degree, float x, float y, float z) {
         this.rotateObject(degree, x, y, z);
         return this;
     }
 
 
     // scale
-    public void scaleObject(float scaleX, float scaleY, float scaleZ){
+    public void scaleObject(float scaleX, float scaleY, float scaleZ) {
         model = new Matrix4f().scale(scaleX, scaleY, scaleZ).mul(new Matrix4f(model));
-        for (Object child:childObject){
+        for (Object child : childObject) {
             child.scaleObject(scaleX, scaleY, scaleZ);
         }
     }
-    public Object inlineScaleObject(float scaleX, float scaleY, float scaleZ){
+
+    public Object inlineScaleObject(float scaleX, float scaleY, float scaleZ) {
         this.scaleObject(scaleX, scaleY, scaleZ);
         return this;
     }
-    public void scaleObjectXYZ(float scale){
+
+    public void scaleObjectXYZ(float scale) {
         this.scaleObject(scale, scale, scale);
     }
-    public Object inlineScaleObjectXYZ(float scale){
+
+    public Object inlineScaleObjectXYZ(float scale) {
         this.scaleObject(scale, scale, scale);
         return this;
     }
 
-    private Vector3f getUpdateCenterPoint(){
+    private Vector3f getUpdateCenterPoint() {
         Vector3f destTemp = new Vector3f();
         model.transformPosition(0.0f, 0.0f, 0.0f, destTemp);
         return destTemp;
     }
-    public void updateCenterPoint(){
+
+    public void updateCenterPoint() {
         centerPoint = getUpdateCenterPoint();
 
         for (Object child :
@@ -225,7 +238,8 @@ public class Object extends ShaderProgram {
             child.updateCenterPoint();
         }
     }
-    public void selfRotate(float degree, float xAxes, float yAxes, float zAxes){
+
+    public void selfRotate(float degree, float xAxes, float yAxes, float zAxes) {
         float x = getCenterPoint().x;
         float y = getCenterPoint().y;
         float z = getCenterPoint().z;
