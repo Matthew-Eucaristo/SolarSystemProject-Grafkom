@@ -247,16 +247,6 @@ public class Sphere extends Circle{
         vertices.add(tempVertices.get(6));
     }
 
-    public void selfRotate(float degree, float xAxes, float yAxes, float zAxes){
-        float x = getCenterPoint().x;
-        float y = getCenterPoint().y;
-        float z = getCenterPoint().z;
-
-        translateObject(-x, -y, -z);
-        rotateObject(degree, xAxes, yAxes, zAxes);
-        translateObject(x, y, z);
-    }
-
 
     public void drawIndices(Camera camera, Projection projection){
         drawSetup(camera, projection);

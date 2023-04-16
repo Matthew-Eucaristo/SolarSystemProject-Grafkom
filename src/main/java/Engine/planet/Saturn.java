@@ -355,11 +355,11 @@ public class Saturn extends Sphere {
 
             switch (ran){
                 case 0:
-                    child.rotateObject(1f, 1, 0, 0);
+                    child.selfRotate((float)Math.toRadians(1f), 1, 0, 0);
                 case 1:
-                    child.rotateObject(1f, 0, 1, 0);
+                    child.selfRotate((float)Math.toRadians(1f), 0, 1, 0);
                 case 2:
-                    child.rotateObject(1f, 0, 0, 1);
+                    child.selfRotate((float)Math.toRadians(1f), 0, 0, 1);
             }
         }
     }

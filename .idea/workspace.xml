@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="TERNYATA KETINGGAL SATU METHOD WOEEEE&#10;KETINGGAL SATU METHODDDDDDD&#10;KETINGGALAN SATU METHOD BUAT UPDATE CENTERPOINT&#10;OMGGGG&#10;DR KMRN UPDATE MANUALLLL&#10;OMG&#10;&#10;ANYWAY UDAH BENER SEMUA URUSAN ROTASI&#10;&#10;sama ganti helicopter jadi atom rotasi">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Curve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Curve.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Saturn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Saturn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>

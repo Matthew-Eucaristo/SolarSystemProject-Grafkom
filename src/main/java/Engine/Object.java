@@ -225,6 +225,15 @@ public class Object extends ShaderProgram {
             child.updateCenterPoint();
         }
     }
+    public void selfRotate(float degree, float xAxes, float yAxes, float zAxes){
+        float x = getCenterPoint().x;
+        float y = getCenterPoint().y;
+        float z = getCenterPoint().z;
+
+        translateObject(-x, -y, -z);
+        rotateObject(degree, xAxes, yAxes, zAxes);
+        translateObject(x, y, z);
+    }
 
     // setter getter and other methods
 

@@ -92,7 +92,7 @@ public class Main {
                         .inlineScaleObject(1f,3f,1f)
                 .inlineRotateObject((float) Math.toRadians(90),1f,0f,0f)
                         .inlineRotateObject((float) Math.toRadians(90),0f,1f,0f)
-                .inlineTranslateObject(0.5f, 0.5f, 0.5f)); // ini buat quaso
+                .inlineTranslateObject(0.9f, -1.9f, 0.7f)); // ini buat quaso
 
 
 
@@ -165,6 +165,15 @@ public class Main {
             // rotate earth untuk rotate semua child earth (bulan)
             Earth earth = (Earth) objects.get(0).getChildObject().get(0);
             earth.selfRotate((float)Math.toRadians(0.25),1f,1f,1f);
+
+            // rotate Quaso
+            Quaso quaso = (Quaso) objects.get(4);
+            quaso.rotateObject((float)Math.toRadians(0.25),-1f,1f,1f);
+            quaso.selfRotate((float)Math.toRadians(.85),1f,1f,1f);
+
+            // rotate Saturn
+            Saturn saturn = (Saturn) objects.get(0).getChildObject().get(1);
+            saturn.selfRotate((float) Math.toRadians(1), 0, 1, 0);
 
         }
 
@@ -243,7 +252,7 @@ public class Main {
 
         if (window.isKeyPressed(GLFW_KEY_R)) {
             Saturn saturn = (Saturn) objects.get(0).getChildObject().get(1);
-            saturn.selfRotate((float) Math.toRadians(1), 0, 1, 0);
+            saturn.rotateRings();
         }
 
         // ini buat bebek ku jalan
