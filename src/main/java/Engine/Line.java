@@ -27,9 +27,16 @@ public class Line extends Object{
     public void draw(Camera camera, Projection projection) {
         drawSetup(camera, projection);
 
+
+
         glLineWidth(10);
-        glPointSize(0);
+        glPointSize(10);
 
         glDrawArrays(GL_LINE_STRIP, 0, vertices.size());
+
+        for (Object child :
+                childObject) {
+            child.draw(camera, projection);
+        }
     }
 }

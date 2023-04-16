@@ -58,7 +58,6 @@ public class Star extends Sphere {
                 coomVector.add(((Sphere) object).getVertices().get(0));
             }
         }
-        System.out.println(coomVector);
         getChildObject().add(new Line(ColorPalette.MOON_COLOR.getRGBA(), coomVector));
     }
 }

@@ -1,6 +1,11 @@
 package Engine.planet;
 
+import Engine.Curve;
 import Engine.Sphere;
+import org.joml.Vector3f;
+
+import java.util.List;
+import java.util.Vector;
 
 public class Duck extends Sphere {
     public Duck() {
@@ -94,6 +99,25 @@ public class Duck extends Sphere {
         getChildObject().get(1).getChildObject().add(new Sphere(ColorPalette.DUCK_EYE_2_COLOR.getRGBA(), "ellipsoid")
                 .inlineScaleObjectXYZ(0.13f)
                 .inlineTranslateObject(-0.75f,1.3f,-0.42f));
+    }
+
+    public void unkoSuru(){
+        getChildObject().get(3).getChildObject().get(2).translateObject(0f,-0.01f,0f);
+        createString();
+    }
+    public void unUnkoSuru(){
+        getChildObject().get(3).getChildObject().get(2).translateObject(0f,0.01f,0f);
+        createString();
+    }
+
+    private void createString(){
+        Vector3f point1 = getCenterPoint();
+        Vector3f point2 = getCenterPoint();
+        Vector3f point3 = getChildObject().get(3).getChildObject().get(2).getCenterPoint();
+
+        if (!getChildObject().get(4).getChildObject().isEmpty()) getChildObject().get(4).getChildObject().remove(0);
+
+        getChildObject().get(4).getChildObject().add(0,new Curve(List.of(point1, point2,point3), ColorPalette.DUCK_POOP_COLOR.getRGBA()));
     }
 
 

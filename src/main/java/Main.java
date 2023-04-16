@@ -278,6 +278,17 @@ public class Main {
             objects.get(2).translateObject(0.01f,0,0);
             initDuckAniSound();
         }
+        // ini buat bebekku unko
+        if (window.isKeyPressed(GLFW_KEY_U)){
+            Duck duck = (Duck) objects.get(2);
+            duck.unkoSuru();
+            initDuckAniSound();
+        }
+        if (window.isKeyPressed(GLFW_KEY_7)){
+            Duck duck = (Duck) objects.get(2);
+            duck.unUnkoSuru();
+            initDuckAniSound();
+        }
 
         // ini buat yang WASD
         float cameraSpeed = 0.01f;
