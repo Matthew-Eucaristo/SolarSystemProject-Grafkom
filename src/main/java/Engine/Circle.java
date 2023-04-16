@@ -2,15 +2,17 @@ package Engine;
 
 import org.joml.Vector3f;
 
+import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL11.GL_POLYGON;
+
 public class Circle extends Object {
 
     // init 
     float titikPusatX, titikPusatY, radiusX, radiusY, rotation;
     int jumlahPoint;
 
-
     public Circle(float titikPusatX, float titikPusatY, float radiusX, float radiusY, float rotation,
-    float red, float green, float blue, float alpha, int jumlahPoint) {
+                  float red, float green, float blue, float alpha, int jumlahPoint) {
         super(red, green, blue, alpha);
 
         // init titk pusat n radius
@@ -161,8 +163,6 @@ public class Circle extends Object {
         // ini untuk algoritma buat urutan titik lingkaran kalau pake segitiga
     }
 
-
-
     public float getTitikPusatX() {
         return titikPusatX;
     }
@@ -175,5 +175,6 @@ public class Circle extends Object {
         this.titikPusatX = titikPusatX;
         this.titikPusatY = titikPusatY;
     }
+
 
 }

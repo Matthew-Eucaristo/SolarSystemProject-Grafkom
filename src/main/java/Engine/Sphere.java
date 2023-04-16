@@ -13,7 +13,7 @@ public class Sphere extends Circle{
     int stackCount, sectorCount;
 
     // NOTE:
-    // in here I guess the titiPusatX, titikPusatY, and titikPusatZ is just a relative titikPusat to work with, when the object is translated, rotated, etc. the titikPusat is not affected
+    // in here I guess the titikPusatX, titikPusatY, and titikPusatZ is just a relative titikPusat to work with, when the object is translated, rotated, etc. the titikPusat is not affected
 
 
     public Sphere(float titikPusatX, float titikPusatY, float titikPusatZ,

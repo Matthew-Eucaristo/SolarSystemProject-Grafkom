@@ -61,8 +61,10 @@ public class Main {
         objects.get(0).getChildObject().get(0).getChildObject().add(new Moon(ColorPalette.MOON_COLOR.getRGBA()).inlineScaleObjectXYZ(0.3f)
                 .inlineTranslateObject(-1f, 0f, 0f)); // ini buat bulan
 
-        objects.get(0).getChildObject().add(new Saturn(ColorPalette.SATURN_COLOR_1.getRGBA()).inlineScaleObjectXYZ(0.6f)
-                .inlineTranslateObject(1.5f, 0f, 0f)); // ini buat saturnus
+        objects.get(0).getChildObject().add(new Saturn(ColorPalette.SATURN_COLOR_1.getRGBA())
+                .inlineScaleObjectXYZ(0.4f)
+                .inlineTranslateObject(2f, 0f, 0f)
+                .inlineRotateObject((float) Math.toRadians(90), 1, 0, 0)); // ini buat saturnus
 
         objects.add(new Star(ColorPalette.STAR_COLOR.getRGBA()).inlineScaleObjectXYZ(0.2f)
                 .inlineTranslateObject(1.5f, 1f, 0.5f)); // ini buat bintang
@@ -239,6 +241,11 @@ public class Main {
                     .inlineTranslateObject(spaceshipX - 0.02f,spaceshipY,spaceshipZ));
             }
 
+        if (window.isKeyPressed(GLFW_KEY_R)) {
+            Saturn saturn = (Saturn) objects.get(0).getChildObject().get(1);
+            saturn.selfRotate((float) Math.toRadians(1), 0, 1, 0);
+        }
+
         // ini buat bebek ku jalan
         if (window.isKeyPressed(GLFW_KEY_I)){
             objects.get(2).translateObject(0,0.01f,0);
@@ -258,8 +265,8 @@ public class Main {
         }
 
         // ini buat yang WASD
-        float cameraSpeed = 0.1f;
-        float rotateSpeedInDegrees = 2f;
+        float cameraSpeed = 0.01f;
+        float rotateSpeedInDegrees = 1f;
         if (window.isKeyPressed(GLFW_KEY_W)) {
             camera.moveUp(cameraSpeed);
         }

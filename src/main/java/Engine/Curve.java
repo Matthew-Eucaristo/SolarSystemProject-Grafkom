@@ -25,7 +25,7 @@ public class Curve extends Object {
         this(titik, rgba[0], rgba[1], rgba[2], rgba[3]);
     }
 
-    private void generateCurve( ){
+    private void generateCurve(){
         // generate curve using Berzier's Curve
         for (double i = 0; i < 1; i+= 0.01) {
             double hasilX = 0;
