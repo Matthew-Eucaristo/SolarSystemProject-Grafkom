@@ -178,7 +178,7 @@ public class Main {
             // rotate Saturn
             Saturn saturn = (Saturn) objects.get(0).getChildObject().get(1);
             saturn.selfRotate((float) Math.toRadians(1), 0, 1, 0);
-
+            saturn.moveHourglass();
         }
 
 
@@ -256,7 +256,9 @@ public class Main {
 
         if (window.isKeyPressed(GLFW_KEY_R)) {
             Saturn saturn = (Saturn) objects.get(0).getChildObject().get(1);
+            saturn.selfRotate((float) Math.toRadians(1), 0, 1, 0);
             saturn.rotateRings();
+            saturn.moveHourglass();
         }
 
         // ini buat bebek ku jalan
