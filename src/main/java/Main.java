@@ -85,6 +85,18 @@ public class Main {
 
 
 
+        objects.add(new Quaso(ColorPalette.QUASO_COLOR.getRGBA())
+                .inlineScaleObjectXYZ(0.1f)
+                        .inlineScaleObject(1f,3f,1f)
+                .inlineRotateObject((float) Math.toRadians(90),1f,0f,0f)
+                        .inlineRotateObject((float) Math.toRadians(90),0f,1f,0f)
+                .inlineTranslateObject(0.5f, 0.5f, 0.5f)); // ini buat quaso
+
+
+
+
+
+
 
 
 
@@ -137,6 +149,10 @@ public class Main {
 
 
         // ini yang handle input dari keyboard
+        if (window.isKeyPressed(GLFW_KEY_Y)){
+            Quaso quaso = (Quaso) objects.get(4);
+            quaso.eatQuaso();
+        }
 
         // ini buat rotate all objects
         if (window.isKeyPressed(GLFW_KEY_F)) {
@@ -144,14 +160,9 @@ public class Main {
             objects.get(0).rotateObject((float) Math.toRadians(1), 0, 1, 0);
 
 
-            // rotate bulan
+            // rotate earth untuk rotate semua child earth (bulan)
             Earth earth = (Earth) objects.get(0).getChildObject().get(0);
-            float earthX = earth.getCenterPoint().x;
-            float earthY = earth.getCenterPoint().y;
-            float earthZ = earth.getCenterPoint().z;
-            earth.translateObject(-earthX, -earthY, -earthZ);
-            earth.rotateObject((float) Math.toRadians(0.5), 0, 1, 1);
-            earth.translateObject(earthX, earthY, earthZ);
+            earth.selfRotate((float)Math.toRadians(0.25),1f,1f,1f);
 
         }
 
@@ -183,10 +194,6 @@ public class Main {
             float atomX = objects.get(0).getChildObject().get(2).getCenterPoint().get(0);
             float atomY = objects.get(0).getChildObject().get(2).getCenterPoint().get(1);
             float atomZ = objects.get(0).getChildObject().get(2).getCenterPoint().get(2);
-            System.out.println(objects.get(0).getChildObject().get(2).getCenterPoint());
-            System.out.println(objects.get(0).getChildObject().get(2).getCenterPoint().get(0));
-            System.out.println(objects.get(0).getChildObject().get(2).getCenterPoint().get(1));
-            System.out.println(objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
             objects.get(0).getChildObject().remove(2);
             objects.get(0).getChildObject().add(2,new Atom(ColorPalette.ATOM_COLOR.getRGBA(), atomRingScale, atomBallRotationX, atomBallRotationY).inlineScaleObjectXYZ(0.3f)
                     .inlineTranslateObject(atomX, atomY, atomZ));
@@ -226,7 +233,7 @@ public class Main {
             float spaceshipY = objects.get(3).getCenterPoint().get(1);
             float spaceshipZ = objects.get(3).getCenterPoint().get(2);
             objects.remove(3);
-            objects.add(new SpaceShip(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
+            objects.add(3,new SpaceShip(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
                     .inlineScaleObject(0.1f,0.2f,0.1f)
                     .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
                     .inlineTranslateObject(spaceshipX - 0.02f,spaceshipY,spaceshipZ));
@@ -303,7 +310,6 @@ public class Main {
         if (window.isKeyPressed(GLFW_KEY_PAGE_DOWN)) {
             camera.addRotation(0, 0, (float) Math.toRadians(rotateSpeedInDegrees));
         }
-
 
     }
 

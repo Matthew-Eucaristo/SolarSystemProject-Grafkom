@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="- add sound">
+    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="TERNYATA KETINGGAL SATU METHOD WOEEEE&#10;KETINGGAL SATU METHODDDDDDD&#10;KETINGGALAN SATU METHOD BUAT UPDATE CENTERPOINT&#10;OMGGGG&#10;DR KMRN UPDATE MANUALLLL&#10;OMG&#10;&#10;ANYWAY UDAH BENER SEMUA URUSAN ROTASI&#10;&#10;sama ganti helicopter jadi atom rotasi">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Quaso.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/assets/sound/Quaso.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Sun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Sun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/ColorPalette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/ColorPalette.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Moon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Moon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Star.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Star.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +110,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681575717845</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="bebek ku asik bisa keren">
+      <created>1681586272587</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1681586272587</updated>
+    </task>
+    <task id="LOCAL-00006" summary="TERNYATA KETINGGAL SATU METHOD WOEEEE&#10;KETINGGAL SATU METHODDDDDDD&#10;KETINGGALAN SATU METHOD BUAT UPDATE CENTERPOINT&#10;OMGGGG&#10;DR KMRN UPDATE MANUALLLL&#10;OMG&#10;&#10;ANYWAY UDAH BENER SEMUA URUSAN ROTASI&#10;&#10;sama ganti helicopter jadi atom rotasi">
+      <created>1681632436346</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1681632436346</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -125,7 +144,9 @@
     <MESSAGE value="create new contructor for the Sphere to choose from all different shapes" />
     <MESSAGE value="buat class Tube liat dari kelompok temen" />
     <MESSAGE value="- add sound" />
-    <option name="LAST_COMMIT_MESSAGE" value="- add sound" />
+    <MESSAGE value="bebek ku asik bisa keren" />
+    <MESSAGE value="TERNYATA KETINGGAL SATU METHOD WOEEEE&#10;KETINGGAL SATU METHODDDDDDD&#10;KETINGGALAN SATU METHOD BUAT UPDATE CENTERPOINT&#10;OMGGGG&#10;DR KMRN UPDATE MANUALLLL&#10;OMG&#10;&#10;ANYWAY UDAH BENER SEMUA URUSAN ROTASI&#10;&#10;sama ganti helicopter jadi atom rotasi" />
+    <option name="LAST_COMMIT_MESSAGE" value="TERNYATA KETINGGAL SATU METHOD WOEEEE&#10;KETINGGAL SATU METHODDDDDDD&#10;KETINGGALAN SATU METHOD BUAT UPDATE CENTERPOINT&#10;OMGGGG&#10;DR KMRN UPDATE MANUALLLL&#10;OMG&#10;&#10;ANYWAY UDAH BENER SEMUA URUSAN ROTASI&#10;&#10;sama ganti helicopter jadi atom rotasi" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
