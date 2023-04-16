@@ -79,6 +79,22 @@ public class Main {
                 .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
                 .inlineTranslateObject(0.5f,1f,1f)); // ini buat spaceship
 
+
+
+
+
+
+
+
+
+
+
+
+        objects.get(0).getChildObject().add(new Sphere(ColorPalette.SUN_SPOTS.getRGBA(),"ellipsoid")
+                .inlineScaleObjectXYZ(0)
+        );
+        Sun sun = (Sun) objects.get(0);
+        sun.surfaceDetail();
     }
 
     private void initAtomOrbit() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
@@ -117,7 +133,7 @@ public class Main {
 
     public void input() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         // ini buat input handle dari mouse
-        // ini nanti rencana untuk play animation dari class" utnuk run method animation nya
+        // ini nanti rencana untuk play animation dari class" untuk run method animation nya
 
 
         // ini yang handle input dari keyboard
@@ -172,8 +188,9 @@ public class Main {
             System.out.println(objects.get(0).getChildObject().get(2).getCenterPoint().get(1));
             System.out.println(objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
             objects.get(0).getChildObject().remove(2);
-            objects.get(0).getChildObject().add(new Atom(ColorPalette.ATOM_COLOR.getRGBA(), atomRingScale, atomBallRotationX, atomBallRotationY).inlineScaleObjectXYZ(0.3f)
+            objects.get(0).getChildObject().add(2,new Atom(ColorPalette.ATOM_COLOR.getRGBA(), atomRingScale, atomBallRotationX, atomBallRotationY).inlineScaleObjectXYZ(0.3f)
                     .inlineTranslateObject(atomX, atomY, atomZ));
+
        }
         if (window.isKeyPressed(GLFW_KEY_C)) {
             // rotasi atom kecil
