@@ -396,6 +396,7 @@ public class Saturn extends Sphere {
 
         int ran = random.nextInt(3);
 
+        getChildObject().get(getChildObject().size() - 1).scaleObjectXYZ(0.99f);
         switch (ran) {
             case 0:
                 getChildObject().get(getChildObject().size() - 1).selfRotate((float) Math.toRadians(1f), 1, 0, 0);
@@ -403,6 +404,16 @@ public class Saturn extends Sphere {
                 getChildObject().get(getChildObject().size() - 1).selfRotate((float) Math.toRadians(1f), 0, 1, 0);
             case 2:
                 getChildObject().get(getChildObject().size() - 1).selfRotate((float) Math.toRadians(1f), 0, 0, 1);
+        }
+    }
+
+    public void moveTophat() {
+        List<Object> childObjects = getChildObject();
+        for (int i = childObjects.size() - 3; i < childObjects.size() - 1; i++) {
+//            getChildObject().get(i).selfRotate(1f, 1, 0, 0);
+//            getChildObject().get(i).translateObject(0.1f, 0, 0);
+            getChildObject().get(i).selfRotate(1f, 0, 1, 0);
+            getChildObject().get(i).translateObject(0, 0.01f, 0);
         }
     }
 }

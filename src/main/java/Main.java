@@ -227,6 +227,9 @@ public class Main {
             objects.get(0).getChildObject().get(2).getChildObject().get(3).rotateObject((float) Math.toRadians(1),1,0,0);
             objects.get(0).getChildObject().get(2).getChildObject().get(3).translateObject(objects.get(0).getChildObject().get(2).getCenterPoint().get(0),objects.get(0).getChildObject().get(2).getCenterPoint().get(1),objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
 
+            Saturn saturn = (Saturn) objects.get(0).getChildObject().get(1);
+            saturn.moveTophat();
+
             // init sound
             initAtomOrbit();
         }
@@ -288,6 +291,15 @@ public class Main {
             Duck duck = (Duck) objects.get(2);
             duck.unUnkoSuru();
             initDuckAniSound();
+        }
+
+        //temporary "reset" for saturn
+        if (window.isKeyPressed(GLFW_KEY_LEFT_CONTROL)) {
+            objects.get(0).getChildObject().remove(1);
+            objects.get(0).getChildObject().add(1, new Saturn(ColorPalette.SATURN_COLOR_1.getRGBA())
+                    .inlineScaleObjectXYZ(0.4f)
+                    .inlineTranslateObject(2f, 0f, 0f)
+                    .inlineRotateObject((float) Math.toRadians(90), 1, 0, 0));
         }
 
         // ini buat yang WASD
