@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="- add sound">
-      <change afterPath="$PROJECT_DIR$/src/main/java/assets/sound/Quack_Sound_Effect.wav" afterDir="false" />
+    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="bebek ku asik bisa keren">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Moon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Moon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681575717845</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="bebek ku asik bisa keren">
+      <created>1681586272587</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1681586272587</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -125,7 +133,8 @@
     <MESSAGE value="create new contructor for the Sphere to choose from all different shapes" />
     <MESSAGE value="buat class Tube liat dari kelompok temen" />
     <MESSAGE value="- add sound" />
-    <option name="LAST_COMMIT_MESSAGE" value="- add sound" />
+    <MESSAGE value="bebek ku asik bisa keren" />
+    <option name="LAST_COMMIT_MESSAGE" value="bebek ku asik bisa keren" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

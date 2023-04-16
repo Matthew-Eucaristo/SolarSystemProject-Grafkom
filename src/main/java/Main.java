@@ -39,7 +39,7 @@ public class Main {
     Camera camera = new Camera();
 
     // for sound
-    public static Clip mainMusicClip, moonOrbitMusic, duckSound;
+    public static Clip mainMusicClip, atomOrbitMusic, duckSound;
 
 
     public void init() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
@@ -81,22 +81,22 @@ public class Main {
 
     }
 
-    private void initMoonOrbitMusic() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-        if (moonOrbitMusic != null && moonOrbitMusic.isRunning()) return;
+    private void initAtomOrbit() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        if (atomOrbitMusic != null && atomOrbitMusic.isRunning()) return;
 
-        if (moonOrbitMusic != null && moonOrbitMusic.isOpen()) {
-            moonOrbitMusic.close();
+        if (atomOrbitMusic != null && atomOrbitMusic.isOpen()) {
+            atomOrbitMusic.close();
         }
 
         AudioInputStream  audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/java/assets/sound/hola.wav").getAbsoluteFile());
-        moonOrbitMusic = AudioSystem.getClip();
+        atomOrbitMusic = AudioSystem.getClip();
 
-        moonOrbitMusic.open(audioInputStream);
-        FloatControl gainControl = (FloatControl) moonOrbitMusic.getControl(FloatControl.Type.MASTER_GAIN);
+        atomOrbitMusic.open(audioInputStream);
+        FloatControl gainControl = (FloatControl) atomOrbitMusic.getControl(FloatControl.Type.MASTER_GAIN);
         gainControl.setValue(0.5f);
 
-        System.out.println(moonOrbitMusic.getFrameLength() + "|" + moonOrbitMusic.getFramePosition());
-        moonOrbitMusic.start();
+        System.out.println(atomOrbitMusic.getFrameLength() + "|" + atomOrbitMusic.getFramePosition());
+        atomOrbitMusic.start();
 
     }
     private static void initMainMusic() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
@@ -122,43 +122,22 @@ public class Main {
 
         // ini yang handle input dari keyboard
 
-
-
-        // ini buat rotate moon
-        if (window.isKeyPressed(GLFW_KEY_M)){
-            // rotate moon
-            // Get the earth object
-            Earth earth = (Earth) objects.get(0).getChildObject().get(0);
-
-            // Get the moon object
-            Moon moon =  earth.getMoons().get(0);
-
-            // Make the moon to orbit the earth
-            moon.orbitEarth(earth);
-
-            // Add sound to the moon orbiting
-            initMoonOrbitMusic();
-        }
-        // stop music if key is released
-        if (window.isKeyReleased(GLFW_KEY_M)){
-            if (moonOrbitMusic != null && moonOrbitMusic.isOpen()) {
-                moonOrbitMusic.stop();
-            }
-        }
-
         // ini buat rotate all objects
         if (window.isKeyPressed(GLFW_KEY_F)) {
+            // revolusi matahari
+            objects.get(0).rotateObject((float) Math.toRadians(1), 0, 1, 0);
 
 
-            // rotate all objects
-            for (Object object :
-                    objects) {
-                object.rotateObject((float) Math.toRadians(1), 0f, 1f, 0f);
-            }
-            System.out.println(objects.get(0).getChildObject().get(2).getCenterPoint());
-            System.out.println(objects.get(0).getChildObject().get(2).getCenterPoint().get(0));
-            System.out.println(objects.get(0).getChildObject().get(2).getCenterPoint().get(1));
-            System.out.println(objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
+            // rotate bulan
+            objects.get(0).getChildObject().get(0).updateCenterPoint();
+            Earth earth = (Earth) objects.get(0).getChildObject().get(0);
+            float earthX = earth.getCenterPoint().x;
+            float earthY = earth.getCenterPoint().y;
+            float earthZ = earth.getCenterPoint().z;
+            earth.translateObject(-earthX, -earthY, -earthZ);
+            earth.rotateObject((float) Math.toRadians(0.5), 0, 1, 1);
+            earth.translateObject(earthX, earthY, earthZ);
+
         }
 
 
@@ -198,13 +177,29 @@ public class Main {
                     .inlineTranslateObject(atomX, atomY, atomZ));
        }
         if (window.isKeyPressed(GLFW_KEY_C)) {
+            // rotasi atom kecil
+
+
+            // update the atom center point
+            objects.get(0).getChildObject().get(2).updateCenterPoint();
+
             objects.get(0).getChildObject().get(2).getChildObject().get(2).translateObject(-objects.get(0).getChildObject().get(2).getCenterPoint().get(0),-objects.get(0).getChildObject().get(2).getCenterPoint().get(1),-objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
             objects.get(0).getChildObject().get(2).getChildObject().get(2).rotateObject((float) Math.toRadians(1),0,0,1);
             objects.get(0).getChildObject().get(2).getChildObject().get(2).translateObject(objects.get(0).getChildObject().get(2).getCenterPoint().get(0),objects.get(0).getChildObject().get(2).getCenterPoint().get(1),objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
+
             objects.get(0).getChildObject().get(2).getChildObject().get(3).translateObject(-objects.get(0).getChildObject().get(2).getCenterPoint().get(0),-objects.get(0).getChildObject().get(2).getCenterPoint().get(1),-objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
             objects.get(0).getChildObject().get(2).getChildObject().get(3).rotateObject((float) Math.toRadians(1),1,0,0);
             objects.get(0).getChildObject().get(2).getChildObject().get(3).translateObject(objects.get(0).getChildObject().get(2).getCenterPoint().get(0),objects.get(0).getChildObject().get(2).getCenterPoint().get(1),objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
+
+            // init sound
+            initAtomOrbit();
         }
+        if (window.isKeyReleased(GLFW_KEY_C)) {
+            if (atomOrbitMusic != null && atomOrbitMusic.isOpen()) {
+                atomOrbitMusic.stop();
+            }
+        }
+
 
         if (window.isKeyPressed(GLFW_KEY_O)) {
             objects.get(0).getChildObject().get(2).translateObject(-objects.get(0).getChildObject().get(2).getCenterPoint().get(0),-objects.get(0).getChildObject().get(2).getCenterPoint().get(1),-objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
