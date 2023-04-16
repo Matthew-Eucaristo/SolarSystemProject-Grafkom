@@ -185,7 +185,7 @@ public class Main {
 
 
         // function atom
-        if (window.isKeyPressed(GLFW_KEY_T)) {
+        if (window.isKeyPressed(GLFW_KEY_T)&& !window.isKeyPressed(GLFW_KEY_F)) {
             if (atomRingScale > 15) {
                 swATM = false;
             } else if (atomRingScale < -15) {
@@ -216,6 +216,38 @@ public class Main {
                     .inlineTranslateObject(atomX, atomY, atomZ));
 
        }
+
+        if (window.isKeyPressed(GLFW_KEY_T) && window.isKeyPressed(GLFW_KEY_F)){
+            if (atomRingScale > 15) {
+                swATM = false;
+            } else if (atomRingScale < -15) {
+                swATM = true;
+            }
+            if (swATM) {
+                atomRingScale++;
+            } else {
+                atomRingScale--;
+            }
+            if (atomBallRotationX > 360) {
+                atomBallRotationX = 0;
+            }
+            atomBallRotationX = (float) (100 * Math.cos(Math.toRadians(atomBallRotationX)) / 100);
+//            System.out.println(atomBallRotationX);
+            if (atomBallRotationY > 360) {
+                atomBallRotationY = 0;
+            }
+            atomBallRotationY = (float) (100 * Math.sin(Math.toRadians(atomBallRotationY)) / 100);
+//            objects.get(0).getChildObject().get(2).setCenterPoint(xyzAtom);
+//            xyzAtom = objects.get(0).getChildObject().get(2).getCenterPoint();
+//            sou
+            float atomX = objects.get(0).getChildObject().get(2).getCenterPoint().get(0);
+            float atomY = objects.get(0).getChildObject().get(2).getCenterPoint().get(1);
+            float atomZ = objects.get(0).getChildObject().get(2).getCenterPoint().get(2);
+            objects.get(0).getChildObject().remove(2);
+            objects.get(0).getChildObject().add(2,new Atom(ColorPalette.ATOM_COLOR.getRGBA(), atomRingScale, atomBallRotationX, atomBallRotationY)
+                    .inlineScaleObjectXYZ(0.3f)
+                    .inlineTranslateObject(atomX, atomY, atomZ).inlineRotateObject((float) Math.toRadians(1),0,1,0));
+        }
         if (window.isKeyPressed(GLFW_KEY_C)) {
             // rotasi atom kecil
 
