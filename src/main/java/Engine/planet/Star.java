@@ -1,11 +1,6 @@
 package Engine.planet;
 
-import Engine.Line;
 import Engine.Sphere;
-import org.joml.Vector3f;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Star extends Sphere {
     public Star(float[] rgba) {
@@ -68,14 +63,9 @@ public class Star extends Sphere {
             getChildObject().add(new Sphere(ColorPalette.STAR_COLOR.getRGBA(),"Tube").inlineTranslateObject((float) (Math.random() * 10000 - 5000), (float) (Math.random() * 10000 - 5000), (float) (Math.random() * 10000 - 5000)));
         }
 
-        List<Vector3f> coomVector = new ArrayList<>();
-
-        for (Object object :
-                getChildObject()) {
-            if(object instanceof Sphere){
-                coomVector.add(((Sphere) object).getVertices().get(0));
-            }
+        // generate more random star in background but with bright color
+        for (int i = 0; i < 100; i++) {
+            getChildObject().add(new Sphere(ColorPalette.STAR_COLOR_BRIGHT.getRGBA(),"Tube").inlineTranslateObject((float) (Math.random() * 10000 - 5000), (float) (Math.random() * 10000 - 5000), (float) (Math.random() * 10000 - 5000)));
         }
-        getChildObject().add(new Line(ColorPalette.MOON_COLOR.getRGBA(), coomVector));
     }
 }
