@@ -30,7 +30,10 @@ public class Main {
 
     private float atomBallRotationY = 0f;
 
-    private float atomBallRotationZ = 0f;
+    private float flameX = 0,flameY,flameZ;
+
+    private float spaceshipX,spaceshipY,spaceshipZ;
+    ArrayList<Float> flameXYZ ;
 
     private boolean swATM = false;
 
@@ -39,7 +42,7 @@ public class Main {
     Camera camera = new Camera();
 
     // for sound
-    public static Clip mainMusicClip, atomOrbitMusic, duckSound;
+    public static Clip mainMusicClip, atomOrbitMusic, duckSound,spaceshipSound;
 
 
     public void init() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
@@ -96,11 +99,10 @@ public class Main {
 
 
 
-
-
-
-
-
+        objects.add(new Laser(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
+                .inlineScaleObject(0.02f,0.03f,0.02f)
+                .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
+                .inlineTranslateObject(0.5f,1f,1f));
 
 
 
@@ -189,7 +191,7 @@ public class Main {
             } else if (atomRingScale < -15) {
                 swATM = true;
             }
-            if (swATM == true) {
+            if (swATM) {
                 atomRingScale++;
             } else {
                 atomRingScale--;
@@ -246,16 +248,161 @@ public class Main {
             objects.get(0).getChildObject().get(2).translateObject(objects.get(0).getChildObject().get(2).getCenterPoint().get(0),objects.get(0).getChildObject().get(2).getCenterPoint().get(1),objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
         }
 
+        // ini buat spaceship ke kiri
         if (window.isKeyPressed(GLFW_KEY_P)) {
-            float spaceshipX = objects.get(3).getCenterPoint().get(0);
-            float spaceshipY = objects.get(3).getCenterPoint().get(1);
-            float spaceshipZ = objects.get(3).getCenterPoint().get(2);
-            objects.remove(3);
-            objects.add(3,new SpaceShip(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
-                    .inlineScaleObject(0.1f,0.2f,0.1f)
-                    .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
-                    .inlineTranslateObject(spaceshipX - 0.02f,spaceshipY,spaceshipZ));
+            spaceshipX = objects.get(3).getCenterPoint().get(0);
+            spaceshipY = objects.get(3).getCenterPoint().get(1);
+            spaceshipZ = objects.get(3).getCenterPoint().get(2);
+            System.out.println(flameX);
+//            objects.remove(3);
+//            objects.add(3, new SpaceShip(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
+//                    .inlineScaleObject(0.1f,0.2f,0.1f)
+//                    .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
+//                    .inlineTranslateObject(spaceshipX - 0.02f,spaceshipY,spaceshipZ));
+            objects.get(3).inlineTranslateObject(-0.02f,0,0);
+            objects.get(5).inlineTranslateObject(-0.02f,0f,0f);
+//            flameX = flameX - 0.02f;
+            for (Object laser : objects.get(5).getChildObject()) {
+                laser.inlineTranslateObject(0.02f,0f,0f);
             }
+
+            if (flameX == 0){
+                flameX = objects.get(3).getChildObject().get(6).getCenterPoint().get(0);
+                flameY = objects.get(3).getChildObject().get(6).getCenterPoint().get(1);
+                flameZ = objects.get(3).getChildObject().get(6).getCenterPoint().get(2);
+
+            }
+            if (flameX < 0.08){
+                flameX = flameX + 0.02f;
+                objects.get(3).getChildObject().get(6).inlineTranslateObject(
+                        0.02f,0,0);
+            }
+        }
+        // ini buat spaceship ke atas
+        if (window.isKeyPressed(GLFW_KEY_MINUS)) {
+            spaceshipX = objects.get(3).getCenterPoint().get(0);
+            spaceshipY = objects.get(3).getCenterPoint().get(1);
+            spaceshipZ = objects.get(3).getCenterPoint().get(2);
+            System.out.println(flameX);
+//            objects.remove(3);
+//            objects.add(3, new SpaceShip(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
+//                    .inlineScaleObject(0.1f,0.2f,0.1f)
+//                    .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
+//                    .inlineTranslateObject(spaceshipX - 0.02f,spaceshipY,spaceshipZ));
+            objects.get(3).inlineTranslateObject(0,0.02f,0);
+            objects.get(5).inlineTranslateObject(0f,0.02f,0f);
+//            flameX = flameX - 0.02f;
+
+            for (Object laser : objects.get(5).getChildObject()) {
+                laser.inlineTranslateObject(0f,-0.02f,0f);
+            }
+
+            if (flameX == 0){
+                flameX = objects.get(3).getChildObject().get(6).getCenterPoint().get(0);
+                flameY = objects.get(3).getChildObject().get(6).getCenterPoint().get(1);
+                flameZ = objects.get(3).getChildObject().get(6).getCenterPoint().get(2);
+
+            }
+            if (flameX < 0.08){
+                flameX = flameX + 0.02f;
+                objects.get(3).getChildObject().get(6).inlineTranslateObject(
+                        0.02f,0,0);
+            }
+        }
+        // ini buat spaceship ke bawah
+        if (window.isKeyPressed(GLFW_KEY_LEFT_BRACKET)) {
+            spaceshipX = objects.get(3).getCenterPoint().get(0);
+            spaceshipY = objects.get(3).getCenterPoint().get(1);
+            spaceshipZ = objects.get(3).getCenterPoint().get(2);
+            System.out.println(flameX);
+//            objects.remove(3);
+//            objects.add(3, new SpaceShip(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
+//                    .inlineScaleObject(0.1f,0.2f,0.1f)
+//                    .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
+//                    .inlineTranslateObject(spaceshipX - 0.02f,spaceshipY,spaceshipZ));
+            objects.get(3).inlineTranslateObject(0,-0.02f,0);
+            objects.get(5).inlineTranslateObject(0,-0.02f,0f);
+//            flameX = flameX - 0.02f;
+
+            for (Object laser : objects.get(5).getChildObject()) {
+                laser.inlineTranslateObject(0f,0.02f,0f);
+            }
+
+            if (flameX == 0){
+                flameX = objects.get(3).getChildObject().get(6).getCenterPoint().get(0);
+                flameY = objects.get(3).getChildObject().get(6).getCenterPoint().get(1);
+                flameZ = objects.get(3).getChildObject().get(6).getCenterPoint().get(2);
+
+            }
+            if (flameX < 0.08){
+                flameX = flameX + 0.02f;
+                objects.get(3).getChildObject().get(6).inlineTranslateObject(
+                        0.02f,0,0);
+            }
+        }
+
+        // ini buat spaceship ke kanan
+        if (window.isKeyPressed(GLFW_KEY_RIGHT_BRACKET)) {
+            spaceshipX = objects.get(3).getCenterPoint().get(0);
+            spaceshipY = objects.get(3).getCenterPoint().get(1);
+            spaceshipZ = objects.get(3).getCenterPoint().get(2);
+            System.out.println(flameX);
+//            objects.remove(3);
+//            objects.add(3, new SpaceShip(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
+//                    .inlineScaleObject(0.1f,0.2f,0.1f)
+//                    .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
+//                    .inlineTranslateObject(spaceshipX - 0.02f,spaceshipY,spaceshipZ));
+            objects.get(3).inlineTranslateObject(0.02f,0,0);
+            objects.get(5).inlineTranslateObject(0.02f,0f,0f);
+//            flameX = flameX - 0.02f;
+
+            for (Object laser : objects.get(5).getChildObject()) {
+                laser.inlineTranslateObject(-0.02f,0f,0f);
+            }
+
+            if (flameX == 0){
+                flameX = objects.get(3).getChildObject().get(6).getCenterPoint().get(0);
+                flameY = objects.get(3).getChildObject().get(6).getCenterPoint().get(1);
+                flameZ = objects.get(3).getChildObject().get(6).getCenterPoint().get(2);
+
+            }
+            if (flameX < 0.08){
+                flameX = flameX + 0.02f;
+                objects.get(3).getChildObject().get(6).inlineTranslateObject(
+                        0.02f,0,0);
+            }
+            initSpaceshipAniSound();
+
+        }
+
+
+        // update spaceship flame
+        if (window.isKeyReleased(GLFW_KEY_P)){
+            if(flameX > -0.02){
+                objects.get(3).getChildObject().get(6).inlineTranslateObject(-0.001f,0f,0f);
+                flameX = flameX - 0.001f;
+            }
+//            if (spaceshipSound != null && spaceshipSound.isOpen()) {
+//                spaceshipSound.stop();
+//            }
+        }
+
+        if (window.isKeyPressed(GLFW_KEY_9)){
+            objects.get(3).translateObject(-objects.get(3).getCenterPoint().get(0),-objects.get(3).getCenterPoint().get(1),-objects.get(3).getCenterPoint().get(2));
+            objects.get(3).inlineRotateObject((float) Math.toRadians(1),0,1,0);
+            objects.get(3).translateObject(objects.get(3).getCenterPoint().get(0), objects.get(3).getCenterPoint().get(1), objects.get(3).getCenterPoint().get(2));
+
+            objects.get(3).inlineRotateObject((float) Math.toRadians(-1),0,1,0);
+
+        }
+
+        if (window.isKeyPressed(GLFW_KEY_Z)){
+            objects.get(5).getChildObject().add(new Sphere(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
+                    .inlineScaleObject(0.02f,0.03f,0.02f)
+                    .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
+                    .inlineTranslateObject(objects.get(5).getCenterPoint().x,objects.get(5).getCenterPoint().y,objects.get(5).getCenterPoint().z));
+
+        }
 
         if (window.isKeyPressed(GLFW_KEY_R)) {
             Saturn saturn = (Saturn) objects.get(0).getChildObject().get(1);
@@ -303,8 +450,8 @@ public class Main {
         }
 
         // ini buat yang WASD
-        float cameraSpeed = 0.01f;
-        float rotateSpeedInDegrees = 1f;
+        float cameraSpeed = 0.1f;
+        float rotateSpeedInDegrees = 2f;
         if (window.isKeyPressed(GLFW_KEY_W)) {
             camera.moveUp(cameraSpeed);
         }
@@ -356,6 +503,7 @@ public class Main {
             camera.addRotation(0, 0, (float) Math.toRadians(rotateSpeedInDegrees));
         }
 
+
     }
 
     private void initDuckAniSound() {
@@ -388,6 +536,36 @@ public class Main {
 
     }
 
+    private void initSpaceshipAniSound() {
+
+        if (spaceshipSound != null && spaceshipSound.isRunning()) {
+            return;
+        }
+
+        if (spaceshipSound != null && spaceshipSound.isOpen()) {
+            spaceshipSound.close();
+        }
+
+
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/java/assets/sound/Sheesh.wav").getAbsoluteFile());
+            spaceshipSound = AudioSystem.getClip();
+            spaceshipSound.open(audioInputStream);
+
+            FloatControl gainControl = (FloatControl) spaceshipSound.getControl(FloatControl.Type.MASTER_GAIN);
+            gainControl.setValue(0.5f);
+
+            System.out.println(spaceshipSound.getFrameLength() + "|" + spaceshipSound.getFramePosition());
+            spaceshipSound.loop(0);
+
+            spaceshipSound.start();
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 
     public void loop() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         while (window.isOpen()) {
@@ -404,6 +582,11 @@ public class Main {
             // draw objects
             for (Object object : objects) {
                 object.draw(camera, projection);
+
+                // print star center point
+                if (object instanceof Star) {
+//                    System.out.println(object.getCenterPoint());
+                }
             }
 
             // update all the center point to the correct one
@@ -411,6 +594,9 @@ public class Main {
                 object.updateCenterPoint();
             }
 
+            for (Object laser : objects.get(5).getChildObject()) {
+                laser.inlineTranslateObject(-0.01f,0f,0f);
+            }
 
             // restore state
             glDisableVertexAttribArray(0);
@@ -419,6 +605,7 @@ public class Main {
             // the key callback above will only be
             // invoked during this call.
             glfwPollEvents();
+
         }
     }
 
