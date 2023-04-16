@@ -50,6 +50,24 @@ public class Star extends Sphere {
         getChildObject().add(new Sphere(ColorPalette.STAR_COLOR.getRGBA(),"Tube").inlineTranslateObject(3f, 60f, 0.5f) //Core down right +2
         );
 
+        // this is for decoration only
+        getChildObject().add(new Sphere(ColorPalette.STAR_COLOR.getRGBA(),"Tube").inlineTranslateObject(-3f, 60f, 0.5f));
+        getChildObject().add(new Sphere(ColorPalette.STAR_COLOR.getRGBA(),"Tube").inlineTranslateObject(-3f, 60f, -0.5f));
+        getChildObject().add(new Sphere(ColorPalette.STAR_COLOR.getRGBA(),"Tube").inlineTranslateObject(-3f, -60f, -0.5f));
+        getChildObject().add(new Sphere(ColorPalette.STAR_COLOR.getRGBA(),"Tube").inlineTranslateObject(3f, -60f, 0.5f));
+        getChildObject().add(new Sphere(ColorPalette.STAR_COLOR.getRGBA(),"Tube").inlineTranslateObject(3f, -10f, 0.5f));
+        getChildObject().add(new Sphere(ColorPalette.STAR_COLOR.getRGBA(),"Tube").inlineTranslateObject(3f, 10f, -0.5f));
+
+        // create more random star on the screen, little far from the planets (sun, earth, etc.)
+        for (int i = 0; i < 100; i++) {
+            getChildObject().add(new Sphere(ColorPalette.STAR_COLOR.getRGBA(),"Tube").inlineTranslateObject((float) (Math.random() * 1000 - 500), (float) (Math.random() * 1000 - 500), (float) (Math.random() * 1000 - 500)));
+        }
+
+        // generate more random star for making the background richer with stars
+        for (int i = 0; i < 1000; i++) {
+            getChildObject().add(new Sphere(ColorPalette.STAR_COLOR.getRGBA(),"Tube").inlineTranslateObject((float) (Math.random() * 10000 - 5000), (float) (Math.random() * 10000 - 5000), (float) (Math.random() * 10000 - 5000)));
+        }
+
         List<Vector3f> coomVector = new ArrayList<>();
 
         for (Object object :
