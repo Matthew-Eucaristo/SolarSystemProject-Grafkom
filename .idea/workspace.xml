@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="bebek ku asik bisa keren">
+    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="TERNYATA KETINGGAL SATU METHOD WOEEEE&#10;KETINGGAL SATU METHODDDDDDD&#10;KETINGGALAN SATU METHOD BUAT UPDATE CENTERPOINT&#10;OMGGGG&#10;DR KMRN UPDATE MANUALLLL&#10;OMG&#10;&#10;ANYWAY UDAH BENER SEMUA URUSAN ROTASI&#10;&#10;sama ganti helicopter jadi atom rotasi">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Object.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Moon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Moon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681586272587</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="TERNYATA KETINGGAL SATU METHOD WOEEEE&#10;KETINGGAL SATU METHODDDDDDD&#10;KETINGGALAN SATU METHOD BUAT UPDATE CENTERPOINT&#10;OMGGGG&#10;DR KMRN UPDATE MANUALLLL&#10;OMG&#10;&#10;ANYWAY UDAH BENER SEMUA URUSAN ROTASI&#10;&#10;sama ganti helicopter jadi atom rotasi">
+      <created>1681632436346</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1681632436346</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -134,7 +140,8 @@
     <MESSAGE value="buat class Tube liat dari kelompok temen" />
     <MESSAGE value="- add sound" />
     <MESSAGE value="bebek ku asik bisa keren" />
-    <option name="LAST_COMMIT_MESSAGE" value="bebek ku asik bisa keren" />
+    <MESSAGE value="TERNYATA KETINGGAL SATU METHOD WOEEEE&#10;KETINGGAL SATU METHODDDDDDD&#10;KETINGGALAN SATU METHOD BUAT UPDATE CENTERPOINT&#10;OMGGGG&#10;DR KMRN UPDATE MANUALLLL&#10;OMG&#10;&#10;ANYWAY UDAH BENER SEMUA URUSAN ROTASI&#10;&#10;sama ganti helicopter jadi atom rotasi" />
+    <option name="LAST_COMMIT_MESSAGE" value="TERNYATA KETINGGAL SATU METHOD WOEEEE&#10;KETINGGAL SATU METHODDDDDDD&#10;KETINGGALAN SATU METHOD BUAT UPDATE CENTERPOINT&#10;OMGGGG&#10;DR KMRN UPDATE MANUALLLL&#10;OMG&#10;&#10;ANYWAY UDAH BENER SEMUA URUSAN ROTASI&#10;&#10;sama ganti helicopter jadi atom rotasi" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -129,7 +129,6 @@ public class Main {
 
 
             // rotate bulan
-            objects.get(0).getChildObject().get(0).updateCenterPoint();
             Earth earth = (Earth) objects.get(0).getChildObject().get(0);
             float earthX = earth.getCenterPoint().x;
             float earthY = earth.getCenterPoint().y;
@@ -181,8 +180,6 @@ public class Main {
 
 
             // update the atom center point
-            objects.get(0).getChildObject().get(2).updateCenterPoint();
-
             objects.get(0).getChildObject().get(2).getChildObject().get(2).translateObject(-objects.get(0).getChildObject().get(2).getCenterPoint().get(0),-objects.get(0).getChildObject().get(2).getCenterPoint().get(1),-objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
             objects.get(0).getChildObject().get(2).getChildObject().get(2).rotateObject((float) Math.toRadians(1),0,0,1);
             objects.get(0).getChildObject().get(2).getChildObject().get(2).translateObject(objects.get(0).getChildObject().get(2).getCenterPoint().get(0),objects.get(0).getChildObject().get(2).getCenterPoint().get(1),objects.get(0).getChildObject().get(2).getCenterPoint().get(2));
@@ -344,6 +341,11 @@ public class Main {
                 if (object instanceof Star) {
                     System.out.println(object.getCenterPoint());
                 }
+            }
+
+            // update all the center point to the correct one
+            for (Object object : objects) {
+                object.updateCenterPoint();
             }
 
 

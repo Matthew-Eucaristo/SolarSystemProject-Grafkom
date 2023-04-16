@@ -212,13 +212,18 @@ public class Object extends ShaderProgram {
         return this;
     }
 
-    public Vector3f getUpdateCenterPoint(){
+    private Vector3f getUpdateCenterPoint(){
         Vector3f destTemp = new Vector3f();
         model.transformPosition(0.0f, 0.0f, 0.0f, destTemp);
         return destTemp;
     }
     public void updateCenterPoint(){
         centerPoint = getUpdateCenterPoint();
+
+        for (Object child :
+                childObject) {
+            child.updateCenterPoint();
+        }
     }
 
     // setter getter and other methods
