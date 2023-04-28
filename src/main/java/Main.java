@@ -9,6 +9,7 @@ import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.glfw.GLFW.*;
@@ -75,7 +76,7 @@ public class Main {
         objects.get(0).getChildObject().add(new Atom(ColorPalette.ATOM_COLOR.getRGBA(), atomRingScale, atomBallRotationX, atomBallRotationY).inlineScaleObjectXYZ(0.3f)
                 .inlineTranslateObject(1f, 0.5f, 0.5f)); // ini buat atom
 
-        objects.add(new Duck()
+        objects.add(new DuckSpawner(ColorPalette.DUCK_SPAWNER_COLOR.getRGBA())
                 .inlineScaleObjectXYZ(0.1f)
                 .inlineTranslateObject(-1f,1f,1f)); // ini untuk bebek
 
@@ -115,6 +116,9 @@ public class Main {
         );
         Sun sun = (Sun) objects.get(0);
         sun.surfaceDetail();
+
+        // ini hanya ending buat scaling dasar semua planet
+        objects.get(0).inlineScaleObjectXYZ(1.5f);
     }
 
     private void initAtomOrbit() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
@@ -129,7 +133,7 @@ public class Main {
 
         atomOrbitMusic.open(audioInputStream);
         FloatControl gainControl = (FloatControl) atomOrbitMusic.getControl(FloatControl.Type.MASTER_GAIN);
-        gainControl.setValue(0.5f);
+        gainControl.setValue(-1.5f);
 
         System.out.println(atomOrbitMusic.getFrameLength() + "|" + atomOrbitMusic.getFramePosition());
         atomOrbitMusic.start();
@@ -145,7 +149,7 @@ public class Main {
 
         mainMusicClip.open(audioInputStream);
         FloatControl gainControl = (FloatControl) mainMusicClip.getControl(FloatControl.Type.MASTER_GAIN);
-        gainControl.setValue(0.5f);
+        gainControl.setValue(-10.5f);
 
         System.out.println(mainMusicClip.getFrameLength() + "|" + mainMusicClip.getFramePosition());
         mainMusicClip.start();
@@ -446,29 +450,30 @@ public class Main {
         // ini buat bebek ku jalan
         if (window.isKeyPressed(GLFW_KEY_I)){
             objects.get(2).translateObject(0,0.01f,0);
+            for (Object duck : objects.get(2).getChildObject()) {
+                duck.inlineTranslateObject(0,-0.01f,0);
+            }
             initDuckAniSound();
         }
         if (window.isKeyPressed(GLFW_KEY_K)){
             objects.get(2).translateObject(0,-0.01f,0);
+            for (Object duck : objects.get(2).getChildObject()) {
+                duck.inlineTranslateObject(0,0.01f,0);
+            }
             initDuckAniSound();
         }
         if (window.isKeyPressed(GLFW_KEY_J)){
             objects.get(2).translateObject(-0.01f,0,0);
+            for (Object duck : objects.get(2).getChildObject()) {
+                duck.inlineTranslateObject(0.01f,0f,0);
+            }
             initDuckAniSound();
         }
         if (window.isKeyPressed(GLFW_KEY_L)){
             objects.get(2).translateObject(0.01f,0,0);
-            initDuckAniSound();
-        }
-        // ini buat bebekku unko
-        if (window.isKeyPressed(GLFW_KEY_U)){
-            Duck duck = (Duck) objects.get(2);
-            duck.unkoSuru();
-            initDuckAniSound();
-        }
-        if (window.isKeyPressed(GLFW_KEY_7)){
-            Duck duck = (Duck) objects.get(2);
-            duck.unUnkoSuru();
+            for (Object duck : objects.get(2).getChildObject()) {
+                duck.inlineTranslateObject(-0.01f,0f,0);
+            }
             initDuckAniSound();
         }
 
@@ -621,11 +626,22 @@ public class Main {
                 }
             }
 
+            // for Duck Spawn Timer
+            DuckSpawner duckSpawner = (DuckSpawner) objects.get(2);
+            duckSpawner.runSpawnTimer();
+
+            // for moving the duck
+            for (Object child : objects.get(2).getChildObject()) {
+                Duck duck = (Duck) child;
+                duck.inlineTranslateObject(0.01f,0f,0f);
+            }
+
             // update all the center point to the correct one
             for (Object object : objects) {
                 object.updateCenterPoint();
             }
 
+            // for moving lasers
             for (Object laser : objects.get(5).getChildObject()) {
                 laser.inlineTranslateObject(-0.01f,0f,0f);
             }

@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="SpaceShip ada api apinya + bisa nembak">
+    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="- star baru lagi buat warna beda di background (TAMBAH BERAT RESOURCENYA)&#10;- nyerah buat rasi bintang :(&#10;- delete class Line&#10;- moon jadi bomb">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/LimitedQueue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/DuckSpawner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_10_2023_10_00_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_10_2023_10_00_AM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/ColorPalette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/ColorPalette.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Duck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Duck.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,14 +138,7 @@
       <option name="project" value="LOCAL" />
       <updated>1681672026323</updated>
     </task>
-    <task id="LOCAL-00009" summary="SpaceShip ada api apinya + bisa nembak">
-      <created>1681677482964</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1681677482964</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -162,8 +161,7 @@
     <MESSAGE value="bebek ku asik bisa keren" />
     <MESSAGE value="TERNYATA KETINGGAL SATU METHOD WOEEEE&#10;KETINGGAL SATU METHODDDDDDD&#10;KETINGGALAN SATU METHOD BUAT UPDATE CENTERPOINT&#10;OMGGGG&#10;DR KMRN UPDATE MANUALLLL&#10;OMG&#10;&#10;ANYWAY UDAH BENER SEMUA URUSAN ROTASI&#10;&#10;sama ganti helicopter jadi atom rotasi" />
     <MESSAGE value="Hourglass done + animasi, nambah top hat biar Saturn keliatan lebih kayak seorang &quot;distinguished gentleman&quot;." />
-    <MESSAGE value="SpaceShip ada api apinya + bisa nembak" />
-    <option name="LAST_COMMIT_MESSAGE" value="SpaceShip ada api apinya + bisa nembak" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hourglass done + animasi, nambah top hat biar Saturn keliatan lebih kayak seorang &quot;distinguished gentleman&quot;." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
