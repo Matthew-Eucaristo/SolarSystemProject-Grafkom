@@ -105,6 +105,10 @@ public class Main {
                 .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
                 .inlineTranslateObject(0.5f,1f,1f));
 
+        objects.add(new Astronaut(ColorPalette.ASTRONAUT_SUIT.getRGBA(),"ellipsoid")
+                .inlineScaleObject(2f,2f,2f)
+                .inlineTranslateObject(0f,3f,3f));
+
 
 
 
@@ -204,7 +208,6 @@ public class Main {
                 atomBallRotationX = 0;
             }
             atomBallRotationX = (float) (100 * Math.cos(Math.toRadians(atomBallRotationX)) / 100);
-//            System.out.println(atomBallRotationX);
             if (atomBallRotationY > 360) {
                 atomBallRotationY = 0;
             }
@@ -236,7 +239,6 @@ public class Main {
                 atomBallRotationX = 0;
             }
             atomBallRotationX = (float) (100 * Math.cos(Math.toRadians(atomBallRotationX)) / 100);
-//            System.out.println(atomBallRotationX);
             if (atomBallRotationY > 360) {
                 atomBallRotationY = 0;
             }
@@ -289,7 +291,6 @@ public class Main {
             spaceshipX = objects.get(3).getCenterPoint().get(0);
             spaceshipY = objects.get(3).getCenterPoint().get(1);
             spaceshipZ = objects.get(3).getCenterPoint().get(2);
-            System.out.println(flameX);
 //            objects.remove(3);
 //            objects.add(3, new SpaceShip(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
 //                    .inlineScaleObject(0.1f,0.2f,0.1f)
@@ -319,7 +320,7 @@ public class Main {
             spaceshipX = objects.get(3).getCenterPoint().get(0);
             spaceshipY = objects.get(3).getCenterPoint().get(1);
             spaceshipZ = objects.get(3).getCenterPoint().get(2);
-            System.out.println(flameX);
+
 //            objects.remove(3);
 //            objects.add(3, new SpaceShip(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
 //                    .inlineScaleObject(0.1f,0.2f,0.1f)
@@ -350,7 +351,7 @@ public class Main {
             spaceshipX = objects.get(3).getCenterPoint().get(0);
             spaceshipY = objects.get(3).getCenterPoint().get(1);
             spaceshipZ = objects.get(3).getCenterPoint().get(2);
-            System.out.println(flameX);
+
 //            objects.remove(3);
 //            objects.add(3, new SpaceShip(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
 //                    .inlineScaleObject(0.1f,0.2f,0.1f)
@@ -382,7 +383,6 @@ public class Main {
             spaceshipX = objects.get(3).getCenterPoint().get(0);
             spaceshipY = objects.get(3).getCenterPoint().get(1);
             spaceshipZ = objects.get(3).getCenterPoint().get(2);
-            System.out.println(flameX);
 //            objects.remove(3);
 //            objects.add(3, new SpaceShip(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
 //                    .inlineScaleObject(0.1f,0.2f,0.1f)
@@ -432,6 +432,7 @@ public class Main {
 
         }
 
+        // ini buat nembak nembak spaceshipnya
         if (window.isKeyPressed(GLFW_KEY_Z)){
             objects.get(5).getChildObject().add(new Sphere(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
                     .inlineScaleObject(0.02f,0.03f,0.02f)
