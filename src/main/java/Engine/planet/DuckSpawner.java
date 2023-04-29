@@ -188,8 +188,14 @@ public class DuckSpawner extends Sphere {
     }
 
     private void spawnDuck() {
-        if (getChildObject().size() > 5){
+        if (getChildObject().size() > 15){
             getChildObject().remove(1);
+        }
+
+        System.out.println(spawnTime);
+        spawnTime -= 10f;
+        if (spawnTime < 150f) {
+            spawnTime = 150f;
         }
         getChildObject().add(new Duck()
                 .inlineScaleObjectXYZ(0.1f)

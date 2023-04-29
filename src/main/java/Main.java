@@ -589,7 +589,7 @@ public class Main {
 
             // for moving lasers
             for (Object laser : objects.get(5).getChildObject()) {
-                laser.inlineTranslateObject(-0.01f,0f,0f);
+                laser.inlineTranslateObject(-0.08f,0f,0f);
             }
 
             // for checking the laser collision with the duck
