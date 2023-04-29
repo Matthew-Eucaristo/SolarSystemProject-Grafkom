@@ -21,6 +21,34 @@ public class Astronaut extends Sphere {
         initArm();
         initFlag();
         initBelt();
+        initBoots();
+    }
+
+    private void initBoots() {
+        getChildObject().add(new Sphere(ColorPalette.ASTRONAUT_BOOTS.getRGBA(), "ellipticparaboloid")
+                .inlineScaleObjectXYZ(0.1f)
+                .inlineScaleObject(0.7f,0.4f,0.3f)
+                        .inlineRotateObject((float)Math.toRadians(180),0f,1f,0f)
+                .inlineTranslateObject(0.2f, -2.32f, 0.7f)
+        );
+        getChildObject().add(new Sphere(ColorPalette.ASTRONAUT_BOOTS.getRGBA(), "ellipsoid")
+                .inlineScaleObjectXYZ(0.75f)
+                .inlineScaleObject(0.7f,0.4f,0.3f)
+                        .inlineRotateObject((float)Math.toRadians(180),0f,1f,0f)
+                .inlineTranslateObject(-0.2f, -2.32f, 0.1f)
+        );
+        getChildObject().add(new Sphere(ColorPalette.ASTRONAUT_BOOTS.getRGBA(), "ellipticparaboloid")
+                .inlineScaleObjectXYZ(0.1f)
+                .inlineScaleObject(0.7f,0.4f,0.3f)
+                .inlineRotateObject((float)Math.toRadians(180),0f,1f,0f)
+                .inlineTranslateObject(-0.2f, -2.32f, 0.7f)
+        );
+        getChildObject().add(new Sphere(ColorPalette.ASTRONAUT_BOOTS.getRGBA(), "ellipsoid")
+                .inlineScaleObjectXYZ(0.75f)
+                .inlineScaleObject(0.7f,0.4f,0.3f)
+                .inlineRotateObject((float)Math.toRadians(180),0f,1f,0f)
+                .inlineTranslateObject(0.2f, -2.32f, 0.1f)
+        );
     }
 
     private void initBelt() {
