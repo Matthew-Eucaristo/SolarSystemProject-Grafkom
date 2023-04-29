@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="lanjutan commit sebeelumnya">
+    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="spawntime lebih fair daripada sblmnya">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Astronaut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Astronaut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Star.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Star.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/ColorPalette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/ColorPalette.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -169,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682781867370</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="spawntime lebih fair daripada sblmnya">
+      <created>1682782721134</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1682782721134</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -197,7 +204,8 @@
     <MESSAGE value="- fix duck spawning limit&#10;- delete sound bebek waktu gerakin spawner&#10;- buang Quaso&#10;- buat jadi auto rotasi&#10;- suara dari spaceshit sudha baikan&#10;- sudah aman dari kehancuran duckspawner&#10;- adjust posisi astronot" />
     <MESSAGE value="- randomly move the duckspawner&#10;- ganti keybinding spaceship jadi i,j,k,l&#10;- add ease in for camera initialization&#10;- astronaut can move now" />
     <MESSAGE value="lanjutan commit sebeelumnya" />
-    <option name="LAST_COMMIT_MESSAGE" value="lanjutan commit sebeelumnya" />
+    <MESSAGE value="spawntime lebih fair daripada sblmnya" />
+    <option name="LAST_COMMIT_MESSAGE" value="spawntime lebih fair daripada sblmnya" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
