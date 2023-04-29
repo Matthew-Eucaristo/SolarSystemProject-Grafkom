@@ -1,8 +1,10 @@
 package Engine.planet;
 
+import Engine.Curve;
 import Engine.Sphere;
 import org.joml.Vector3f;
 
+import java.util.List;
 import java.util.Random;
 
 import static Engine.MathUtils.lerp;
@@ -22,6 +24,41 @@ public class Astronaut extends Sphere {
         initFlag();
         initBelt();
         initBoots();
+        initAntenna();
+        initVisor();
+    }
+
+    private void initVisor() {
+        // create visor using Bezier Curve
+        Vector3f[] controlPoints = new Vector3f[3];
+        float y = 0.16f;
+        float x = 0.43f;
+        float z = 0.33f;
+        controlPoints[0] = new Vector3f(-x, y, 0.0f);
+        controlPoints[1] = new Vector3f(-x - x/2, y, z + z/2);
+        controlPoints[2] = new Vector3f(0, y-0.2f, 2*z);
+
+        getChildObject().add(new Curve(List.of(controlPoints), ColorPalette.ASTRONAUT_ANTENNA.getRGBA() ));
+    }
+
+    private void initAntenna() {
+        // create box on one side of the helmet
+        getChildObject().add(new Sphere(ColorPalette.ASTRONAUT_ANTENNA.getRGBA(), "box")
+                .inlineScaleObjectXYZ(0.4f)
+                .inlineScaleObject(0.43f,0.8f,1.3f)
+                .inlineTranslateObject(-0.5f, 0.1f, 0.0f)
+        );
+        // create antenna on helmet
+        getChildObject().add(new Sphere(ColorPalette.ASTRONAUT_ANTENNA2.getRGBA(), "tube")
+                .inlineScaleObjectXYZ(0.2f)
+                .inlineScaleObject(0.2f,1.6f,0.2f)
+                .inlineTranslateObject(-0.5f, 0.3f, 0.0f)
+        );
+        getChildObject().add(new Sphere(ColorPalette.ASTRONAUT_ANTENNA2.getRGBA(), "tube")
+                .inlineScaleObjectXYZ(0.2f)
+                .inlineScaleObject(0.2f,1.1f,0.2f)
+                .inlineTranslateObject(-0.5f, 0.2f, -0.05f)
+        );
     }
 
     private void initBoots() {
