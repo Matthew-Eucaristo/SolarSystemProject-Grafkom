@@ -13,11 +13,54 @@ public class DuckSpawner extends Sphere {
     // spawn duck in periodic time
     private float spawnTime = 500f;
     private float spawnTimer = 0f;
+    private float newPlaceTimer = 0f;
+    private float newPlaceTime = 200f;
+
+    private Vector3f newPlace;
     public DuckSpawner(float[] rgba) {
         super(0.3f,0.3f,0.3f,rgba, "ellipsoid");
 
         // init decoration as a first child
         initDecoration();
+    }
+
+    public void executeNewPlaceTimer(){
+        if (newPlaceTimer < newPlaceTime) {
+            newPlaceTimer += 1f;
+        } else {
+            newPlaceTimer = 0f;
+
+            generateNewPlace();
+        }
+    }
+    public void executeTravelToNewPlace(){
+        if (newPlace != null) {
+            // travel to new place
+            Vector3f direction = new Vector3f(newPlace).sub(getCenterPoint()).normalize();
+            if (getCenterPoint().distance(newPlace) > 0.01f) {
+                // travel to new place
+                inlineTranslateObject(direction.x * 0.01f, direction.y * 0.01f, direction.z * 0.01f);
+            } else {
+                // arrived at new place
+                newPlace = null;
+            }
+
+            // counter all duck movement
+            for (Object duck : getChildObject()) {
+                if (!(duck instanceof Duck)) continue;
+                duck.inlineTranslateObject(-direction.x * 0.01f, -direction.y * 0.01f, -direction.z * 0.01f);
+            }
+        }
+    }
+
+    private void generateNewPlace() {
+        Random random = new Random();
+        boolean forX = random.nextBoolean();
+        newPlace = new Vector3f(
+                (forX)? random.nextFloat() * 10f - 15f : random.nextFloat() * -10f - 5f,
+                random.nextFloat() * (random.nextBoolean() ? 4f : -4f),
+                getCenterPoint().z
+        );
     }
 
     private void initDecoration() {

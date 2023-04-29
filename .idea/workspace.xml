@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="- ganti arrow key keybinding biar lebih bener liatnya, ganti pageup and down juga&#10;- add instanceof guard for the Duck&#10;- add spawner decoration&#10;- ganti ke GL_TRIANGLE_FAN rather than GL_POLYGON&#10;- fix the box (cube) so that all side is filled properly">
+    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="- fix duck spawning limit&#10;- delete sound bebek waktu gerakin spawner&#10;- buang Quaso&#10;- buat jadi auto rotasi&#10;- suara dari spaceshit sudha baikan&#10;- sudah aman dari kehancuran duckspawner&#10;- adjust posisi astronot">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Engine/MathUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Camera.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Astronaut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Astronaut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/ColorPalette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/ColorPalette.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/DuckSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/DuckSpawner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Saturn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Saturn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -150,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682770880734</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="- fix duck spawning limit&#10;- delete sound bebek waktu gerakin spawner&#10;- buang Quaso&#10;- buat jadi auto rotasi&#10;- suara dari spaceshit sudha baikan&#10;- sudah aman dari kehancuran duckspawner&#10;- adjust posisi astronot">
+      <created>1682775226569</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1682775226569</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -175,7 +182,8 @@
     <MESSAGE value="Hourglass done + animasi, nambah top hat biar Saturn keliatan lebih kayak seorang &quot;distinguished gentleman&quot;." />
     <MESSAGE value="- laser spaceship sudah bisa delete&#10;- sudah bisa collision detect antara bebek sama laser, tapi tetap tembus, laser tidak ke delete" />
     <MESSAGE value="- ganti arrow key keybinding biar lebih bener liatnya, ganti pageup and down juga&#10;- add instanceof guard for the Duck&#10;- add spawner decoration&#10;- ganti ke GL_TRIANGLE_FAN rather than GL_POLYGON&#10;- fix the box (cube) so that all side is filled properly" />
-    <option name="LAST_COMMIT_MESSAGE" value="- ganti arrow key keybinding biar lebih bener liatnya, ganti pageup and down juga&#10;- add instanceof guard for the Duck&#10;- add spawner decoration&#10;- ganti ke GL_TRIANGLE_FAN rather than GL_POLYGON&#10;- fix the box (cube) so that all side is filled properly" />
+    <MESSAGE value="- fix duck spawning limit&#10;- delete sound bebek waktu gerakin spawner&#10;- buang Quaso&#10;- buat jadi auto rotasi&#10;- suara dari spaceshit sudha baikan&#10;- sudah aman dari kehancuran duckspawner&#10;- adjust posisi astronot" />
+    <option name="LAST_COMMIT_MESSAGE" value="- fix duck spawning limit&#10;- delete sound bebek waktu gerakin spawner&#10;- buang Quaso&#10;- buat jadi auto rotasi&#10;- suara dari spaceshit sudha baikan&#10;- sudah aman dari kehancuran duckspawner&#10;- adjust posisi astronot" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

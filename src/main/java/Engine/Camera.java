@@ -10,6 +10,7 @@ public class Camera {
     private Vector3f rotation;
     private Vector3f up;
     private Matrix4f viewMatrix;
+    private Vector3f targetPosition = new Vector3f(0f,0f,0f);
 
     public Camera() {
         direction = new Vector3f();
@@ -89,6 +90,30 @@ public class Camera {
 
     public void setRotation(float x, float y) {
         rotation.set(x, y, 0);
+        recalculate();
+    }
+
+    public Vector3f getTargetPosition() {
+        return targetPosition;
+    }
+
+    public void setTargetPosition(Vector3f targetPosition) {
+        this.targetPosition = targetPosition;
+    }
+
+    public void updatePosition() {
+        // calculate the new camera position using lerp
+        float lerpFactor = 0.002f; // adjust this value to control the speed of the camera movement
+        Vector3f newCameraPosition = new Vector3f();
+        newCameraPosition.x = MathUtils.lerp(position.x, targetPosition.x, lerpFactor);
+        newCameraPosition.y = MathUtils.lerp(position.y, targetPosition.y, lerpFactor);
+        newCameraPosition.z = MathUtils.lerp(position.z, targetPosition.z, lerpFactor);
+
+
+        // update the camera position
+        position.set(newCameraPosition);
+
+        // calculate the view matrix and projection matrix
         recalculate();
     }
 }
