@@ -77,7 +77,7 @@ public class Main {
                 .inlineTranslateObject(1f, 0.5f, 0.5f)); // ini buat atom
 
         objects.add(new DuckSpawner(ColorPalette.DUCK_SPAWNER_COLOR.getRGBA())
-                .inlineScaleObjectXYZ(0.1f)
+                .inlineScaleObjectXYZ(0.2f)
                 .inlineTranslateObject(-1f,1f,1f)); // ini untuk bebek
 
         objects.add(new SpaceShip(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
@@ -434,7 +434,7 @@ public class Main {
 
         // ini buat nembak nembak spaceshipnya
         if (window.isKeyPressed(GLFW_KEY_Z)){
-            objects.get(5).getChildObject().add(new Sphere(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
+            objects.get(5).getChildObject().add(new Sphere(ColorPalette.LASER_COLOR.getRGBA(), "tube")
                     .inlineScaleObject(0.02f,0.03f,0.02f)
                     .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
                     .inlineTranslateObject(objects.get(5).getCenterPoint().x,objects.get(5).getCenterPoint().y,objects.get(5).getCenterPoint().z));
@@ -456,6 +456,7 @@ public class Main {
         // ini buat bebek ku jalan
         if (window.isKeyPressed(GLFW_KEY_I)){
             objects.get(2).translateObject(0,0.01f,0);
+            objects.get(2).getChildObject().get(0).translateObject(0,0.01f,0);
             for (Object duck : objects.get(2).getChildObject()) {
                 duck.inlineTranslateObject(0,-0.01f,0);
             }
@@ -463,6 +464,7 @@ public class Main {
         }
         if (window.isKeyPressed(GLFW_KEY_K)){
             objects.get(2).translateObject(0,-0.01f,0);
+            objects.get(2).getChildObject().get(0).translateObject(0,-0.01f,0);
             for (Object duck : objects.get(2).getChildObject()) {
                 duck.inlineTranslateObject(0,0.01f,0);
             }
@@ -470,6 +472,7 @@ public class Main {
         }
         if (window.isKeyPressed(GLFW_KEY_J)){
             objects.get(2).translateObject(-0.01f,0,0);
+            objects.get(2).getChildObject().get(0).translateObject(-0.01f,0,0);
             for (Object duck : objects.get(2).getChildObject()) {
                 duck.inlineTranslateObject(0.01f,0f,0);
             }
@@ -477,6 +480,7 @@ public class Main {
         }
         if (window.isKeyPressed(GLFW_KEY_L)){
             objects.get(2).translateObject(0.01f,0,0);
+            objects.get(2).getChildObject().get(0).translateObject(0.01f,0,0);
             for (Object duck : objects.get(2).getChildObject()) {
                 duck.inlineTranslateObject(-0.01f,0f,0);
             }
@@ -516,18 +520,18 @@ public class Main {
             camera.addRotation(0, (float) Math.toRadians(rotateSpeedInDegrees));
         }
 
-        // ini buat zoom in dan out, also arrow left and right
+        // ini buat liat atas sama bawah, sama puter z axis
         if (window.isKeyPressed(GLFW_KEY_UP)) {
-            camera.moveForward(cameraSpeed);
+            camera.addRotation((float) Math.toRadians(rotateSpeedInDegrees), 0);
+        }
+        if (window.isKeyPressed(GLFW_KEY_LEFT)){
+            camera.addRotation(0, 0, (float) Math.toRadians(rotateSpeedInDegrees));
         }
         if (window.isKeyPressed(GLFW_KEY_DOWN)) {
-            camera.moveBackwards(cameraSpeed);
-        }
-        if (window.isKeyPressed(GLFW_KEY_LEFT)) {
             camera.addRotation((float) Math.toRadians(-1 * rotateSpeedInDegrees), 0);
         }
         if (window.isKeyPressed(GLFW_KEY_RIGHT)) {
-            camera.addRotation((float) Math.toRadians(rotateSpeedInDegrees), 0);
+            camera.addRotation(0, 0, (float) Math.toRadians(-1 * rotateSpeedInDegrees));
         }
 
         // ini pake scroll wheel for move forward and backwards
@@ -538,13 +542,6 @@ public class Main {
         }
         mouseInput.resetScroll();
 
-        // rotate the camera using page up and down, rotate the Z axis
-        if (window.isKeyPressed(GLFW_KEY_PAGE_UP)) {
-            camera.addRotation(0, 0, (float) Math.toRadians(-1 * rotateSpeedInDegrees));
-        }
-        if (window.isKeyPressed(GLFW_KEY_PAGE_DOWN)) {
-            camera.addRotation(0, 0, (float) Math.toRadians(rotateSpeedInDegrees));
-        }
 
 
     }
@@ -625,11 +622,6 @@ public class Main {
             // draw objects
             for (Object object : objects) {
                 object.draw(camera, projection);
-
-                // print star center point
-                if (object instanceof Star) {
-//                    System.out.println(object.getCenterPoint());
-                }
             }
 
             // for Duck Spawn Timer
@@ -638,6 +630,9 @@ public class Main {
 
             // for moving the duck
             for (Object child : objects.get(2).getChildObject()) {
+                if (!(child instanceof Duck)) {
+                    continue;
+                }
                 Duck duck = (Duck) child;
                 duck.inlineTranslateObject(0.01f,0f,0f);
             }
@@ -646,6 +641,9 @@ public class Main {
             for (Object object : objects) {
                 object.updateCenterPoint();
             }
+
+            // rotate the duckspawner
+            objects.get(2).getChildObject().get(0).selfRotate((float) Math.toRadians(0.1f), 1f, 1f, 1f);
 
             // for moving lasers
             for (Object laser : objects.get(5).getChildObject()) {

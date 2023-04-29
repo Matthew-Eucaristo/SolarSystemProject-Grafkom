@@ -110,8 +110,8 @@ public class Object extends ShaderProgram {
 
         // Draw the vertices
         // opsional
-        glLineWidth(1); // ketebalan garis
-        glPointSize(0); // bersar kecil vertex
+        glLineWidth(10); // ketebalan garis
+        glPointSize(10); // bersar kecil vertex
 
         // wajib
         // GL_LINE
@@ -120,7 +120,7 @@ public class Object extends ShaderProgram {
         // GL_TRIANGLES
         // GL_TRIANGLE_FAN
         // GL_POINT
-        glDrawArrays(GL_POLYGON,
+        glDrawArrays(GL_TRIANGLE_FAN,
                 0, // mau gambar dari index berapa (kalau semua dari 0)
                 vertices.size());
 
