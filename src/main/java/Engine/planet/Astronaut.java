@@ -16,6 +16,7 @@ public class Astronaut extends Sphere {
 
     public Astronaut(float[] rgba, String type) {
         super(rgba, type);
+        initFlame();
         initHead();
         initBody();
         initBag();
@@ -198,6 +199,7 @@ public class Astronaut extends Sphere {
         getChildObject().add(new Sphere(0.4f, 0.4f, 0.1f, ColorPalette.ASTRONAUT_BAG.getRGBA(), "tube")
                 .inlineScaleObject(1f, 1f, 0.5f)
                 .inlineTranslateObject(0f, -0.8f, -0.4f));
+
     }
 
     private void initArm() {
@@ -322,6 +324,20 @@ public class Astronaut extends Sphere {
 //                .inlineRotateObject((float) Math.toRadians(-30), 1f, 0f, 0f)
 //                .inlineRotateObject((float) Math.toRadians(-10), 0f, 0f, 1f)
                         .inlineTranslateObject(0.2f, -2.1f, 0.18f)
+        );
+    }
+    private void initFlame(){
+        getChildObject().add(new Sphere(0.1f, 0.1f, 0.1f, ColorPalette.SPACESHIP_FLAME.getRGBA(), "ellipticparaboloid")
+                .inlineScaleObject(0.2f, 0.2f, 0.09f)
+                .inlineRotateObject((float) Math.toRadians(270), 1f, 0f, 0f)
+                .inlineRotateObject((float) Math.toRadians(10), 0f, 0f, 1f)
+                .inlineTranslateObject(0.22f, -1.2f, -0.43f)
+        );
+        getChildObject().add(new Sphere(0.1f, 0.1f, 0.1f, ColorPalette.SPACESHIP_FLAME.getRGBA(), "ellipticparaboloid")
+                        .inlineScaleObject(0.2f, 0.2f, 0.09f)
+                        .inlineRotateObject((float) Math.toRadians(270), 1f, 0f, 0f)
+                        .inlineRotateObject((float) Math.toRadians(-10), 0f, 0f, 1f)
+                        .inlineTranslateObject(-0.22f, -1.2f, -0.43f)
         );
     }
 

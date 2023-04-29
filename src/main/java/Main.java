@@ -35,8 +35,11 @@ public class Main {
 
     private float flameX = 0,flameY,flameZ;
 
+    private float flameJetPack = 0;
+
+    private boolean flameMovement = true;
+
     private float spaceshipX,spaceshipY,spaceshipZ;
-    ArrayList<Float> flameXYZ ;
 
     private boolean swATM = false;
 
@@ -620,6 +623,23 @@ public class Main {
 //                    System.out.println("Camera has been initialized");
 //                }
 //            }
+            // gerak api jetpack
+            if(flameJetPack > 1){
+                flameMovement = false;
+            } else if (flameJetPack < 0.1) {
+                flameMovement = true;
+            }
+            if (flameMovement){
+                objects.get(6).getChildObject().get(0).inlineTranslateObject(0f,-0.015f,-0.015f);
+                objects.get(6).getChildObject().get(1).inlineTranslateObject(0f,-0.015f,-0.015f);
+                flameJetPack = flameJetPack + 0.015f;
+            }
+            else {
+                objects.get(6).getChildObject().get(0).inlineTranslateObject(0f,0.015f,0.015f);
+                objects.get(6).getChildObject().get(1).inlineTranslateObject(0f,0.015f,0.015f);
+                flameJetPack = flameJetPack - 0.015f;
+            }
+
 
             // rotasi semua
             // revolusi matahari
