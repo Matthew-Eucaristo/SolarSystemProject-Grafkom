@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="buat sabuk di astronaut">
+    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="astronot udah punya telapak tangan">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Curve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Curve.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Astronaut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Astronaut.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/ColorPalette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/ColorPalette.java" afterDir="false" />
     </list>
@@ -176,14 +175,7 @@
       <option name="project" value="LOCAL" />
       <updated>1682782721134</updated>
     </task>
-    <task id="LOCAL-00015" summary="buat sabuk di astronaut">
-      <created>1682786571099</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1682786571099</updated>
-    </task>
-    <option name="localTasksCounter" value="16" />
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -212,8 +204,7 @@
     <MESSAGE value="- randomly move the duckspawner&#10;- ganti keybinding spaceship jadi i,j,k,l&#10;- add ease in for camera initialization&#10;- astronaut can move now" />
     <MESSAGE value="lanjutan commit sebeelumnya" />
     <MESSAGE value="spawntime lebih fair daripada sblmnya" />
-    <MESSAGE value="buat sabuk di astronaut" />
-    <option name="LAST_COMMIT_MESSAGE" value="buat sabuk di astronaut" />
+    <option name="LAST_COMMIT_MESSAGE" value="spawntime lebih fair daripada sblmnya" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
