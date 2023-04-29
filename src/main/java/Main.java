@@ -49,10 +49,12 @@ public class Main {
     private boolean isLost = false;
 
     // for sound
-    public static Clip mainMusicClip, atomOrbitMusic, duckSound,spaceshipSound, loseMusic;
+    public static Clip mainMusicClip, atomOrbitMusic, duckSound, sheeSound, loseMusic;
 
     private Random random = new Random();
+    private int astronautAppearTimer = 0;
     private boolean initialized = false;
+    private boolean astronautAppearMusicShouldPlay = true;
     private int loseTimer = 0;
 
 
@@ -300,7 +302,16 @@ public class Main {
             saturn.moveHourglass();
         }
 
-        // ini buat bebek ku jalan
+        // sheesh music for astronaut appearing
+        if (astronautAppearTimer < 750){
+            astronautAppearTimer +=1;
+            return;
+        } else if (astronautAppearMusicShouldPlay){
+            initSheeSound();
+            astronautAppearMusicShouldPlay = false;
+        }
+
+        // ini buat jalanya spaceship
         if (window.isKeyPressed(GLFW_KEY_I)){
             spaceshipX = objects.get(3).getCenterPoint().get(0);
             spaceshipY = objects.get(3).getCenterPoint().get(1);
@@ -417,12 +428,6 @@ public class Main {
                 objects.get(3).getChildObject().get(6).inlineTranslateObject(
                         0.02f,0,0);
             }
-            initSpaceshipAniSound();
-        }
-        if (window.isKeyReleased(GLFW_KEY_L)){
-            if (spaceshipSound != null && spaceshipSound.isOpen()) {
-                spaceshipSound.stop();
-            }
         }
 
         //temporary "reset" for saturn
@@ -513,27 +518,27 @@ public class Main {
 
     }
 
-    private void initSpaceshipAniSound() {
+    private void initSheeSound() {
 
-        if (spaceshipSound != null && spaceshipSound.isRunning()) {
+        if (sheeSound != null && sheeSound.isRunning()) {
             return;
         }
 
-        if (spaceshipSound != null && spaceshipSound.isOpen()) {
-            spaceshipSound.close();
+        if (sheeSound != null && sheeSound.isOpen()) {
+            sheeSound.close();
         }
 
 
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/java/assets/sound/Sheesh.wav").getAbsoluteFile());
-            spaceshipSound = AudioSystem.getClip();
-            spaceshipSound.open(audioInputStream);
+            sheeSound = AudioSystem.getClip();
+            sheeSound.open(audioInputStream);
 
-            FloatControl gainControl = (FloatControl) spaceshipSound.getControl(FloatControl.Type.MASTER_GAIN);
+            FloatControl gainControl = (FloatControl) sheeSound.getControl(FloatControl.Type.MASTER_GAIN);
             gainControl.setValue(-9.5f);
 
 
-            spaceshipSound.start();
+            sheeSound.start();
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
@@ -627,7 +632,7 @@ public class Main {
                     // initiate lose method
                     lose();
 
-                    initSpaceshipAniSound();
+                    initSheeSound();
                     break; // exit inner while loop
                 }
             }
@@ -710,6 +715,7 @@ public class Main {
         initLoseMusic();
 
         isLost = true;
+
     }
 
 
