@@ -9,6 +9,9 @@ Simple Solar System visualization school-project using Java's LWJGL.
 We recommend using Amazon Coretto `JDK 18`.  
 The easiest way is using JetBrain's Intellij Idea and clone this repo.
 
+Please note that we highly recommend the use of dedicated graphic card.  
+The application uses tons of graphic resources.
+
 ## Contributing
 Even though this is a school-project, contributions are welcomed ! 😊
 
