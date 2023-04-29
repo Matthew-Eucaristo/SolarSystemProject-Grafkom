@@ -9,7 +9,7 @@ import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.glfw.GLFW.*;
@@ -182,7 +182,7 @@ public class Main {
 
             // rotate Quaso
             Quaso quaso = (Quaso) objects.get(4);
-            quaso.rotateObject((float)Math.toRadians(0.25),-1f,1f,1f);
+            quaso.rotateObject((float)Math.toRadians(0.25),1f,1f,1f);
             quaso.selfRotate((float)Math.toRadians(.85),1f,1f,1f);
 
             // rotate Saturn
@@ -439,6 +439,11 @@ public class Main {
                     .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
                     .inlineTranslateObject(objects.get(5).getCenterPoint().x,objects.get(5).getCenterPoint().y,objects.get(5).getCenterPoint().z));
 
+            // delete the first laser if max
+            if (objects.get(5).getChildObject().size() > 200){
+                // delete the first laser
+                objects.get(5).getChildObject().remove(0);
+            }
         }
 
         if (window.isKeyPressed(GLFW_KEY_R)) {
@@ -645,6 +650,21 @@ public class Main {
             // for moving lasers
             for (Object laser : objects.get(5).getChildObject()) {
                 laser.inlineTranslateObject(-0.01f,0f,0f);
+            }
+
+            // for checking the laser collision with the duck
+            for (Object laser : objects.get(5).getChildObject()) {
+                Iterator<Object> duckIterator = objects.get(2).getChildObject().iterator();
+                while (duckIterator.hasNext()) {
+                    Object duckObject = duckIterator.next();
+                    if (laser.checkCollision(duckObject)) {
+                        System.out.println("Laser hit the duck");
+                        // delete duck
+                        duckIterator.remove();
+                        initDuckAniSound();
+                        break; // exit inner while loop
+                    }
+                }
             }
 
             // restore state

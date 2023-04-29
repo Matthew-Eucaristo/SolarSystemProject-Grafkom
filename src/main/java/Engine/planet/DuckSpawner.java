@@ -26,7 +26,7 @@ public class DuckSpawner extends Sphere {
     }
 
     private void spawnDuck() {
-        if (getChildObject().size() > 10){
+        if (getChildObject().size() > 5){
             getChildObject().remove(0);
         }
         getChildObject().add(new Duck()
