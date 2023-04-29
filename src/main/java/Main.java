@@ -308,12 +308,12 @@ public class Main {
 //                    .inlineScaleObject(0.1f,0.2f,0.1f)
 //                    .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
 //                    .inlineTranslateObject(spaceshipX - 0.02f,spaceshipY,spaceshipZ));
-            objects.get(3).inlineTranslateObject(0,0.02f,0);
-            objects.get(5).inlineTranslateObject(0f,0.02f,0f);
+            objects.get(3).inlineTranslateObject(0,0.05f,0);
+            objects.get(5).inlineTranslateObject(0f,0.05f,0f);
 //            flameX = flameX - 0.02f;
 
             for (Object laser : objects.get(5).getChildObject()) {
-                laser.inlineTranslateObject(0f,-0.02f,0f);
+                laser.inlineTranslateObject(0f,-0.05f,0f);
             }
 
             if (flameX == 0){
@@ -338,12 +338,12 @@ public class Main {
 //                    .inlineScaleObject(0.1f,0.2f,0.1f)
 //                    .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
 //                    .inlineTranslateObject(spaceshipX - 0.02f,spaceshipY,spaceshipZ));
-            objects.get(3).inlineTranslateObject(0,-0.02f,0);
-            objects.get(5).inlineTranslateObject(0,-0.02f,0f);
+            objects.get(3).inlineTranslateObject(0,-0.05f,0);
+            objects.get(5).inlineTranslateObject(0,-0.05f,0f);
 //            flameX = flameX - 0.02f;
 
             for (Object laser : objects.get(5).getChildObject()) {
-                laser.inlineTranslateObject(0f,0.02f,0f);
+                laser.inlineTranslateObject(0f,0.05f,0f);
             }
 
             if (flameX == 0){
@@ -367,11 +367,11 @@ public class Main {
 //                    .inlineScaleObject(0.1f,0.2f,0.1f)
 //                    .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
 //                    .inlineTranslateObject(spaceshipX - 0.02f,spaceshipY,spaceshipZ));
-            objects.get(3).inlineTranslateObject(-0.02f,0,0);
-            objects.get(5).inlineTranslateObject(-0.02f,0f,0f);
+            objects.get(3).inlineTranslateObject(-0.05f,0,0);
+            objects.get(5).inlineTranslateObject(-0.05f,0f,0f);
 //            flameX = flameX - 0.02f;
             for (Object laser : objects.get(5).getChildObject()) {
-                laser.inlineTranslateObject(0.02f,0f,0f);
+                laser.inlineTranslateObject(0.05f,0f,0f);
             }
 
             if (flameX == 0){
@@ -395,12 +395,12 @@ public class Main {
 //                    .inlineScaleObject(0.1f,0.2f,0.1f)
 //                    .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
 //                    .inlineTranslateObject(spaceshipX - 0.02f,spaceshipY,spaceshipZ));
-            objects.get(3).inlineTranslateObject(0.02f,0,0);
-            objects.get(5).inlineTranslateObject(0.02f,0f,0f);
+            objects.get(3).inlineTranslateObject(0.05f,0,0);
+            objects.get(5).inlineTranslateObject(0.05f,0f,0f);
 //            flameX = flameX - 0.02f;
 
             for (Object laser : objects.get(5).getChildObject()) {
-                laser.inlineTranslateObject(-0.02f,0f,0f);
+                laser.inlineTranslateObject(-0.05f,0f,0f);
             }
 
             if (flameX == 0){
@@ -608,18 +608,18 @@ public class Main {
             }
 
             // initialize the screen
-            if (!initialized){
-                // zoom out the camera with smooth movement
-                float acceptedOffset = 0.3f;
-                Vector3f cameraTargetPosition = new Vector3f(0,0,12);
-                camera.setTargetPosition(cameraTargetPosition);
-                camera.updatePosition();
-
-                if (camera.getPosition().z >= (cameraTargetPosition.z -acceptedOffset)){
-                    initialized = true;
-                    System.out.println("Camera has been initialized");
-                }
-            }
+//            if (!initialized){
+//                // zoom out the camera with smooth movement
+//                float acceptedOffset = 0.3f;
+//                Vector3f cameraTargetPosition = new Vector3f(0,0,12);
+//                camera.setTargetPosition(cameraTargetPosition);
+//                camera.updatePosition();
+//
+//                if (camera.getPosition().z >= (cameraTargetPosition.z -acceptedOffset)){
+//                    initialized = true;
+//                    System.out.println("Camera has been initialized");
+//                }
+//            }
 
             // rotasi semua
             // revolusi matahari

@@ -143,10 +143,22 @@ public class Astronaut extends Sphere {
                 .inlineRotateObject((float) Math.toRadians(-30), 0f, 0f, 1f)
                 .inlineTranslateObject(-0.45f, -0.8f, 0f));
         getChildObject().add(new Sphere(0.5f, 0.5f, 0.5f, ColorPalette.ASTRONAUT_ARMS.getRGBA(), "tube")
-                .inlineScaleObject(0.3f, 0.5f, 0.3f)
+                .inlineScaleObject(0.3f, 0.4f, 0.3f)
                 .inlineRotateObject((float) Math.toRadians(-70), 1f, 0f, 0f)
                 .inlineRotateObject((float) Math.toRadians(-10), 0f, 0f, 1f)
                 .inlineTranslateObject(-0.55f, -1f, 0.2f));
+
+        //tangan kiri
+        getChildObject().add(new Sphere(0.5f, 0.5f, 0.5f, ColorPalette.ASTRONAUT_SUIT.getRGBA(), "tube")
+                .inlineScaleObject(0.3f, 0.4f, 0.3f)
+                .inlineRotateObject((float) Math.toRadians(-10), 1f, 0f, 0f)
+                .inlineRotateObject((float) Math.toRadians(30), 0f, 0f, 1f)
+                .inlineTranslateObject(0.45f, -0.8f, 0f));
+        getChildObject().add(new Sphere(0.5f, 0.5f, 0.5f, ColorPalette.ASTRONAUT_ARMS.getRGBA(), "tube")
+                .inlineScaleObject(0.3f, 0.4f, 0.3f)
+                .inlineRotateObject((float) Math.toRadians(-70), 1f, 0f, 0f)
+                .inlineRotateObject((float) Math.toRadians(10), 0f, 0f, 1f)
+                .inlineTranslateObject(0.55f, -1f, 0.2f));
 
         //bahu kanan
         getChildObject().add(new Sphere(0.25f, 0.25f, 0.25f, ColorPalette.ASTRONAUT_SUIT.getRGBA(), "ellipsoid")
@@ -159,17 +171,51 @@ public class Astronaut extends Sphere {
                 .inlineTranslateObject(0.37f, -0.6f, -0.04f)
         );
 
-        //tangan kiri
+//        //siku kanan
+//        getChildObject().add(new Sphere(0.27f, 0.27f, 0.27f, ColorPalette.ASTRONAUT_SUIT.getRGBA(), "ellipsoid")
+//                .inlineScaleObject(0.5f, 0.5f, 0.6f)
+//                .inlineTranslateObject(-0.58f, -0.83f, 0f)
+//        );
+//
+//        //siku kir
+//        getChildObject().add(new Sphere(0.27f, 0.27f, 0.27f, ColorPalette.ASTRONAUT_SUIT.getRGBA(), "ellipsoid")
+//                .inlineScaleObject(0.5f, 0.5f, 0.6f)
+//                .inlineTranslateObject(0.58f, -0.83f, 0f)
+//        );
+
+        initPalm();
+    }
+
+    private void initPalm() {
+        // telapak kanan
         getChildObject().add(new Sphere(0.5f, 0.5f, 0.5f, ColorPalette.ASTRONAUT_SUIT.getRGBA(), "tube")
-                .inlineScaleObject(0.3f, 0.5f, 0.3f)
-                .inlineRotateObject((float) Math.toRadians(-10), 1f, 0f, 0f)
-                .inlineRotateObject((float) Math.toRadians(30), 0f, 0f, 1f)
-                .inlineTranslateObject(0.45f, -0.8f, 0f));
-        getChildObject().add(new Sphere(0.5f, 0.5f, 0.5f, ColorPalette.ASTRONAUT_ARMS.getRGBA(), "tube")
-                .inlineScaleObject(0.3f, 0.5f, 0.3f)
+                .inlineScaleObject(0.31f, 0.17f, 0.31f)
+                .inlineRotateObject((float) Math.toRadians(-70), 1f, 0f, 0f)
+                .inlineRotateObject((float) Math.toRadians(-10), 0f, 0f, 1f)
+                .inlineTranslateObject(-0.565f, -1.09f, 0.45f));
+        getChildObject().add(new Sphere(0.5f, 0.5f, 0.5f, ColorPalette.ASTRONAUT_SUIT.getRGBA(), "ellipsoid")
+                .inlineScaleObject(0.32f, 0.31f, 0.32f)
+                .inlineTranslateObject(-0.568f, -1.11f, 0.5f));
+        getChildObject().add(new Sphere(0.1f,0.1f,0.05f, ColorPalette.ASTRONAUT_SUIT.getRGBA(), "ellipticparaboloid")
+                .inlineScaleObject(0.2f,0.14f,0.08f)
+                .inlineRotateObject((float) Math.toRadians(130), 1f, 0f, 0f)
+//                .inlineRotateObject((float) Math.toRadians(-10), 0f, 0f, 1f)
+                .inlineTranslateObject(-0.56f,-0.87f,0.58f));
+
+        // telapak kiri
+        getChildObject().add(new Sphere(0.5f, 0.5f, 0.5f, ColorPalette.ASTRONAUT_SUIT.getRGBA(), "tube")
+                .inlineScaleObject(0.31f, 0.17f, 0.31f)
                 .inlineRotateObject((float) Math.toRadians(-70), 1f, 0f, 0f)
                 .inlineRotateObject((float) Math.toRadians(10), 0f, 0f, 1f)
-                .inlineTranslateObject(0.55f, -1f, 0.2f));
+                .inlineTranslateObject(0.565f, -1.09f, 0.45f));
+        getChildObject().add(new Sphere(0.5f, 0.5f, 0.5f, ColorPalette.ASTRONAUT_SUIT.getRGBA(), "ellipsoid")
+                .inlineScaleObject(0.32f, 0.31f, 0.32f)
+                .inlineTranslateObject(0.568f, -1.11f, 0.5f));
+        getChildObject().add(new Sphere(0.1f,0.1f,0.05f, ColorPalette.ASTRONAUT_SUIT.getRGBA(), "ellipticparaboloid")
+                .inlineScaleObject(0.2f,0.14f,0.08f)
+                .inlineRotateObject((float) Math.toRadians(130), 1f, 0f, 0f)
+//                .inlineRotateObject((float) Math.toRadians(-10), 0f, 0f, 1f)
+                .inlineTranslateObject(0.56f,-0.87f,0.58f));
     }
 
     private void initLegs() {
