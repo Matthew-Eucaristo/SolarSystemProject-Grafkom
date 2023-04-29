@@ -150,7 +150,7 @@ public class Main {
         mainMusicClip.open(audioInputStream);
         FloatControl gainControl = (FloatControl) mainMusicClip.getControl(FloatControl.Type.MASTER_GAIN);
         gainControl.setValue(-10.5f);
-        mainMusicClip.loop(0);
+        mainMusicClip.loop(99);
 
         System.out.println(mainMusicClip.getFrameLength() + "|" + mainMusicClip.getFramePosition());
         mainMusicClip.start();

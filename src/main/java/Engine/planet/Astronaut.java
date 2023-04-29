@@ -20,6 +20,44 @@ public class Astronaut extends Sphere {
         initLegs();
         initArm();
         initFlag();
+        initBelt();
+    }
+
+    private void initBelt() {
+        // kotak
+        getChildObject().add(new Sphere(ColorPalette.ASTRONAUT_BOX.getRGBA(), "box")
+                .inlineScaleObjectXYZ(0.5f)
+                .inlineScaleObject(1.3f,0.8f,0.3f)
+                .inlineTranslateObject(0.0f, -0.95f, 0.3f)
+        );
+        // sabuk belakang ke jetpack
+        getChildObject().add(new Sphere(ColorPalette.ASTRONAUT_BELT.getRGBA(), "tube")
+                .inlineScaleObjectXYZ(0.8f)
+                .inlineScaleObject(1.3f,0.1f,1.3f)
+                .inlineTranslateObject(0.0f, -0.95f, -0.3f)
+        );
+        // sabuk ke depan
+        getChildObject().add(new Sphere(ColorPalette.ASTRONAUT_BELT.getRGBA(), "tube")
+                .inlineScaleObjectXYZ(0.8f)
+                .inlineScaleObject(1.1f,0.1f,0.7f)
+                .inlineTranslateObject(0.0f, -0.95f, 0.05f)
+        );
+        // bola kecil di kotak
+        getChildObject().add(new Sphere(ColorPalette.ASTRONAUT_ORB.getRGBA(), "ellipsoid")
+                .inlineScaleObjectXYZ(0.1f)
+                .inlineTranslateObject(0.08f, -0.95f, 0.35f)
+        );
+        // antena kecil di kotak
+        getChildObject().add(new Sphere(ColorPalette.ASTRONAUT_ANTENNA.getRGBA(), "tube")
+                .inlineScaleObjectXYZ(0.3f)
+                .inlineScaleObject(0.1f,0.3f,0.1f)
+                .inlineTranslateObject(-0.07f, -0.85f, 0.3f)
+        );
+        getChildObject().add(new Sphere(ColorPalette.ASTRONAUT_ANTENNA.getRGBA(), "tube")
+                .inlineScaleObjectXYZ(0.3f)
+                .inlineScaleObject(0.1f,0.5f,0.1f)
+                .inlineTranslateObject(-0.12f, -0.85f, 0.3f)
+        );
     }
 
     public void executeNewPlaceTimer() {
@@ -65,7 +103,7 @@ public class Astronaut extends Sphere {
                 .inlineRotateObject((float) Math.toRadians(180), 0f, 1f, 0f)
                 .inlineRotateObject((float) Math.toRadians(90), 1f, 0f, 0f)
                 .inlineRotateObject((float) Math.toRadians(90), 0f, 0f, 1f)
-                .inlineTranslateObject(0.2f, -0.6f, 0.26f)
+                .inlineTranslateObject(0.2f, -0.6f, 0.265f)
         );
         getChildObject().add(new Sphere(255f, 255f, 255f, 255f, "box")
                 .inlineScaleObjectXYZ(0.2f)
@@ -73,7 +111,7 @@ public class Astronaut extends Sphere {
                 .inlineRotateObject((float) Math.toRadians(180), 0f, 1f, 0f)
                 .inlineRotateObject((float) Math.toRadians(90), 1f, 0f, 0f)
                 .inlineRotateObject((float) Math.toRadians(90), 0f, 0f, 1f)
-                .inlineTranslateObject(0.2f, -0.622f, 0.26f)
+                .inlineTranslateObject(0.2f, -0.622f, 0.265f)
         );
     }
 
