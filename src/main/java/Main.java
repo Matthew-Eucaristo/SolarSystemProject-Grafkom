@@ -77,8 +77,8 @@ public class Main {
                 .inlineTranslateObject(1f, 0.5f, 0.5f)); // ini buat atom
 
         objects.add(new DuckSpawner(ColorPalette.DUCK_SPAWNER_COLOR.getRGBA())
-                .inlineScaleObjectXYZ(0.2f)
-                .inlineTranslateObject(-1f,1f,1f)); // ini untuk bebek
+                .inlineScaleObjectXYZ(0.8f)
+                .inlineTranslateObject(-10f,1f,1f)); // ini untuk bebek
 
         objects.add(new SpaceShip(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
                 .inlineScaleObject(0.1f,0.2f,0.1f)
@@ -94,10 +94,7 @@ public class Main {
 
 
 
-
-
-
-
+        objects.add(new Object(255f,255f,255f,255f)); // place holder
 
 
         objects.add(new Laser(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
@@ -106,8 +103,10 @@ public class Main {
                 .inlineTranslateObject(0.5f,1f,1f));
 
         objects.add(new Astronaut(ColorPalette.ASTRONAUT_SUIT.getRGBA(),"ellipsoid")
-                .inlineScaleObject(2f,2f,2f)
-                .inlineTranslateObject(0f,3f,3f));
+                        .inlineScaleObjectXYZ(5f)
+                        .inlineRotateObject((float) Math.toRadians(45),1f,0f,0f)
+                .inlineTranslateObject(0f,6f,-7f));
+
 
 
 
@@ -154,6 +153,7 @@ public class Main {
         mainMusicClip.open(audioInputStream);
         FloatControl gainControl = (FloatControl) mainMusicClip.getControl(FloatControl.Type.MASTER_GAIN);
         gainControl.setValue(-10.5f);
+        mainMusicClip.loop(0);
 
         System.out.println(mainMusicClip.getFrameLength() + "|" + mainMusicClip.getFramePosition());
         mainMusicClip.start();
@@ -162,35 +162,6 @@ public class Main {
     public void input() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         // ini buat input handle dari mouse
         // ini nanti rencana untuk play animation dari class" untuk run method animation nya
-
-
-        // ini yang handle input dari keyboard
-        if (window.isKeyPressed(GLFW_KEY_Y)){
-            Quaso quaso = (Quaso) objects.get(4);
-            quaso.eatQuaso();
-        }
-
-        // ini buat rotate all objects
-        if (window.isKeyPressed(GLFW_KEY_F)) {
-            // revolusi matahari
-            objects.get(0).rotateObject((float) Math.toRadians(1), 0, 1, 0);
-
-
-            // rotate earth untuk rotate semua child earth (bulan)
-            Earth earth = (Earth) objects.get(0).getChildObject().get(0);
-            earth.selfRotate((float)Math.toRadians(0.25),1f,1f,1f);
-
-            // rotate Quaso
-            Quaso quaso = (Quaso) objects.get(4);
-            quaso.rotateObject((float)Math.toRadians(0.25),1f,1f,1f);
-            quaso.selfRotate((float)Math.toRadians(.85),1f,1f,1f);
-
-            // rotate Saturn
-            Saturn saturn = (Saturn) objects.get(0).getChildObject().get(1);
-            saturn.selfRotate((float) Math.toRadians(1), 0, 1, 0);
-            saturn.moveHourglass();
-        }
-
 
         // function atom
         if (window.isKeyPressed(GLFW_KEY_T)&& !window.isKeyPressed(GLFW_KEY_F)) {
@@ -410,6 +381,11 @@ public class Main {
             initSpaceshipAniSound();
 
         }
+        if (window.isKeyReleased(GLFW_KEY_RIGHT_BRACKET)){
+            if (spaceshipSound != null && spaceshipSound.isOpen()) {
+                spaceshipSound.stop();
+            }
+        }
 
 
         // update spaceship flame
@@ -460,7 +436,6 @@ public class Main {
             for (Object duck : objects.get(2).getChildObject()) {
                 duck.inlineTranslateObject(0,-0.01f,0);
             }
-            initDuckAniSound();
         }
         if (window.isKeyPressed(GLFW_KEY_K)){
             objects.get(2).translateObject(0,-0.01f,0);
@@ -468,7 +443,6 @@ public class Main {
             for (Object duck : objects.get(2).getChildObject()) {
                 duck.inlineTranslateObject(0,0.01f,0);
             }
-            initDuckAniSound();
         }
         if (window.isKeyPressed(GLFW_KEY_J)){
             objects.get(2).translateObject(-0.01f,0,0);
@@ -476,7 +450,6 @@ public class Main {
             for (Object duck : objects.get(2).getChildObject()) {
                 duck.inlineTranslateObject(0.01f,0f,0);
             }
-            initDuckAniSound();
         }
         if (window.isKeyPressed(GLFW_KEY_L)){
             objects.get(2).translateObject(0.01f,0,0);
@@ -484,7 +457,6 @@ public class Main {
             for (Object duck : objects.get(2).getChildObject()) {
                 duck.inlineTranslateObject(-0.01f,0f,0);
             }
-            initDuckAniSound();
         }
 
         //temporary "reset" for saturn
@@ -593,10 +565,9 @@ public class Main {
             spaceshipSound.open(audioInputStream);
 
             FloatControl gainControl = (FloatControl) spaceshipSound.getControl(FloatControl.Type.MASTER_GAIN);
-            gainControl.setValue(0.5f);
+            gainControl.setValue(-9.5f);
 
             System.out.println(spaceshipSound.getFrameLength() + "|" + spaceshipSound.getFramePosition());
-            spaceshipSound.loop(0);
 
             spaceshipSound.start();
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
@@ -655,7 +626,7 @@ public class Main {
                 Iterator<Object> duckIterator = objects.get(2).getChildObject().iterator();
                 while (duckIterator.hasNext()) {
                     Object duckObject = duckIterator.next();
-                    if (laser.checkCollision(duckObject)) {
+                    if (laser.checkCollision(duckObject) && duckObject instanceof Duck) {
                         System.out.println("Laser hit the duck");
                         // delete duck
                         duckIterator.remove();
@@ -664,6 +635,20 @@ public class Main {
                     }
                 }
             }
+
+            // rotasi semua
+            // revolusi matahari
+            objects.get(0).rotateObject((float) Math.toRadians(0.2), 0, 1, 0);
+
+            // rotate earth untuk rotate semua child earth (bulan)
+            Earth earth = (Earth) objects.get(0).getChildObject().get(0);
+            earth.selfRotate((float)Math.toRadians(0.15),1f,1f,1f);
+
+            // rotate Saturn
+            Saturn saturn = (Saturn) objects.get(0).getChildObject().get(1);
+            saturn.selfRotate((float) Math.toRadians(-0.35), 0, 1, 0);
+            saturn.moveHourglass();
+
 
             // restore state
             glDisableVertexAttribArray(0);

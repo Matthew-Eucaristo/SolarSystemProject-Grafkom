@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="">
+    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="- ganti arrow key keybinding biar lebih bener liatnya, ganti pageup and down juga&#10;- add instanceof guard for the Duck&#10;- add spawner decoration&#10;- ganti ke GL_TRIANGLE_FAN rather than GL_POLYGON&#10;- fix the box (cube) so that all side is filled properly">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Object.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Astronaut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Astronaut.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/ColorPalette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/ColorPalette.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/DuckSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/DuckSpawner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/planet/Saturn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/planet/Saturn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682736673194</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="- ganti arrow key keybinding biar lebih bener liatnya, ganti pageup and down juga&#10;- add instanceof guard for the Duck&#10;- add spawner decoration&#10;- ganti ke GL_TRIANGLE_FAN rather than GL_POLYGON&#10;- fix the box (cube) so that all side is filled properly">
+      <created>1682770880734</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1682770880734</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -167,7 +174,8 @@
     <MESSAGE value="TERNYATA KETINGGAL SATU METHOD WOEEEE&#10;KETINGGAL SATU METHODDDDDDD&#10;KETINGGALAN SATU METHOD BUAT UPDATE CENTERPOINT&#10;OMGGGG&#10;DR KMRN UPDATE MANUALLLL&#10;OMG&#10;&#10;ANYWAY UDAH BENER SEMUA URUSAN ROTASI&#10;&#10;sama ganti helicopter jadi atom rotasi" />
     <MESSAGE value="Hourglass done + animasi, nambah top hat biar Saturn keliatan lebih kayak seorang &quot;distinguished gentleman&quot;." />
     <MESSAGE value="- laser spaceship sudah bisa delete&#10;- sudah bisa collision detect antara bebek sama laser, tapi tetap tembus, laser tidak ke delete" />
-    <option name="LAST_COMMIT_MESSAGE" value="- laser spaceship sudah bisa delete&#10;- sudah bisa collision detect antara bebek sama laser, tapi tetap tembus, laser tidak ke delete" />
+    <MESSAGE value="- ganti arrow key keybinding biar lebih bener liatnya, ganti pageup and down juga&#10;- add instanceof guard for the Duck&#10;- add spawner decoration&#10;- ganti ke GL_TRIANGLE_FAN rather than GL_POLYGON&#10;- fix the box (cube) so that all side is filled properly" />
+    <option name="LAST_COMMIT_MESSAGE" value="- ganti arrow key keybinding biar lebih bener liatnya, ganti pageup and down juga&#10;- add instanceof guard for the Duck&#10;- add spawner decoration&#10;- ganti ke GL_TRIANGLE_FAN rather than GL_POLYGON&#10;- fix the box (cube) so that all side is filled properly" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

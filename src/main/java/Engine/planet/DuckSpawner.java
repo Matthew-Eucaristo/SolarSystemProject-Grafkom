@@ -148,7 +148,7 @@ public class DuckSpawner extends Sphere {
         if (getChildObject().size() > 5){
             getChildObject().remove(1);
         }
-        getChildObject().add(1,new Duck()
+        getChildObject().add(new Duck()
                 .inlineScaleObjectXYZ(0.1f)
                 .inlineRotateObject((float)Math.toRadians(180),0f,1f,0f)
                 .inlineTranslateObject(getCenterPoint().x, getCenterPoint().y, getCenterPoint().z)

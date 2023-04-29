@@ -392,19 +392,20 @@ public class Saturn extends Sphere {
     }
 
     public void moveHourglass() {
-        Random random = new Random();
-
-        int ran = random.nextInt(3);
-
-        getChildObject().get(getChildObject().size() - 1).scaleObjectXYZ(0.99f);
-        switch (ran) {
-            case 0:
-                getChildObject().get(getChildObject().size() - 1).selfRotate((float) Math.toRadians(1f), 1, 0, 0);
-            case 1:
-                getChildObject().get(getChildObject().size() - 1).selfRotate((float) Math.toRadians(1f), 0, 1, 0);
-            case 2:
-                getChildObject().get(getChildObject().size() - 1).selfRotate((float) Math.toRadians(1f), 0, 0, 1);
-        }
+        getChildObject().get(getChildObject().size() - 1).selfRotate((float) Math.toRadians(0.1f), 0, 1, 1);
+//        Random random = new Random();
+//
+//        int ran = random.nextInt(3);
+//
+//        getChildObject().get(getChildObject().size() - 1).scaleObjectXYZ(0.99f);
+//        switch (ran) {
+//            case 0:
+//                getChildObject().get(getChildObject().size() - 1).selfRotate((float) Math.toRadians(1f), 1, 0, 0);
+//            case 1:
+//                getChildObject().get(getChildObject().size() - 1).selfRotate((float) Math.toRadians(1f), 0, 1, 0);
+//            case 2:
+//                getChildObject().get(getChildObject().size() - 1).selfRotate((float) Math.toRadians(1f), 0, 0, 1);
+//        }
     }
 
     public void moveTophat() {
