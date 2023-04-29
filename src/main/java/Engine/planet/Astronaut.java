@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 import static Engine.MathUtils.lerp;
+import Engine.Star;
 
 public class Astronaut extends Sphere {
     private float newPlaceTimer = 0f;
@@ -26,11 +27,12 @@ public class Astronaut extends Sphere {
         initBelt();
         initBoots();
         initAntenna();
-        initVisor();
+        initMic();
     }
 
-    private void initVisor() {
-        // create visor using Bezier Curve
+
+    private void initMic() {
+        // create mic using Bezier Curve
         Vector3f[] controlPoints = new Vector3f[3];
         float y = 0.16f;
         float x = 0.43f;
@@ -40,6 +42,13 @@ public class Astronaut extends Sphere {
         controlPoints[2] = new Vector3f(0, y-0.2f, 2*z);
 
         getChildObject().add(new Curve(List.of(controlPoints), ColorPalette.ASTRONAUT_ANTENNA.getRGBA() ));
+
+        // create a little box to represent the microphone
+        getChildObject().add(new Sphere(ColorPalette.ASTRONAUT_ANTENNA.getRGBA(), "box")
+                .inlineScaleObjectXYZ(0.9f)
+                .inlineScaleObject(0.2f,0.1f,0.1f)
+                .inlineTranslateObject(0f, y-0.2f, 2*z)
+        );
     }
 
     private void initAntenna() {

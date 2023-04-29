@@ -15,6 +15,7 @@ public class DuckSpawner extends Sphere {
     private float spawnTimer = 0f;
     private float newPlaceTimer = 0f;
     private float newPlaceTime = 200f;
+    private Random random = new Random();
 
     private Vector3f newPlace;
     public DuckSpawner(float[] rgba) {
@@ -181,10 +182,28 @@ public class DuckSpawner extends Sphere {
             // spawn duck
             spawnDuck();
 
+            // chances to spawn bomb
+            if (Math.random() < 0.4) {
+                spawnBomb();
+            }
+
             // reset spawn timer
             spawnTimer = 0f;
         }
         spawnTimer += 1;
+    }
+
+    private void spawnBomb() {
+        // bomb is using the Moon object
+        if (getChildObject().size() > 15){
+            getChildObject().remove(1);
+        }
+
+        getChildObject().add(new Moon(ColorPalette.MOON_COLOR.getRGBA())
+                .inlineScaleObjectXYZ(0.3f)
+                .inlineRotateObject((float)Math.toRadians(180),0f,1f,0f)
+                .inlineTranslateObject(getCenterPoint().x, getCenterPoint().y, getCenterPoint().z)
+        );
     }
 
     private void spawnDuck() {
@@ -192,7 +211,6 @@ public class DuckSpawner extends Sphere {
             getChildObject().remove(1);
         }
 
-        System.out.println(spawnTime);
         spawnTime -= 10f;
         if (spawnTime < 150f) {
             spawnTime = 150f;

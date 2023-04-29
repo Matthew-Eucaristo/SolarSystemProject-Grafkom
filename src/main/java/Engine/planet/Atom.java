@@ -41,7 +41,6 @@ public class Atom extends Sphere {
         createWind();
         createWind();
         getChildObject().get(1).rotateObject((float) Math.toRadians(1),0,0,1);
-        System.out.println();
 
     }
     private void createCircle(float atomRingScale){

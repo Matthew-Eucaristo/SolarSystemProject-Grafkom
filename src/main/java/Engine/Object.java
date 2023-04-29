@@ -249,11 +249,10 @@ public class Object extends ShaderProgram {
         translateObject(x, y, z);
     }
 
-    public boolean checkCollision(Object otherObject) {
+    public boolean checkCollision(Object otherObject, float area) {
         // check if the object does collide and return bool
 
         // the collision mechanism, if one's center point is inside other's imaginary area, then it collides
-        float area = 0.1f;
 
         return otherObject.getCenterPoint().x - area <= this.getCenterPoint().x &&
                 this.getCenterPoint().x <= otherObject.getCenterPoint().x + area &&

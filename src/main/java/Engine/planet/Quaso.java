@@ -45,7 +45,6 @@ public class Quaso extends Sphere {
             FloatControl gainControl = (FloatControl) clipEat.getControl(FloatControl.Type.MASTER_GAIN);
             gainControl.setValue(1.0f);
 
-            System.out.println(clipEat.getFrameLength() + "|" + clipEat.getFramePosition());
             clipEat.start();
             getChildObject().remove(0);
         } else {
@@ -61,7 +60,6 @@ public class Quaso extends Sphere {
             FloatControl gainControl = (FloatControl) clipAte.getControl(FloatControl.Type.MASTER_GAIN);
             gainControl.setValue(1.0f);
 
-            System.out.println(clipAte.getFrameLength() + "|" + clipAte.getFramePosition());
             clipAte.start();
 
         }

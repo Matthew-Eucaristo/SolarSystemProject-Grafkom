@@ -46,12 +46,14 @@ public class Main {
     Projection projection = new Projection(window.getWidth(), window.getHeight());
 
     Camera camera = new Camera();
+    private boolean isLost = false;
 
     // for sound
-    public static Clip mainMusicClip, atomOrbitMusic, duckSound,spaceshipSound;
+    public static Clip mainMusicClip, atomOrbitMusic, duckSound,spaceshipSound, loseMusic;
 
     private Random random = new Random();
     private boolean initialized = false;
+    private int loseTimer = 0;
 
 
     public void init() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
@@ -70,8 +72,8 @@ public class Main {
         objects.get(0).getChildObject().add(new Earth(ColorPalette.EARTH_SEA.getRGBA()).inlineScaleObjectXYZ(0.3f)
                 .inlineTranslateObject(-2f, 0f, 0f)); // ini buat bumi
 
-        objects.get(0).getChildObject().get(0).getChildObject().add(new Moon(ColorPalette.MOON_COLOR.getRGBA()).inlineScaleObjectXYZ(0.3f)
-                .inlineTranslateObject(-1f, 0f, 0f)); // ini buat bulan
+        objects.get(0).getChildObject().get(0).getChildObject().add(new Satelite(ColorPalette.SATELITE_MAIN_COLOR.getRGBA()).inlineScaleObjectXYZ(0.3f)
+                .inlineTranslateObject(-1f, 0f, 0f)); // ini buat satelite
 
         objects.get(0).getChildObject().add(new Saturn(ColorPalette.SATURN_COLOR_1.getRGBA())
                 .inlineScaleObjectXYZ(0.4f)
@@ -105,7 +107,7 @@ public class Main {
         objects.add(new Astronaut(ColorPalette.ASTRONAUT_SUIT.getRGBA(),"ellipsoid")
                         .inlineScaleObjectXYZ(5f)
                         .inlineRotateObject((float) Math.toRadians(45),1f,0f,0f)
-                .inlineTranslateObject(0f,6f,-7f));
+                .inlineTranslateObject(0f,6f,-70000f));
 
 
 
@@ -136,9 +138,8 @@ public class Main {
 
         atomOrbitMusic.open(audioInputStream);
         FloatControl gainControl = (FloatControl) atomOrbitMusic.getControl(FloatControl.Type.MASTER_GAIN);
-        gainControl.setValue(-1.5f);
 
-        System.out.println(atomOrbitMusic.getFrameLength() + "|" + atomOrbitMusic.getFramePosition());
+
         atomOrbitMusic.start();
 
     }
@@ -155,7 +156,6 @@ public class Main {
         gainControl.setValue(-10.5f);
         mainMusicClip.loop(99);
 
-        System.out.println(mainMusicClip.getFrameLength() + "|" + mainMusicClip.getFramePosition());
         mainMusicClip.start();
     }
 
@@ -501,9 +501,8 @@ public class Main {
             duckSound.open(audioInputStream);
 
             FloatControl gainControl = (FloatControl) duckSound.getControl(FloatControl.Type.MASTER_GAIN);
-            gainControl.setValue(0.5f);
+            gainControl.setValue(-20.5f);
 
-            System.out.println(duckSound.getFrameLength() + "|" + duckSound.getFramePosition());
             duckSound.loop(0);
 
             duckSound.start();
@@ -533,7 +532,6 @@ public class Main {
             FloatControl gainControl = (FloatControl) spaceshipSound.getControl(FloatControl.Type.MASTER_GAIN);
             gainControl.setValue(-9.5f);
 
-            System.out.println(spaceshipSound.getFrameLength() + "|" + spaceshipSound.getFramePosition());
 
             spaceshipSound.start();
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
@@ -581,6 +579,14 @@ public class Main {
                 Duck duck = (Duck) child;
                 duck.inlineTranslateObject(0.01f,0f,0f);
             }
+            // for moving the bombs
+            for (Object child : objects.get(2).getChildObject()){
+                if (!(child instanceof Moon)) {
+                    continue;
+                }
+                Moon moon = (Moon) child;
+                moon.inlineTranslateObject(0.01f,0f,0f);
+            }
 
             // update all the center point to the correct one
             for (Object object : objects) {
@@ -600,7 +606,7 @@ public class Main {
                 Iterator<Object> duckIterator = objects.get(2).getChildObject().iterator();
                 while (duckIterator.hasNext()) {
                     Object duckObject = duckIterator.next();
-                    if (laser.checkCollision(duckObject) && duckObject instanceof Duck) {
+                    if (laser.checkCollision(duckObject,0.1f) && duckObject instanceof Duck) {
                         System.out.println("Laser hit the duck");
                         // delete duck
                         duckIterator.remove();
@@ -610,19 +616,35 @@ public class Main {
                 }
             }
 
+            // for checking the bomb (moon) collided with spaceship
+            for (Object moon : objects.get(2).getChildObject()) {
+                if (!(moon instanceof Moon)) {
+                    continue;
+                }
+
+                if (moon.checkCollision(objects.get(3), 0.4f)) {
+
+                    // initiate lose method
+                    lose();
+
+                    initSpaceshipAniSound();
+                    break; // exit inner while loop
+                }
+            }
+
             // initialize the screen
-//            if (!initialized){
-//                // zoom out the camera with smooth movement
-//                float acceptedOffset = 0.3f;
-//                Vector3f cameraTargetPosition = new Vector3f(0,0,12);
-//                camera.setTargetPosition(cameraTargetPosition);
-//                camera.updatePosition();
-//
-//                if (camera.getPosition().z >= (cameraTargetPosition.z -acceptedOffset)){
-//                    initialized = true;
-//                    System.out.println("Camera has been initialized");
-//                }
-//            }
+            if (!initialized){
+                // zoom out the camera with smooth movement
+                float acceptedOffset = 0.3f;
+                Vector3f cameraTargetPosition = new Vector3f(0,0,12);
+                camera.setTargetPosition(cameraTargetPosition);
+                camera.updatePosition();
+
+                if (camera.getPosition().z >= (cameraTargetPosition.z -acceptedOffset)){
+                    initialized = true;
+                    System.out.println("Camera has been initialized");
+                }
+            }
             // gerak api jetpack
             if(flameJetPack > 1){
                 flameMovement = false;
@@ -638,6 +660,23 @@ public class Main {
                 objects.get(6).getChildObject().get(0).inlineTranslateObject(0f,0.015f,0.015f);
                 objects.get(6).getChildObject().get(1).inlineTranslateObject(0f,0.015f,0.015f);
                 flameJetPack = flameJetPack - 0.015f;
+            }
+
+            // is Lost
+            if (isLost){
+                // zoom in the camera with smooth movement
+                Vector3f cameraTargetPosition = new Vector3f(0,0,1000);
+                camera.setTargetPosition(cameraTargetPosition);
+                camera.updatePosition();
+
+                // move the astronaut to the center
+                objects.get(6).inlineTranslateObject(0f,0f,9.1f);
+
+                loseTimer += 1;
+                if (loseTimer > 2650){
+                    System.out.println("<---------------------Y-O-U----L-O-S-T--------------------->");
+                    System.exit(0);
+                }
             }
 
 
@@ -663,6 +702,35 @@ public class Main {
             // invoked during this call.
             glfwPollEvents();
 
+        }
+    }
+
+    private void lose() {
+        mainMusicClip.stop();
+        initLoseMusic();
+
+        isLost = true;
+    }
+
+
+    private void initLoseMusic() {
+        if (loseMusic != null) {
+            return;
+        }
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/java/assets/sound/lose.wav").getAbsoluteFile());
+            loseMusic = AudioSystem.getClip();
+            loseMusic.open(audioInputStream);
+
+            FloatControl gainControl = (FloatControl) loseMusic.getControl(FloatControl.Type.MASTER_GAIN);
+            gainControl.setValue(-1.0f);
+
+            System.out.println("Lose music is playing");
+            loseMusic.loop(9);
+
+            loseMusic.start();
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
         }
     }
 
