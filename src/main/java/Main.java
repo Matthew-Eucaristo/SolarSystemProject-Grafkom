@@ -262,15 +262,15 @@ public class Main {
 
 
         // update spaceship flame
-//        if (window.isKeyReleased(GLFW_KEY_P)){
-//            if(flameX > -0.02){
-//                objects.get(3).getChildObject().get(6).inlineTranslateObject(-0.001f,0f,0f);
-//                flameX = flameX - 0.001f;
+        if (window.isKeyReleased(GLFW_KEY_P)){
+            if(flameX > -0.02){
+                objects.get(3).getChildObject().get(6).inlineTranslateObject(-0.001f,0f,0f);
+                flameX = flameX - 0.001f;
+            }
+//            if (spaceshipSound != null && spaceshipSound.isOpen()) {
+//                spaceshipSound.stop();
 //            }
-////            if (spaceshipSound != null && spaceshipSound.isOpen()) {
-////                spaceshipSound.stop();
-////            }
-//        }
+        }
 
 //        if (window.isKeyPressed(GLFW_KEY_9)){
 //            objects.get(3).translateObject(-objects.get(3).getCenterPoint().get(0),-objects.get(3).getCenterPoint().get(1),-objects.get(3).getCenterPoint().get(2));
