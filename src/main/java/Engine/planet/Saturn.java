@@ -4,6 +4,7 @@ import Engine.Circle;
 import Engine.Curve;
 import Engine.Object;
 import Engine.Sphere;
+import org.joml.Vector3f;
 
 import java.util.Collections;
 import java.util.List;
@@ -15,6 +16,7 @@ public class Saturn extends Sphere {
         createRings();
         createHat();
         createHourglass();
+        createMonocle();
     }
 
     public void createRings() {
@@ -357,6 +359,23 @@ public class Saturn extends Sphere {
                 ColorPalette.SATURN_RING_GREY.getR(), ColorPalette.SATURN_RING_GREY.getG(),
                 ColorPalette.SATURN_RING_GREY.getB(), ColorPalette.SATURN_RING_GREY.getA(), 100)
                 .inlineTranslateObject(0, 0, -0.4f));
+    }
+
+    private void createMonocle() {
+        // use cylinder to create monocle glass
+        getChildObject().add(new Sphere(ColorPalette.SATURN_RING_GREY.getRGBA(), "tube")
+                .inlineScaleObjectXYZ(0.2f)
+                .inlineScaleObject(1, 0.3f, 1)
+                .inlineTranslateObject(0.2f, 0.5f, -0.1f));
+
+        // create monocle chain using Bezier Curve
+        Vector3f[] controlPoints = new Vector3f[3];
+
+        controlPoints[0] = new Vector3f(0.3f, 0.46f, -0.1f);
+        controlPoints[1] = new Vector3f(0.38f, 0.30f, 0.7f);
+        controlPoints[2] = new Vector3f(0.48f, 0.1f, -0.1f);
+
+        getChildObject().add(new Curve(List.of(controlPoints), ColorPalette.ASTRONAUT_ANTENNA.getRGBA()));
     }
 
     public void createHourglass() {
