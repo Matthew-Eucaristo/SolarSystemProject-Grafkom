@@ -1,5 +1,6 @@
 # SolarSystemProject-Grafkom
-Simple Solar System visualization school-project using Java's LWJGL.
+Simple Solar System visualization school-project using Java's LWJGL.  
+Edit : Now this is SpaceWar using LWJGL!!
 
 ## TL/DR? Watch the demo instead !  
 [![Watch this Video](https://user-images.githubusercontent.com/108221736/235337935-a0997ff0-f59e-4771-b570-590b3c7796ca.png)](https://youtu.be/TK7Y2XDgEno)  
