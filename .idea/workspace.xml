@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="- change satelite instead of Bombs&#10;- generate bombs from the spawner&#10;- buat kalah kalau kenak bomb&#10;- tambahi lagu lose&#10;- buang print&quot; gapenting">
+    <list default="true" id="a9884615-6863-4de3-b70d-9a445b53d618" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
@@ -188,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682809275078</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="- give proper sound to the astronaut not the spaceshp (tuker lagu)">
+      <created>1682810117941</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1682810117941</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -219,7 +226,8 @@
     <MESSAGE value="spawntime lebih fair daripada sblmnya" />
     <MESSAGE value="buat sabuk di astronaut" />
     <MESSAGE value="- change satelite instead of Bombs&#10;- generate bombs from the spawner&#10;- buat kalah kalau kenak bomb&#10;- tambahi lagu lose&#10;- buang print&quot; gapenting" />
-    <option name="LAST_COMMIT_MESSAGE" value="- change satelite instead of Bombs&#10;- generate bombs from the spawner&#10;- buat kalah kalau kenak bomb&#10;- tambahi lagu lose&#10;- buang print&quot; gapenting" />
+    <MESSAGE value="- give proper sound to the astronaut not the spaceshp (tuker lagu)" />
+    <option name="LAST_COMMIT_MESSAGE" value="- give proper sound to the astronaut not the spaceshp (tuker lagu)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

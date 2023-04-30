@@ -262,24 +262,24 @@ public class Main {
 
 
         // update spaceship flame
-        if (window.isKeyReleased(GLFW_KEY_P)){
-            if(flameX > -0.02){
-                objects.get(3).getChildObject().get(6).inlineTranslateObject(-0.001f,0f,0f);
-                flameX = flameX - 0.001f;
-            }
-//            if (spaceshipSound != null && spaceshipSound.isOpen()) {
-//                spaceshipSound.stop();
+//        if (window.isKeyReleased(GLFW_KEY_P)){
+//            if(flameX > -0.02){
+//                objects.get(3).getChildObject().get(6).inlineTranslateObject(-0.001f,0f,0f);
+//                flameX = flameX - 0.001f;
 //            }
-        }
+////            if (spaceshipSound != null && spaceshipSound.isOpen()) {
+////                spaceshipSound.stop();
+////            }
+//        }
 
-        if (window.isKeyPressed(GLFW_KEY_9)){
-            objects.get(3).translateObject(-objects.get(3).getCenterPoint().get(0),-objects.get(3).getCenterPoint().get(1),-objects.get(3).getCenterPoint().get(2));
-            objects.get(3).inlineRotateObject((float) Math.toRadians(1),0,1,0);
-            objects.get(3).translateObject(objects.get(3).getCenterPoint().get(0), objects.get(3).getCenterPoint().get(1), objects.get(3).getCenterPoint().get(2));
-
-            objects.get(3).inlineRotateObject((float) Math.toRadians(-1),0,1,0);
-
-        }
+//        if (window.isKeyPressed(GLFW_KEY_9)){
+//            objects.get(3).translateObject(-objects.get(3).getCenterPoint().get(0),-objects.get(3).getCenterPoint().get(1),-objects.get(3).getCenterPoint().get(2));
+//            objects.get(3).inlineRotateObject((float) Math.toRadians(1),0,1,0);
+//            objects.get(3).translateObject(objects.get(3).getCenterPoint().get(0), objects.get(3).getCenterPoint().get(1), objects.get(3).getCenterPoint().get(2));
+//
+//            objects.get(3).inlineRotateObject((float) Math.toRadians(-1),0,1,0);
+//
+//        }
 
         // ini buat nembak nembak spaceshipnya
         if (window.isKeyPressed(GLFW_KEY_Z)){
@@ -564,6 +564,11 @@ public class Main {
                 object.draw(camera, projection);
             }
 
+            // update all the center point to the correct one
+            for (Object object : objects) {
+                object.updateCenterPoint();
+            }
+
             // for Duck Spawn Timer
             DuckSpawner duckSpawner = (DuckSpawner) objects.get(2);
             duckSpawner.runSpawnTimer();
@@ -591,11 +596,6 @@ public class Main {
                 }
                 Moon moon = (Moon) child;
                 moon.inlineTranslateObject(0.01f,0f,0f);
-            }
-
-            // update all the center point to the correct one
-            for (Object object : objects) {
-                object.updateCenterPoint();
             }
 
             // rotate the duckspawner
@@ -632,7 +632,6 @@ public class Main {
                     // initiate lose method
                     lose();
 
-                    initSheeSound();
                     break; // exit inner while loop
                 }
             }
@@ -650,6 +649,7 @@ public class Main {
                     System.out.println("Camera has been initialized");
                 }
             }
+
             // gerak api jetpack
             if(flameJetPack > 1){
                 flameMovement = false;
