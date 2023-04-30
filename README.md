@@ -23,7 +23,8 @@ Even though this is a school-project, contributions are welcomed ! 😊
 This projects uses Maven to manage all Dependencies.
 
 ## Additional Information
-Please note that this is originally a school-project and bad / smell code writings are to be expected.  
+Please note that this is originally a school-project and bad / smell code writings are to be expected.
+As for how each object were made, you can check this document out: https://docs.google.com/document/d/1Hx1eupbs4ZowUYD5cZY68-Ye9VHQbUzwGZDqyfokQx0/edit?usp=sharing
 
 ## License
 [MIT](LICENSE)
