@@ -6,6 +6,8 @@ Edit : Now this is SpaceWar using LWJGL!!
 [![Watch this Video](https://user-images.githubusercontent.com/108221736/235337935-a0997ff0-f59e-4771-b570-590b3c7796ca.png)](https://youtu.be/TK7Y2XDgEno)  
 Credit: Ikari Gendo, Neon Genesis Evangelion
 
+## Important Note
+More information is available (including the keybindings) in the [GitHub Pages](https://github.com/Matthew-Eucaristo/SolarSystemProject-Grafkom/wiki) for this Repo.  
 
 ## Installation
 We recommend using Amazon Coretto `JDK 18`.  
