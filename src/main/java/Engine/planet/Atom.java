@@ -14,12 +14,10 @@ public class Atom extends Sphere {
     public Atom(float[] rgba,float atomRingScale, float atomBallRotationX, float atomBallRotationY) {
         super(rgba, "ellipsoid");
         boolean swATM = false;
-        boolean swBLL = false;
+
 
         createCircle(countAtomScale(atomRingScale,swATM));
         createBall(atomRingScale,atomBallRotationX,atomBallRotationY);
-//        getChildObject().get(1).inlineTranslateObject(countBallRotationX(atomBallRotation,100),+ countBallRotationY(atomBallRotation,100),0f);
-//        getChildObject().get(2).inlineTranslateObject(countBallRotationX(atomBallRotation,100),+ countBallRotationY(atomBallRotation,100),0f);
         createWind();
         createWind();
         createWind();
@@ -55,7 +53,7 @@ public class Atom extends Sphere {
         else if(atomRingScale < -15){
             swATM = true;
         }
-        if(swATM == true){
+        if(swATM){
             atomRingScale++;
         }
         else {
@@ -63,18 +61,18 @@ public class Atom extends Sphere {
         }
         return atomRingScale;
     }
-    private float countBallRotationX(float atomBallRotationX,float radiusX){
+    private float countBallRotationX(float atomBallRotationX){
         if (atomBallRotationX > 360){
             atomBallRotationX = 0;
         }
-        atomBallRotationX = (float) (radiusX * Math.cos(Math.toRadians(atomBallRotationX))/ 100);
+        atomBallRotationX = (float) ((float) 100 * Math.cos(Math.toRadians(atomBallRotationX))/ 100);
         return atomBallRotationX;
     }
-    private float countBallRotationY(float atomBallRotationY,float radiusY){
+    private float countBallRotationY(float atomBallRotationY){
         if (atomBallRotationY > 360){
             atomBallRotationY = 0;
         }
-        atomBallRotationY = (float) (radiusY * Math.sin(Math.toRadians(atomBallRotationY))/ 100);
+        atomBallRotationY = (float) ((float) 100 * Math.sin(Math.toRadians(atomBallRotationY))/ 100);
         return atomBallRotationY;
     }
     private void createWind(){
@@ -119,19 +117,14 @@ public class Atom extends Sphere {
     private void createBall(float atomRingScale,float atomBallRotationX, float atomBallRotationY){
         getChildObject().add(new Sphere(ColorPalette.EARTH_LIGHTER_LAND.getRGBA(), "ellipsoid")
                 .inlineScaleObjectXYZ(0.2f)
-                .inlineTranslateObject(1f - atomRingScale * 0.01f ,countBallRotationY(atomBallRotationY,100),0f)
+                .inlineTranslateObject(1f - atomRingScale * 0.01f ,countBallRotationY(atomBallRotationY),0f)
 
         );
-//        System.out.println(countBallRotationX(atomBallRotationX,100));
-//                System.out.println(countBallRotationX(atomBallRotationY,100));
         getChildObject().add(new Sphere(ColorPalette.SUN_COLOR.getRGBA(), "ellipsoid")
                 .inlineScaleObjectXYZ(0.2f)
-                .inlineTranslateObject(0f,1f - atomRingScale * 0.01f,countBallRotationX(atomBallRotationX,100) * 0.01f)
+                .inlineTranslateObject(0f,1f - atomRingScale * 0.01f,countBallRotationX(atomBallRotationX) * 0.01f)
 
         );
-
-//        System.out.println(countBallRotationX(atomBallRotation,100));
-//        System.out.println(atomBallRotation);
     }
 
 }

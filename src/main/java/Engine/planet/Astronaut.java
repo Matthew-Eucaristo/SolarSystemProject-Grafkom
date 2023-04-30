@@ -197,7 +197,6 @@ public class Astronaut extends Sphere {
         );
 
     }
-
     private void initBody() {
         getChildObject().add(new Sphere(0.4f, 0.55f, 0.1f, ColorPalette.ASTRONAUT_SUIT.getRGBA(), "tube")
                 .inlineScaleObject(1f, 1f, 0.5f)
@@ -208,7 +207,6 @@ public class Astronaut extends Sphere {
         getChildObject().add(new Sphere(0.4f, 0.4f, 0.1f, ColorPalette.ASTRONAUT_BAG.getRGBA(), "tube")
                 .inlineScaleObject(1f, 1f, 0.5f)
                 .inlineTranslateObject(0f, -0.8f, -0.4f));
-
     }
 
     private void initArm() {
@@ -241,6 +239,7 @@ public class Astronaut extends Sphere {
                 .inlineScaleObject(0.5f, 0.5f, 0.6f)
                 .inlineTranslateObject(-0.37f, -0.6f, -0.04f)
         );
+
         //bahu kiri
         getChildObject().add(new Sphere(0.25f, 0.25f, 0.25f, ColorPalette.ASTRONAUT_SUIT.getRGBA(), "ellipsoid")
                 .inlineScaleObject(0.5f, 0.6f, 0.6f)
@@ -253,12 +252,11 @@ public class Astronaut extends Sphere {
 //                .inlineTranslateObject(-0.58f, -0.83f, 0f)
 //        );
 //
-//        //siku kir
+//        //siku kiri
 //        getChildObject().add(new Sphere(0.27f, 0.27f, 0.27f, ColorPalette.ASTRONAUT_SUIT.getRGBA(), "ellipsoid")
 //                .inlineScaleObject(0.5f, 0.5f, 0.6f)
 //                .inlineTranslateObject(0.58f, -0.83f, 0f)
 //        );
-
         initPalm();
     }
 
@@ -288,6 +286,7 @@ public class Astronaut extends Sphere {
         getChildObject().add(new Sphere(0.5f, 0.5f, 0.5f, ColorPalette.ASTRONAUT_SUIT.getRGBA(), "ellipsoid")
                 .inlineScaleObject(0.32f, 0.31f, 0.32f)
                 .inlineTranslateObject(0.568f, -1.11f, 0.5f));
+
         //jempol kiri
         getChildObject().add(new Sphere(0.1f,0.1f,0.05f, ColorPalette.ASTRONAUT_THUMB.getRGBA(), "ellipticparaboloid")
                 .inlineScaleObject(0.2f,0.14f,0.08f)
@@ -316,8 +315,6 @@ public class Astronaut extends Sphere {
         );
         getChildObject().add(new Sphere(0.16f, 0.25f, 1f, ColorPalette.ASTRONAUT_LEGS.getRGBA(), "tube")
                         .inlineScaleObject(1f, 1f, 0.7f)
-//                .inlineRotateObject((float) Math.toRadians(-30), 1f, 0f, 0f)
-//                .inlineRotateObject((float) Math.toRadians(-10), 0f, 0f, 1f)
                         .inlineTranslateObject(-0.2f, -2.1f, 0.18f)
         );
 
@@ -330,8 +327,6 @@ public class Astronaut extends Sphere {
         );
         getChildObject().add(new Sphere(0.16f, 0.25f, 1f, ColorPalette.ASTRONAUT_LEGS.getRGBA(), "tube")
                         .inlineScaleObject(1f, 1f, 0.7f)
-//                .inlineRotateObject((float) Math.toRadians(-30), 1f, 0f, 0f)
-//                .inlineRotateObject((float) Math.toRadians(-10), 0f, 0f, 1f)
                         .inlineTranslateObject(0.2f, -2.1f, 0.18f)
         );
     }
@@ -349,6 +344,4 @@ public class Astronaut extends Sphere {
                         .inlineTranslateObject(-0.22f, -1.2f, -0.43f)
         );
     }
-
-
 }

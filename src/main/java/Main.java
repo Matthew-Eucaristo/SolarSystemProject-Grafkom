@@ -19,10 +19,10 @@ import static org.lwjgl.opengl.GL30.*;
 
 public class Main {
     // init window
-    private Window window = new Window(1920, 1080, "Solar System");
+    private final Window window = new Window(1920, 1080, "Solar System");
 
     // init objects
-    private ArrayList<Object> objects = new ArrayList<Object>();
+    private final ArrayList<Object> objects = new ArrayList<Object>();
 
     // init mouseinput
     private MouseInput mouseInput;
@@ -33,13 +33,11 @@ public class Main {
 
     private float atomBallRotationY = 0f;
 
-    private float flameX = 0,flameY,flameZ;
+    private float flameX = 0;
 
     private float flameJetPack = 0;
 
     private boolean flameMovement = true;
-
-    private float spaceshipX,spaceshipY,spaceshipZ;
 
     private boolean swATM = false;
 
@@ -51,7 +49,7 @@ public class Main {
     // for sound
     public static Clip mainMusicClip, atomOrbitMusic, duckSound, sheeSound, loseMusic;
 
-    private Random random = new Random();
+    private final Random random = new Random();
     private int astronautAppearTimer = 0;
     private boolean initialized = false;
     private boolean astronautAppearMusicShouldPlay = true;
@@ -267,19 +265,7 @@ public class Main {
                 objects.get(3).getChildObject().get(6).inlineTranslateObject(-0.001f,0f,0f);
                 flameX = flameX - 0.001f;
             }
-//            if (spaceshipSound != null && spaceshipSound.isOpen()) {
-//                spaceshipSound.stop();
-//            }
         }
-
-//        if (window.isKeyPressed(GLFW_KEY_9)){
-//            objects.get(3).translateObject(-objects.get(3).getCenterPoint().get(0),-objects.get(3).getCenterPoint().get(1),-objects.get(3).getCenterPoint().get(2));
-//            objects.get(3).inlineRotateObject((float) Math.toRadians(1),0,1,0);
-//            objects.get(3).translateObject(objects.get(3).getCenterPoint().get(0), objects.get(3).getCenterPoint().get(1), objects.get(3).getCenterPoint().get(2));
-//
-//            objects.get(3).inlineRotateObject((float) Math.toRadians(-1),0,1,0);
-//
-//        }
 
         // ini buat nembak nembak spaceshipnya
         if (window.isKeyPressed(GLFW_KEY_Z)){
@@ -302,7 +288,7 @@ public class Main {
             saturn.moveHourglass();
         }
 
-        // sheesh music for astronaut appearing
+        // sheesh, music for astronaut appearing
         if (astronautAppearTimer < 750){
             astronautAppearTimer +=1;
             return;
@@ -313,18 +299,8 @@ public class Main {
 
         // ini buat jalanya spaceship
         if (window.isKeyPressed(GLFW_KEY_I)){
-            spaceshipX = objects.get(3).getCenterPoint().get(0);
-            spaceshipY = objects.get(3).getCenterPoint().get(1);
-            spaceshipZ = objects.get(3).getCenterPoint().get(2);
-
-//            objects.remove(3);
-//            objects.add(3, new SpaceShip(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
-//                    .inlineScaleObject(0.1f,0.2f,0.1f)
-//                    .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
-//                    .inlineTranslateObject(spaceshipX - 0.02f,spaceshipY,spaceshipZ));
             objects.get(3).inlineTranslateObject(0,0.05f,0);
             objects.get(5).inlineTranslateObject(0f,0.05f,0f);
-//            flameX = flameX - 0.02f;
 
             for (Object laser : objects.get(5).getChildObject()) {
                 laser.inlineTranslateObject(0f,-0.05f,0f);
@@ -332,8 +308,6 @@ public class Main {
 
             if (flameX == 0){
                 flameX = objects.get(3).getChildObject().get(6).getCenterPoint().get(0);
-                flameY = objects.get(3).getChildObject().get(6).getCenterPoint().get(1);
-                flameZ = objects.get(3).getChildObject().get(6).getCenterPoint().get(2);
 
             }
             if (flameX < 0.08){
@@ -343,18 +317,8 @@ public class Main {
             }
         }
         if (window.isKeyPressed(GLFW_KEY_K)){
-            spaceshipX = objects.get(3).getCenterPoint().get(0);
-            spaceshipY = objects.get(3).getCenterPoint().get(1);
-            spaceshipZ = objects.get(3).getCenterPoint().get(2);
-
-//            objects.remove(3);
-//            objects.add(3, new SpaceShip(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
-//                    .inlineScaleObject(0.1f,0.2f,0.1f)
-//                    .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
-//                    .inlineTranslateObject(spaceshipX - 0.02f,spaceshipY,spaceshipZ));
             objects.get(3).inlineTranslateObject(0,-0.05f,0);
             objects.get(5).inlineTranslateObject(0,-0.05f,0f);
-//            flameX = flameX - 0.02f;
 
             for (Object laser : objects.get(5).getChildObject()) {
                 laser.inlineTranslateObject(0f,0.05f,0f);
@@ -362,8 +326,6 @@ public class Main {
 
             if (flameX == 0){
                 flameX = objects.get(3).getChildObject().get(6).getCenterPoint().get(0);
-                flameY = objects.get(3).getChildObject().get(6).getCenterPoint().get(1);
-                flameZ = objects.get(3).getChildObject().get(6).getCenterPoint().get(2);
 
             }
             if (flameX < 0.08){
@@ -373,25 +335,15 @@ public class Main {
             }
         }
         if (window.isKeyPressed(GLFW_KEY_J)){
-            spaceshipX = objects.get(3).getCenterPoint().get(0);
-            spaceshipY = objects.get(3).getCenterPoint().get(1);
-            spaceshipZ = objects.get(3).getCenterPoint().get(2);
-//            objects.remove(3);
-//            objects.add(3, new SpaceShip(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
-//                    .inlineScaleObject(0.1f,0.2f,0.1f)
-//                    .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
-//                    .inlineTranslateObject(spaceshipX - 0.02f,spaceshipY,spaceshipZ));
             objects.get(3).inlineTranslateObject(-0.05f,0,0);
             objects.get(5).inlineTranslateObject(-0.05f,0f,0f);
-//            flameX = flameX - 0.02f;
+
             for (Object laser : objects.get(5).getChildObject()) {
                 laser.inlineTranslateObject(0.05f,0f,0f);
             }
 
             if (flameX == 0){
                 flameX = objects.get(3).getChildObject().get(6).getCenterPoint().get(0);
-                flameY = objects.get(3).getChildObject().get(6).getCenterPoint().get(1);
-                flameZ = objects.get(3).getChildObject().get(6).getCenterPoint().get(2);
 
             }
             if (flameX < 0.08){
@@ -401,17 +353,8 @@ public class Main {
             }
         }
         if (window.isKeyPressed(GLFW_KEY_L)){
-            spaceshipX = objects.get(3).getCenterPoint().get(0);
-            spaceshipY = objects.get(3).getCenterPoint().get(1);
-            spaceshipZ = objects.get(3).getCenterPoint().get(2);
-//            objects.remove(3);
-//            objects.add(3, new SpaceShip(ColorPalette.SPACESHIP_BODY.getRGBA(), "tube")
-//                    .inlineScaleObject(0.1f,0.2f,0.1f)
-//                    .inlineRotateObject((float) Math.toRadians(90),0f,0f,1f)
-//                    .inlineTranslateObject(spaceshipX - 0.02f,spaceshipY,spaceshipZ));
             objects.get(3).inlineTranslateObject(0.05f,0,0);
             objects.get(5).inlineTranslateObject(0.05f,0f,0f);
-//            flameX = flameX - 0.02f;
 
             for (Object laser : objects.get(5).getChildObject()) {
                 laser.inlineTranslateObject(-0.05f,0f,0f);
@@ -419,8 +362,6 @@ public class Main {
 
             if (flameX == 0){
                 flameX = objects.get(3).getChildObject().get(6).getCenterPoint().get(0);
-                flameY = objects.get(3).getChildObject().get(6).getCenterPoint().get(1);
-                flameZ = objects.get(3).getChildObject().get(6).getCenterPoint().get(2);
 
             }
             if (flameX < 0.08){
@@ -583,18 +524,16 @@ public class Main {
 
             // for moving the duck
             for (Object child : objects.get(2).getChildObject()) {
-                if (!(child instanceof Duck)) {
+                if (!(child instanceof Duck duck)) {
                     continue;
                 }
-                Duck duck = (Duck) child;
                 duck.inlineTranslateObject(0.01f,0f,0f);
             }
             // for moving the bombs
             for (Object child : objects.get(2).getChildObject()){
-                if (!(child instanceof Moon)) {
+                if (!(child instanceof Moon moon)) {
                     continue;
                 }
-                Moon moon = (Moon) child;
                 moon.inlineTranslateObject(0.01f,0f,0f);
             }
 
